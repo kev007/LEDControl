@@ -25,8 +25,8 @@ public class StartFragment extends Fragment implements android.view.View.OnClick
 			Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.start_fragment, container, false);
 		
-		button1 = (Button) findViewById(R.id.button1);
-		button1.setOnClickListener(this);
+		//button1 = (Button) findViewById(R.id.button1);
+		//button1.setOnClickListener(this);
 	}
 
 	public void onClick(View v) {
