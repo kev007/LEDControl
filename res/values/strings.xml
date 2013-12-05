@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LED Control</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="home_screen">Home Screen</string>
+    <string-array name="drawer_array">
+        <item >DisplayFragment</item>
+        <item >display_fragment</item>
+        <item >start_fragment</item>
+        <item >Home Screen</item>
+        <item >Connection</item>
+        <item >Display</item>
+        <item >Settings</item>
+    </string-array>
+    
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+</resources>
