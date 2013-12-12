@@ -138,9 +138,9 @@ public class MainActivity extends Activity implements OnClickListener {
     	//Kostanten
 		int PORT = 4501;
 		//String ADDRESS = "127.0.0.1";
-		//String ADDRESS ="255.255.255.255" ;
+		String ADDRESS ="255.255.255.255" ;
 		//String ADDRESS ="192.168.1.100" ;
-		String ADDRESS ="10.0.2.2" ;
+		//String ADDRESS ="10.0.2.2" ;
 		InetAddress BROAD_ADDRESS = null;
 		
 		//InetAddress erstellen
