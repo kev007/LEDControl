@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
 
 	private void createManagement() {
     	//Kostanten
-		int PORT = 3963;
+		int PORT = 4500;
 		//String ADDRESS = "127.0.0.1";
 		String ADDRESS ="255.255.255.255" ;
 		InetAddress BROAD_ADDRESS = null;
