@@ -106,12 +106,11 @@ public class MainActivity extends Activity implements OnClickListener {
 				m.sendPackage(m.createZeroContainer());
 			break;
 			case R.id.update:
-				int [][] kette1 = new int[2][5];
-				kette1[0][0] = seekBarR.getProgress();
-				System.out.println(seekBarR.getProgress());
-				kette1[0][1] = seekBarG.getProgress();
-				kette1[0][2] = seekBarB.getProgress();
-				kette1[0][3] = seekBarL.getProgress();
+				int [][] kette1 = new int[1][5];
+				kette1[0][0] = (int) seekBarR.getProgress();
+				kette1[0][1] = (int) seekBarG.getProgress();
+				kette1[0][2] = (int) seekBarB.getProgress();
+				kette1[0][3] = (int) seekBarL.getProgress();
 				kette1[0][4] = 0;
 				/*
 				kette1[1][0] = seekBarR.getProgress();
@@ -120,7 +119,10 @@ public class MainActivity extends Activity implements OnClickListener {
 				kette1[1][3] = seekBarL.getProgress();
 				kette1[1][4] = 1000;
 				*/
-				
+				System.out.println("R: " + seekBarR.getProgress());
+				System.out.println("G: " + seekBarG.getProgress());
+				System.out.println("B: " + seekBarB.getProgress());
+				System.out.println("L: " + seekBarL.getProgress());
 				m.sendPackage(new Container(1, kette1,true, null,false, null,false, null,false, null,false));
 			break;
 			
@@ -136,9 +138,9 @@ public class MainActivity extends Activity implements OnClickListener {
     	//Kostanten
 		int PORT = 4501;
 		//String ADDRESS = "127.0.0.1";
-		String ADDRESS ="255.255.255.255" ;
+		//String ADDRESS ="255.255.255.255" ;
 		//String ADDRESS ="192.168.1.100" ;
-		//String ADDRESS ="10.0.2.2" ;
+		String ADDRESS ="10.0.2.2" ;
 		InetAddress BROAD_ADDRESS = null;
 		
 		//InetAddress erstellen
