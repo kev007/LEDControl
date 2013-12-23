@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources>
+	<declare-styleable parent="@android:style/Theme" name="DroidUX.Theme">
+		<!-- AppBar -->
+		<attr name="dux_appbarStyle" format="reference" />
+
+		<!-- Dashboard -->
+		<attr name="dux_dashboardStyle" format="reference" />
+		<attr name="dux_dashboardMultiPageStyle" format="reference" />
+		<attr name="dux_dashboardItemStyle" format="reference" />
+
+		<!-- Wheel -->
+		<attr name="dux_datetimepickerStyle" format="reference" />
+		<attr name="dux_datepickerStyle" format="reference" />
+		<attr name="dux_timepickerStyle" format="reference" />
+		<attr name="dux_wheelcarouselStyle" format="reference" />
+
+		<!-- GalleryFlow -->
+		<attr name="dux_galleryflowCarouselStyle" format="reference" />
+		<attr name="dux_galleryflowCoverStyle" format="reference" />
+		<attr name="dux_galleryflowZoomStyle" format="reference" />
+		<attr name="dux_galleryflowScaleStyle" format="reference" />
+		<attr name="dux_galleryflowWallStyle" format="reference" />
+		<attr name="dux_galleryflowTrainStyle" format="reference" />
+
+		<!-- ColorPicker -->
+		<attr name="dux_colorPickerStyle" format="reference" />
+        <attr name="dux_colorPreferenceBoxStyle" format="reference" />
+
+		<!-- SegmentedButton -->
+		<attr name="dux_segmentedButtonStyle" format="reference" />
+
+		<!-- Progress -->
+		<attr name="dux_progressBarHorizontalStyle" format="reference" />
+		<attr name="dux_progressBarStyle" format="reference" />
+		<attr name="dux_progressBarLargeStyle" format="reference" />
+		<attr name="dux_progressBarSmallStyle" format="reference" />
+		<attr name="dux_progressBarCircularStyle" format="reference" />
+		<attr name="dux_seekBarStyle" format="reference" />
+		<attr name="dux_ratingBarStyle" format="reference" />
+		<attr name="dux_ratingBarIndicatorStyle" format="reference" />
+		<attr name="dux_ratingBarSmallStyle" format="reference" />
+
+	</declare-styleable>
+</resources>

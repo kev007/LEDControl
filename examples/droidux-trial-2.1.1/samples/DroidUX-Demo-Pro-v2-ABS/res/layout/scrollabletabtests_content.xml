@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <TextView
+    	android:id="@+id/view1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#CC3910"
+        android:textColor="#F1F2C0"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/text_content_scrltb_1"/>
+
+    <TextView android:id="@+id/view2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#F1F2C0"
+        android:textColor="#332F29"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/text_content_scrltb_2"/>
+
+    <TextView android:id="@+id/view3"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#CCC59E"
+        android:textColor="#CC3910"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/text_content_scrltb_3"/>
+
+    <TextView android:id="@+id/view4"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#8FA68E"
+        android:textColor="#332F29"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/text_content_scrltb_4"/>
+
+    <TextView android:id="@+id/view5"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#332F29"
+        android:textColor="#F1F2C0"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/text_content_scrltb_5"/>
+
+    <TextView android:id="@+id/view6"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#7F203B"
+        android:textColor="#F1F2C0"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/text_content_scrltb_6"/>
+
+</FrameLayout>

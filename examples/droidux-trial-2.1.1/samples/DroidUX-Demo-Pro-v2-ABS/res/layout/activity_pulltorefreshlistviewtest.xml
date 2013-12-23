@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+<com.droidux.widget.pull2refresh.VerticalPullToRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/p2r_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <com.droidux.widget.list.DuxListView
+        android:id="@android:id/list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#0000"
+        />
+</com.droidux.widget.pull2refresh.VerticalPullToRefreshLayout>
+

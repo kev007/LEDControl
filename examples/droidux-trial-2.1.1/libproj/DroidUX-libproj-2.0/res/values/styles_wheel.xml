@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<!-- Wheel styles -->
+	<style name="DroidUX.Wheel" />
+	<style name="DroidUX.Wheel.Spinner"  />
+	<style name="DroidUX.Wheel.Spinner.Layout">
+		<item name="dux_selectorDrawable">@drawable/dux_whl_slctr</item>
+	</style>
+
+	<style name="DroidUX.Wheel.Carousel">
+		<item name="dux_tiltAngle">10.0</item>
+		<item name="dux_reflected">true</item>
+		<item name="dux_effectType">fade</item>
+		<item name="dux_floorGap">1dip</item>
+		<item name="dux_reflectionStrength">0.4</item>
+		<item name="dux_reflectionHeight">0.4</item>
+		<item name="dux_effectStrength">0.5</item>
+	</style>
+	<style name="DroidUX.Wheel.Container">
+		<item name="dux_casingDrawable">@drawable/dux_whl_cntnr_csng</item>
+	</style>
+	<!-- DatePicker styles -->
+	<style name="DroidUX.Picker"/>
+	<style name="DroidUX.Picker.TextAppearance">
+		<item name="android:textSize">@dimen/dux_dtpkr_textSize</item>
+		<item name="android:textColor">@color/dux_dtpkr_txtclr</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	<style name="DroidUX.Picker.Date" />
+	<style name="DroidUX.Picker.DateTime" />
+	<style name="DroidUX.Picker.DateTime.TextAppearance.Today" parent="DroidUX.Picker.TextAppearance">
+		<item name="android:textColor">@color/dux_dtpkr_txtclr_2dy</item>
+	</style>
+	<style name="DroidUX.Picker.DateTime.Layout">
+		<item name="android:singleLine">true</item>
+		<item name="android:paddingLeft">5dp</item>
+		<item name="android:paddingTop">2dp</item>
+		<item name="android:paddingRight">5dp</item>
+		<item name="android:paddingBottom">2dp</item>
+	</style>
+	<style name="DroidUX.Picker.DateTime.Layout.Text" />
+	<style name="DroidUX.Picker.DateTime.Layout.DateWheel"/>
+	<style name="DroidUX.Picker.DateTime.Layout.DateWheel.Day">
+		<item name="android:layout_width">@dimen/dux_dtpkr_dayWidth</item>
+		<item name="android:gravity">right</item>
+		<item name="android:padding">0dp</item>
+	</style>
+	<style name="DroidUX.Picker.DateTime.Layout.DateWheel.Date">
+		<item name="android:gravity">left</item>
+		<item name="android:paddingTop">0dp</item>
+		<item name="android:paddingBottom">0dp</item>
+		<item name="android:paddingLeft">5dp</item>
+		<item name="android:paddingRight">20dp</item>
+	</style>
+	<style name="DroidUX.Picker.Time"/>
+</resources>

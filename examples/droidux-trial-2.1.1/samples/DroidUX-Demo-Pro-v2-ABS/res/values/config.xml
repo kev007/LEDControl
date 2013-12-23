@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- The duration (in milliseconds) of a short animation. -->
+    <integer name="config_shortAnimTime">1000</integer>
+    
+    <!-- The duration (in milliseconds) of a medium-length animation. -->
+    <integer name="config_mediumAnimTime">2000</integer>
+    
+    <!-- The duration (in milliseconds) of a long animation. -->
+    <integer name="config_longAnimTime">3000</integer>
+
+    <!-- The duration (in milliseconds) of a long animation. -->
+    <integer name="config_veryLongAnimTime">5000</integer>
+
+</resources>

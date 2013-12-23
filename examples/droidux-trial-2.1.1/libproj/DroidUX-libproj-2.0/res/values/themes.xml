@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources>
+    <style name="DroidUX.Theme" parent="@android:style/Theme">
+        <item name="dux_appbarStyle">@style/DroidUX.AppBar</item>
+        <item name="dux_dashboardStyle">@style/DroidUX.Dashboard</item>
+        <item name="dux_dashboardMultiPageStyle">@style/DroidUX.Dashboard.MultiPage</item>
+        <item name="dux_dashboardItemStyle">@style/DroidUX.DashboardButton</item>
+        <item name="dux_datetimepickerStyle">@style/DroidUX.Picker.DateTime</item>
+        <item name="dux_datepickerStyle">@style/DroidUX.Picker.Date</item>
+        <item name="dux_timepickerStyle">@style/DroidUX.Picker.Time</item>
+        <item name="dux_wheelcarouselStyle">@style/DroidUX.Wheel.Carousel</item>
+        <item name="dux_galleryflowCarouselStyle">@style/DroidUX.GalleryFlow.Radial.In</item>
+        <item name="dux_galleryflowCoverStyle">@style/DroidUX.GalleryFlow.Linear.Coverflow</item>
+        <item name="dux_galleryflowTrainStyle">@style/DroidUX.GalleryFlow.Linear.Trainflow</item>
+        <item name="dux_galleryflowZoomStyle">@style/DroidUX.GalleryFlow.Linear.Zoomflow</item>
+        <item name="dux_galleryflowScaleStyle">@style/DroidUX.GalleryFlow.Linear.Scaleflow</item>
+        <item name="dux_galleryflowWallStyle">@style/DroidUX.GalleryFlow.Radial.Wall.In</item>
+        <item name="dux_colorPickerStyle">@style/DroidUX.ColorPicker</item>
+        <item name="dux_colorPreferenceBoxStyle">@style/DroidUX.ColorPicker.PreferenceColorBox</item>
+        <item name="dux_segmentedButtonStyle">@style/DroidUX.SegmentedButton.Group</item>
+        <item name="dux_progressBarHorizontalStyle">@style/DroidUX.Progress.Horizontal</item>
+        <item name="dux_progressBarStyle">@style/DroidUX.Progress.Medium</item>
+        <item name="dux_progressBarLargeStyle">@style/DroidUX.Progress.Large</item>
+        <item name="dux_progressBarSmallStyle">@style/DroidUX.Progress.Small</item>
+        <item name="dux_progressBarCircularStyle">@style/DroidUX.Progress.Circular</item>
+        <item name="dux_seekBarStyle">@style/DroidUX.Progress.SeekBar</item>
+        <item name="dux_ratingBarStyle">@style/DroidUX.Progress.RatingBar</item>
+        <item name="dux_ratingBarIndicatorStyle">@style/DroidUX.Progress.RatingBar.Indicator</item>
+        <item name="dux_ratingBarSmallStyle">@style/DroidUX.Progress.RatingBar.Small</item>
+    </style>
+    <style name="DroidUX.Theme.Light" parent="@android:style/Theme.Light">
+        <item name="dux_appbarStyle">@style/DroidUX.AppBar</item>
+        <item name="dux_dashboardStyle">@style/DroidUX.Dashboard</item>
+        <item name="dux_dashboardMultiPageStyle">@style/DroidUX.Dashboard.MultiPage</item>
+        <item name="dux_dashboardItemStyle">@style/DroidUX.DashboardButton</item>
+        <item name="dux_datetimepickerStyle">@style/DroidUX.Picker.DateTime</item>
+        <item name="dux_datepickerStyle">@style/DroidUX.Picker.Date</item>
+        <item name="dux_timepickerStyle">@style/DroidUX.Picker.Time</item>
+        <item name="dux_wheelcarouselStyle">@style/DroidUX.Wheel.Carousel</item>
+        <item name="dux_galleryflowCarouselStyle">@style/DroidUX.GalleryFlow.Radial.In</item>
+        <item name="dux_galleryflowCoverStyle">@style/DroidUX.GalleryFlow.Linear.Coverflow</item>
+        <item name="dux_galleryflowTrainStyle">@style/DroidUX.GalleryFlow.Linear.Trainflow</item>
+        <item name="dux_galleryflowZoomStyle">@style/DroidUX.GalleryFlow.Linear.Zoomflow</item>
+        <item name="dux_galleryflowScaleStyle">@style/DroidUX.GalleryFlow.Linear.Scaleflow</item>
+        <item name="dux_galleryflowWallStyle">@style/DroidUX.GalleryFlow.Radial.Wall.In</item>
+        <item name="dux_colorPickerStyle">@style/DroidUX.ColorPicker</item>
+        <item name="dux_colorPreferenceBoxStyle">@style/DroidUX.ColorPicker.PreferenceColorBox</item>
+        <item name="dux_segmentedButtonStyle">@style/DroidUX.SegmentedButton.Group</item>
+        <item name="dux_progressBarHorizontalStyle">@style/DroidUX.Progress.Horizontal</item>
+        <item name="dux_progressBarStyle">@style/DroidUX.Progress.Medium</item>
+        <item name="dux_progressBarLargeStyle">@style/DroidUX.Progress.Large</item>
+        <item name="dux_progressBarSmallStyle">@style/DroidUX.Progress.Small</item>
+        <item name="dux_progressBarCircularStyle">@style/DroidUX.Progress.Circular</item>
+        <item name="dux_seekBarStyle">@style/DroidUX.Progress.SeekBar</item>
+        <item name="dux_ratingBarStyle">@style/DroidUX.Progress.RatingBar</item>
+        <item name="dux_ratingBarIndicatorStyle">@style/DroidUX.Progress.RatingBar.Indicator</item>
+        <item name="dux_ratingBarSmallStyle">@style/DroidUX.Progress.RatingBar.Small</item>
+    </style>
+    <style name="DroidUX.Theme.Holo" parent="@android:style/Theme.Holo">
+        <item name="dux_appbarStyle">@style/DroidUX.AppBar</item>
+        <item name="dux_dashboardStyle">@style/DroidUX.Dashboard</item>
+        <item name="dux_dashboardMultiPageStyle">@style/DroidUX.Dashboard.MultiPage</item>
+        <item name="dux_dashboardItemStyle">@style/DroidUX.DashboardButton</item>
+        <item name="dux_datetimepickerStyle">@style/DroidUX.Picker.DateTime</item>
+        <item name="dux_datepickerStyle">@style/DroidUX.Picker.Date</item>
+        <item name="dux_timepickerStyle">@style/DroidUX.Picker.Time</item>
+        <item name="dux_wheelcarouselStyle">@style/DroidUX.Wheel.Carousel</item>
+        <item name="dux_galleryflowCarouselStyle">@style/DroidUX.GalleryFlow.Radial.In</item>
+        <item name="dux_galleryflowCoverStyle">@style/DroidUX.GalleryFlow.Linear.Coverflow</item>
+        <item name="dux_galleryflowTrainStyle">@style/DroidUX.GalleryFlow.Linear.Trainflow</item>
+        <item name="dux_galleryflowZoomStyle">@style/DroidUX.GalleryFlow.Linear.Zoomflow</item>
+        <item name="dux_galleryflowScaleStyle">@style/DroidUX.GalleryFlow.Linear.Scaleflow</item>
+        <item name="dux_galleryflowWallStyle">@style/DroidUX.GalleryFlow.Radial.Wall.In</item>
+        <item name="dux_colorPickerStyle">@style/DroidUX.ColorPicker</item>
+        <item name="dux_colorPreferenceBoxStyle">@style/DroidUX.ColorPicker.PreferenceColorBox</item>
+        <item name="dux_segmentedButtonStyle">@style/DroidUX.SegmentedButton.Group</item>
+        <item name="dux_progressBarHorizontalStyle">@style/DroidUX.Holo.Progress.Horizontal</item>
+        <item name="dux_progressBarStyle">@style/DroidUX.Holo.Progress.Medium</item>
+        <item name="dux_progressBarLargeStyle">@style/DroidUX.Holo.Progress.Large</item>
+        <item name="dux_progressBarSmallStyle">@style/DroidUX.Holo.Progress.Small</item>
+        <item name="dux_progressBarCircularStyle">@style/DroidUX.Progress.Circular</item>
+        <item name="dux_seekBarStyle">@style/DroidUX.Holo.Progress.SeekBar</item>
+        <item name="dux_ratingBarStyle">@style/DroidUX.Progress.RatingBar</item>
+        <item name="dux_ratingBarIndicatorStyle">@style/DroidUX.Progress.RatingBar.Indicator</item>
+        <item name="dux_ratingBarSmallStyle">@style/DroidUX.Progress.RatingBar.Small</item>
+    </style>
+    <style name="DroidUX.Theme.Holo.Light" parent="@android:style/Theme.Holo.Light">
+        <item name="dux_appbarStyle">@style/DroidUX.AppBar</item>
+        <item name="dux_dashboardStyle">@style/DroidUX.Dashboard</item>
+        <item name="dux_dashboardMultiPageStyle">@style/DroidUX.Dashboard.MultiPage</item>
+        <item name="dux_dashboardItemStyle">@style/DroidUX.DashboardButton</item>
+        <item name="dux_datetimepickerStyle">@style/DroidUX.Picker.DateTime</item>
+        <item name="dux_datepickerStyle">@style/DroidUX.Picker.Date</item>
+        <item name="dux_timepickerStyle">@style/DroidUX.Picker.Time</item>
+        <item name="dux_wheelcarouselStyle">@style/DroidUX.Wheel.Carousel</item>
+        <item name="dux_galleryflowCarouselStyle">@style/DroidUX.GalleryFlow.Radial.In</item>
+        <item name="dux_galleryflowCoverStyle">@style/DroidUX.GalleryFlow.Linear.Coverflow</item>
+        <item name="dux_galleryflowTrainStyle">@style/DroidUX.GalleryFlow.Linear.Trainflow</item>
+        <item name="dux_galleryflowZoomStyle">@style/DroidUX.GalleryFlow.Linear.Zoomflow</item>
+        <item name="dux_galleryflowScaleStyle">@style/DroidUX.GalleryFlow.Linear.Scaleflow</item>
+        <item name="dux_galleryflowWallStyle">@style/DroidUX.GalleryFlow.Radial.Wall.In</item>
+        <item name="dux_colorPickerStyle">@style/DroidUX.ColorPicker</item>
+        <item name="dux_colorPreferenceBoxStyle">@style/DroidUX.ColorPicker.PreferenceColorBox</item>
+        <item name="dux_segmentedButtonStyle">@style/DroidUX.SegmentedButton.Group</item>
+        <item name="dux_progressBarHorizontalStyle">@style/DroidUX.Holo.Light.Progress.Horizontal</item>
+        <item name="dux_progressBarStyle">@style/DroidUX.Holo.Progress.Medium</item>
+        <item name="dux_progressBarLargeStyle">@style/DroidUX.Holo.Progress.Large</item>
+        <item name="dux_progressBarSmallStyle">@style/DroidUX.Holo.Progress.Small</item>
+        <item name="dux_progressBarCircularStyle">@style/DroidUX.Progress.Circular</item>
+        <item name="dux_seekBarStyle">@style/DroidUX.Holo.Light.Progress.SeekBar</item>
+        <item name="dux_ratingBarStyle">@style/DroidUX.Progress.RatingBar</item>
+        <item name="dux_ratingBarIndicatorStyle">@style/DroidUX.Progress.RatingBar.Indicator</item>
+        <item name="dux_ratingBarSmallStyle">@style/DroidUX.Progress.RatingBar.Small</item>
+    </style>
+
+    <style name="DroidUX.Theme.NoTitleBar">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

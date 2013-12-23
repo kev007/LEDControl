@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.droidux.widget.wheel.DatePicker
+            style="?attr/dux_datepickerStyle"
+            android:id="@+id/datePicker"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:dux_selectorDrawable_tint="#F0F2FA"
+            app:dux_leftStaticView="@layout/view_whlspnnr_sttc_img"
+            app:dux_dateFormat="mdy"/>
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="15dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal"
+                android:text="Change Appearance"/>
+
+            <com.droidux.widget.ColorButton
+                android:id="@+id/dayColorButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Day Color ..."
+                android:onClick="changeColors"/>
+
+            <com.droidux.widget.ColorButton
+                android:id="@+id/monthColorButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="changeColors"
+                android:text="Month Color ..."/>
+
+            <com.droidux.widget.ColorButton
+                android:id="@+id/yearColorButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="changeColors"
+                android:text="Year Color ..."/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    >
+    <com.droidux.widget.layouts.ReflectionLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clipChildren="false"
+        app:dux_reflected="true"
+        app:dux_floorGap="2dip"
+        app:dux_reflectionStrength="0.4"
+        app:dux_reflectionHeight="0.4"
+        app:dux_effectType="none"
+        app:dux_effectStrength="0.7"
+        >
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Happy Girl" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/happy_girl" />
+        </LinearLayout>
+
+    </com.droidux.widget.layouts.ReflectionLayout>
+    <Button
+        android:id="@+id/button1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:text="Bounce"
+        android:onClick="onContentClicked"
+        />
+</FrameLayout>

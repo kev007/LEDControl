@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0"
+        android:text="segment mode: text; default button background" />
+
+    <com.droidux.widget.tabs.SegmentedButtonGroup
+        android:id="@+id/segmentedButtons1"
+        style="?attr/dux_segmentedButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0"
+        android:gravity="center_horizontal"
+        android:padding="7dp"
+        app:dux_segmentMode="text"
+        />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#d3d3d3"
+        android:text="segment mode: image; default button background" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#d3d3d3" >
+
+        <com.droidux.widget.tabs.SegmentedButtonGroup
+            android:id="@+id/segmentedButtons2"
+            style="?attr/dux_segmentedButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:padding="7dp"
+            app:dux_segmentMode="image" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0"
+        android:text="segment mode: auto; custom button background" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#f0f0f0" >
+
+        <com.droidux.widget.tabs.SegmentedButtonGroup
+            android:id="@+id/segmentedButtons3"
+            style="?attr/dux_segmentedButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:padding="7dp"
+            app:dux_color="@color/segmentedbutton_colors"
+            app:dux_segmentedBackground_first="@drawable/segmentedbutton_first"
+            app:dux_segmentedBackground_last="@drawable/segmentedbutton_last"
+            app:dux_segmentedBackground_middle="@drawable/segmentedbutton_middle"
+            app:dux_segmentedBackground_single="@drawable/segmentedbutton_single" />
+    </FrameLayout>
+
+</LinearLayout>

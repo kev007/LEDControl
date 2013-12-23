@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<!-- GalleryFlow styles -->
+	<style name="DroidUX.GalleryFlow">
+        <item name="android:clipChildren">true</item>
+	</style>
+    <style name="DroidUX.GalleryFlow.Linear">
+        <item name="dux_reflected">true</item>
+        <item name="dux_cameraZ">0</item>
+        <item name="dux_effectType">none</item>
+        <item name="dux_floorGap">0dip</item>
+        <item name="dux_reflectionStrength">0.4</item>
+        <item name="dux_reflectionHeight">0.4</item>
+        <item name="android:animationDuration">500</item>
+    	<item name="android:spacing">0dip</item>
+
+	</style>
+    <style name="DroidUX.GalleryFlow.Linear.Coverflow">
+        <item name="dux_effectType">fade</item>
+        <item name="dux_effectStrength">0.5</item>
+        <item name="dux_effectDistanceFactor">0.7</item>
+    	<item name="android:spacing">-10dip</item>
+    	<item name="dux_maxRotationAngle">-60</item>
+    	<item name="dux_rotationAxisMode">center</item>
+    </style>
+    <style name="DroidUX.GalleryFlow.Linear.Zoomflow">
+        <item name="dux_cameraZ">400</item>
+    	<item name="android:spacing">-30dip</item>
+    	<item name="dux_maxRotationAngle">-60</item>
+        <item name="dux_effectType">fade</item>
+        <item name="dux_effectStrength">0.5</item>
+        <item name="dux_effectDistanceFactor">0.7</item>
+    </style>
+    <style name="DroidUX.GalleryFlow.Linear.Trainflow">
+       <item name="dux_cameraZ">400</item>
+    	<item name="android:spacing">-10dip</item>
+    	<item name="dux_maxRotationAngle">-60</item>
+        <item name="dux_effectType">fade</item>
+        <item name="dux_effectStrength">0.5</item>
+        <item name="dux_effectDistanceFactor">0.4</item>
+    </style>
+    <style name="DroidUX.GalleryFlow.Linear.Scaleflow">
+        <item name="dux_cameraZ">400</item>
+    	<item name="android:spacing">0dip</item>
+    	<item name="dux_maxRotationAngle">0</item>
+        <item name="dux_effectType">none</item>
+        <item name="dux_scale">0.75</item>
+    </style>
+    <style name="DroidUX.GalleryFlow.Radial">
+        <item name="dux_reflected">true</item>
+        <item name="dux_cameraZ">0</item>
+        <item name="dux_effectType">fade</item>
+        <item name="dux_effectStrength">0.4</item>
+        <item name="dux_floorGap">0dip</item>
+        <item name="dux_reflectionStrength">0.4</item>
+        <item name="dux_reflectionHeight">0.4</item>
+        <item name="android:animationDuration">500</item>
+    	<item name="android:spacing">10dip</item>
+		<item name="dux_edgeAngle">30</item>
+	</style>
+	<style name="DroidUX.GalleryFlow.Radial.Out">
+		<item name="dux_viewPoint">outside</item>
+	</style>
+	<style name="DroidUX.GalleryFlow.Radial.In">
+		<item name="dux_viewPoint">inside</item>
+	</style>
+	<style name="DroidUX.GalleryFlow.Radial.Wall">
+		<item name="dux_wallHeight">3</item>
+		<item name="dux_cellSpacing">2dip</item>
+        <item name="dux_reflectionStrength">0.3</item>
+        <item name="dux_reflectionHeight">0.3</item>
+        <item name="dux_selectorDrawable">@drawable/dux_glrflwwl_cl_bg</item>
+	</style>
+	<style name="DroidUX.GalleryFlow.Radial.Wall.Out">
+		<item name="dux_viewPoint">outside</item>
+	</style>
+	<style name="DroidUX.GalleryFlow.Radial.Wall.In">
+		<item name="dux_viewPoint">inside</item>
+	</style>
+
+</resources>

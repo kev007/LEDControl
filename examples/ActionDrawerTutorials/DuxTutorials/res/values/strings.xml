@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DuxTutorials</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_actiondrawer_tutorial">ActionDrawer Tutorial</string>
+    <string name="content">Content</string>
+    <string name="drawer">Drawer</string>
+    <string name="action_rightDrawer">Right Drawer</string>
+    <string name="title_droidux_tutorial">ActionDrawer Tutorial</string>
+    <string name="action_search">Search</string>
+
+    <string-array name="menu_colors">
+        <item>#2C729E</item>
+        <item>#7A9942</item>
+        <item>#D15A00</item>
+        <item>#ff9c41</item>
+        <item>#abddb7</item>
+        <item>#f1eacc</item>
+        <item>#c88152</item>
+        <item>#514c41</item>
+        <item>#8b0030</item>
+        <item>#009cd7</item>
+        <item>#c9d652</item>
+        <item>#713042</item>
+        <item>#ff9336</item>
+        <item>#e56853</item>
+        <item>#bfd850</item>
+        <item>#945f4a</item>
+        <item>#a8a8a8</item>
+        <item>#005953</item>
+        <item>#e56853</item>
+        <item>#383c52</item>
+    </string-array>
+
+    <string name="text_drawerisopen">Drawer Is Open</string>
+    <string name="text_selectFeature">Select Feature</string>
+
+</resources>

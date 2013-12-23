@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="10dip" >
+
+    <com.droidux.widget.progress.EnhancedRatingBar
+        android:id="@+id/ratingbar1"
+        style="?attr/dux_ratingBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dux_progressColor="#F8FF00"
+        app:dux_secondaryProgressColor="#F8FF00"
+        android:numStars="3"
+        android:rating="2.5" />
+
+    <com.droidux.widget.progress.EnhancedRatingBar
+        android:id="@+id/ratingbar2"
+        style="?attr/dux_ratingBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:dux_progressColor="#A0C4FF"
+        android:numStars="5"
+        android:rating="2.25" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip" >
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.droidux.widget.progress.EnhancedRatingBar
+            android:id="@+id/small_ratingbar"
+            style="?attr/dux_ratingBarSmallStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dip"
+            app:dux_progressColor="#CA5344" />
+    </LinearLayout>
+
+    <com.droidux.widget.progress.EnhancedRatingBar
+        android:id="@+id/indicator_ratingbar"
+        style="?attr/dux_ratingBarIndicatorStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dip"
+        app:dux_progressColor="#B3CC5E" />
+</LinearLayout>

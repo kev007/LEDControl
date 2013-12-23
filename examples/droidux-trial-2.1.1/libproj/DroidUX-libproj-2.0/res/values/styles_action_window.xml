@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<!-- ActionWindow anim styles -->
+	<style name="DroidUX.ActionWindow" />
+	<!-- anims -->
+	<style name="DroidUX.ActionWindow.Anim" />
+	<style name="DroidUX.ActionWindow.Anim.PopDown" />
+	<style name="DroidUX.ActionWindow.Anim.PopDown.Left">
+		<item name="@android:windowEnterAnimation">@anim/dux_qact_grw_top_lft_2_btm_rght</item>
+		<item name="@android:windowExitAnimation">@anim/dux_qact_shrink_btm_rght_2_top_lft</item>
+	</style>
+	<style name="DroidUX.ActionWindow.Anim.PopDown.Right">
+		<item name="@android:windowEnterAnimation">@anim/dux_qact_grw_top_rght_2_btm_lft</item>
+		<item name="@android:windowExitAnimation">@anim/dux_qact_shrink_btm_lft_2_top_rght</item>
+	</style>
+	<style name="DroidUX.ActionWindow.Anim.PopDown.Center">
+		<item name="@android:windowEnterAnimation">@anim/dux_qact_grw_frm_top</item>
+		<item name="@android:windowExitAnimation">@anim/dux_qact_shrink_frm_btm</item>
+	</style>
+	<style name="DroidUX.ActionWindow.Anim.PopUp" />
+	<style name="DroidUX.ActionWindow.Anim.PopUp.Left">
+		<item name="@android:windowEnterAnimation">@anim/dux_qact_grw_btm_lft_2_top_rght</item>
+		<item name="@android:windowExitAnimation">@anim/dux_qact_shrink_top_rght_2_btm_lft</item>
+	</style>
+	<style name="DroidUX.ActionWindow.Anim.PopUp.Right">
+		<item name="@android:windowEnterAnimation">@anim/dux_qact_grw_btm_rght_2_top_lft</item>
+		<item name="@android:windowExitAnimation">@anim/dux_qact_shrink_top_lft_2_btm_rght</item>
+	</style>
+	<style name="DroidUX.ActionWindow.Anim.PopUp.Center">
+		<item name="@android:windowEnterAnimation">@anim/dux_qact_grw_frm_btm</item>
+		<item name="@android:windowExitAnimation">@anim/dux_qact_shrink_frm_top</item>
+	</style>
+	<style name="DroidUX.ActionWindow.Anim.Fade">
+		<item name="@android:windowEnterAnimation">@anim/dux_qact_fade_in</item>
+		<item name="@android:windowExitAnimation">@anim/dux_qact_fade_out</item>
+	</style>
+
+	<!-- QuickAction layouts -->
+	<style name="DroidUX.QuickAction" />
+	<style name="DroidUX.QuickAction.Layout">
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Header">
+		<item name="android:layout_marginTop">10dip</item>
+		<item name="android:background">@drawable/dux_qact_top_frm</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Title">
+		<item name="android:gravity">center</item>
+		<item name="android:textAppearance">?android:textAppearanceSmall</item>
+		<item name="android:textStyle">bold</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.ArrowUp">
+		<item name="android:src">@drawable/dux_qact_arw_up</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.ArrowDown">
+		<item name="android:layout_marginTop">-1dip</item>
+		<item name="android:src">@drawable/dux_qact_arw_dwn</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Footer">
+		<item name="android:background">@drawable/dux_qact_btm_frm</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content" />
+	<style name="DroidUX.QuickAction.Layout.Content.Stub" />
+	<style name="DroidUX.QuickAction.Layout.Content.Bar">
+		<item name="android:paddingTop">4dip</item>
+		<item name="android:paddingBottom">4dip</item>
+		<item name="android:background">@drawable/dux_qact_drk_bg</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content.BarScroller">
+		<item name="android:fadingEdgeLength">0dip</item>
+		<item name="android:scrollbars">none</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content.BarTrack">
+		<item name="android:paddingTop">4dip</item>
+		<item name="android:paddingBottom">4dip</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content.BarGrip" />
+	<style name="DroidUX.QuickAction.Layout.Content.BarGrip.Left">
+		<item name="android:gravity">fill_vertical</item>
+		<item name="android:src">@drawable/dux_qact_grp_lft</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content.BarGrip.Right">
+		<item name="android:gravity">fill_vertical</item>
+		<item name="android:src">@drawable/dux_qact_grp_rght</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content.BarItem">
+		<item name="android:paddingTop">0dip</item>
+		<item name="android:paddingBottom">0dip</item>
+		<item name="android:paddingLeft">12dip</item>
+		<item name="android:paddingRight">12dip</item>
+		<item name="android:gravity">center</item>
+		<item name="android:clickable">true</item>
+		<item name="android:background">@drawable/dux_qact_btn_bar</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content.BarItemIcon" />
+	<style name="DroidUX.QuickAction.Layout.Content.BarItemText">
+		<item name="android:id">@id/dux_title</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:padding">0dip</item>
+		<item name="android:textSize">11dip</item>
+		<item name="android:textColor">@color/dux_qact_txtclr</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content.Grid">
+		<item name="android:layout_marginTop">-1px</item>
+		<item name="android:padding">7dp</item>
+		<item name="android:listSelector">@drawable/dux_qact_grd_slctr</item>
+		<item name="android:background">@drawable/dux_qact_lght_bg</item>
+    	<item name="android:gravity">center</item>
+    	<item name="android:fadingEdgeLength">0dp</item>
+    	<item name="android:stretchMode">columnWidth</item>
+    	<item name="android:verticalSpacing">7dp</item>
+    	<item name="android:numColumns">3</item>
+    	<item name="android:scrollbars">none</item>
+	</style>
+	<style name="DroidUX.QuickAction.Layout.Content.GridItem">
+		<item name="android:textSize">11dip</item>
+		<item name="android:textColor">@color/dux_qact_txtclr</item>
+		<item name="android:padding">12dip</item>
+		<item name="android:gravity">center</item>
+		<item name="android:drawablePadding">4dp</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:ellipsize">marquee</item>
+	</style>
+
+	<!-- MenuAction layouts  -->
+	<style name="DroidUX.MenuAction" />
+	<style name="DroidUX.MenuAction.Layout">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+	<style name="DroidUX.MenuAction.Layout.ContentWrapper">
+		<item name="android:layout_marginTop">10dip</item>
+		<item name="android:background">@drawable/dux_mact_drk_bg</item>
+	</style>
+	<style name="DroidUX.MenuAction.Layout.Title">
+		<item name="android:gravity">center</item>
+		<item name="android:textAppearance">?android:textAppearanceSmall</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:visibility">gone</item>
+		<item name="android:textColor">@color/dux_mact_txtclr</item>
+		<item name="android:background">@null</item>
+		<item name="android:layout_marginTop">4dip</item>
+		<item name="android:layout_marginLeft">2dip</item>
+		<item name="android:layout_marginRight">2dip</item>
+		<item name="android:layout_marginBottom">2dip</item>
+	</style>
+	<style name="DroidUX.MenuAction.Layout.ArrowUp">
+		<item name="android:src">@drawable/dux_mact_arw_up</item>
+	</style>
+	<style name="DroidUX.MenuAction.Layout.ArrowDown">
+		<item name="android:id">@id/dux_arrowDown</item>
+		<item name="android:layout_marginTop">-3dip</item>
+		<item name="android:src">@drawable/dux_mact_arw_dwn</item>
+	</style>
+	<style name="DroidUX.MenuAction.Layout.Content" />
+	<style name="DroidUX.MenuAction.Layout.Content.Stub" />
+	<style name="DroidUX.MenuAction.Layout.Content.List">
+		<item name="android:padding">7dp</item>
+    	<item name="android:gravity">center</item>
+    	<item name="android:fadingEdgeLength">5dp</item>
+    	<item name="android:scrollbars">none</item>
+	</style>
+	<style name="DroidUX.MenuAction.Layout.Content.ListTrack">
+		<item name="android:padding">10dip</item>
+	</style>
+	<style name="DroidUX.MenuAction.Layout.Content.ListItem">
+		<item name="android:background">@drawable/dux_mact_itm_btn</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:padding">5dip</item>
+		<item name="android:textSize">14dip</item>
+		<item name="android:textColor">@color/dux_mact_txtclr</item>
+		<item name="android:drawablePadding">5dip</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:ellipsize">marquee</item>
+	</style>
+
+	<!-- Action Callout -->
+	<style name="DroidUX.ActionCallout"/>
+	<style name="DroidUX.ActionCallout.Layout" />
+	<style name="DroidUX.ActionCallout.Layout.Title">
+		<item name="android:gravity">center</item>
+		<item name="android:textAppearance">?android:textAppearanceSmall</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:visibility">gone</item>
+		<item name="android:textColor">@color/dux_mact_txtclr</item>
+		<item name="android:background">@null</item>
+		<item name="android:layout_marginTop">4dip</item>
+		<item name="android:layout_marginLeft">2dip</item>
+		<item name="android:layout_marginRight">2dip</item>
+		<item name="android:layout_marginBottom">2dip</item>
+	</style>
+	<style name="DroidUX.ActionCallout.Layout.Content" />
+	<style name="DroidUX.ActionCallout.Layout.Content.Stub" />
+	<style name="DroidUX.ActionCallout.Layout.Content.List">
+		<item name="android:padding">7dp</item>
+    	<item name="android:gravity">center</item>
+    	<item name="android:fadingEdgeLength">5dp</item>
+    	<item name="android:scrollbars">none</item>
+	</style>
+	<style name="DroidUX.ActionCallout.Layout.Content.ListItem">
+		<item name="android:background">@drawable/dux_mact_itm_btn</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:padding">5dip</item>
+		<item name="android:textSize">14dip</item>
+		<item name="android:textColor">@color/dux_mact_txtclr</item>
+		<item name="android:drawablePadding">5dip</item>
+		<item name="android:singleLine">true</item>
+		<item name="android:ellipsize">marquee</item>
+	</style>
+
+	<!-- Tooltip -->
+	<style name="DroidUX.QuickTooltip" />
+	<style name="DroidUX.QuickTooltip.Layout">
+		<item name="android:fillViewport">true</item>
+		<item name="android:scrollbars">none</item>
+	</style>
+	<style name="DroidUX.QuickTooltip.Layout.Image">
+		<item name="android:layout_margin">3dp</item>
+	</style>
+	<style name="DroidUX.QuickTooltip.Layout.Title">
+		<item name="android:singleLine">true</item>
+		<item name="android:ellipsize">marquee</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:padding">5dp</item>
+		<item name="android:textColor">@color/dux_mact_txtclr</item>
+	</style>
+	<style name="DroidUX.QuickTooltip.Layout.Description">
+		<item name="android:singleLine">false</item>
+		<item name="android:paddingLeft">5dp</item>
+		<item name="android:paddingRight">5dp</item>
+		<item name="android:paddingBottom">5dp</item>
+		<item name="android:textColor">@color/dux_mact_txtclr</item>
+	</style>
+	<style name="DroidUX.QuickTooltip.Layout.Content" />
+	<style name="DroidUX.QuickTooltip.Layout.Content.Stub" />
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.droidux.widget.list.DuxAutoScrollListView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@android:style/Widget.Holo.ListView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:choiceMode="singleChoice"
+    android:background="@android:color/background_dark"
+    android:divider="#1f1f1f"
+    android:dividerHeight="1dp"
+
+    />

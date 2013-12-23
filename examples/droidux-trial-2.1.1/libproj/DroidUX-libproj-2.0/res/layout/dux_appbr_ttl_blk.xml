@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<view
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res/com.droidux.components.tests"
+	class="com.droidux.widget.appbar.AppBarActions$ActionTitle"
+	style="@style/DroidUX.AppBarAction.Title"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:layout_weight="1"
+	android:orientation="horizontal">
+    <ImageView
+    	style="@style/DroidUX.AppBarAction.Title.Logo"
+		android:id="@id/dux_logo"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:layout_weight="0"
+ 		android:layout_gravity="center_vertical"/>
+    <TextView
+    	style="@style/DroidUX.AppBarAction.Title.Text"
+    	android:id="@id/dux_title"
+    	android:layout_width="wrap_content"
+    	android:layout_height="fill_parent"
+    	android:layout_weight="1" />
+</view>

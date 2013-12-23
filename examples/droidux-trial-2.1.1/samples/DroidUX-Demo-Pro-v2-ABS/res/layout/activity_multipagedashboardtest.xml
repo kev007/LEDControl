@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<com.droidux.widget.dashboard.MultiPageDashboard
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="?attr/dux_dashboardMultiPageStyle"
+    android:id="@+id/dashboard"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    app:dux_drawableEffect_type="glow"
+    app:dux_drawableEffect_colors="@color/glow_colors1"
+    app:dux_indicatorBulletDrawable="@drawable/dashboard_bullets"
+    />

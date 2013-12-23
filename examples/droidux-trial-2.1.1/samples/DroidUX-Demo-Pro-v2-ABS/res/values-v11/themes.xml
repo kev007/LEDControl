@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+
+<resources>
+    <style name="DroidUX.Theme.Sherlock.Demo.Progress" parent="DroidUX.Theme.Sherlock.Base">
+        <item name="dux_progressBarHorizontalStyle">@style/DroidUX.Holo.Light.Progress.Horizontal</item>
+        <item name="dux_progressBarStyle">@style/DroidUX.Holo.Progress.Medium</item>
+        <item name="dux_progressBarLargeStyle">@style/DroidUX.Holo.Progress.Large</item>
+        <item name="dux_progressBarSmallStyle">@style/DroidUX.Holo.Progress.Small</item>
+        <item name="dux_progressBarCircularStyle">@style/DroidUX.Progress.Circular</item>
+    </style>
+
+</resources>

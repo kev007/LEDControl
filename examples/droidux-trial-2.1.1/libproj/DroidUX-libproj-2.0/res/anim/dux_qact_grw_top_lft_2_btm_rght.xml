@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+	<scale
+		android:fromXScale="0.3" android:toXScale="1.0"
+		android:fromYScale="0.3" android:toYScale="1.0"
+		android:pivotX="0%" android:pivotY="0%"
+		android:duration="@android:integer/config_shortAnimTime"
+	/>
+	<alpha
+		android:interpolator="@android:anim/decelerate_interpolator"
+		android:fromAlpha="0.0" android:toAlpha="1.0"
+		android:duration="@android:integer/config_shortAnimTime"
+	/>
+</set>

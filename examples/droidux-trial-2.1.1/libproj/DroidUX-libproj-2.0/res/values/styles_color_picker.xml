@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<!-- ColorPicker styles -->
+	<style name="DroidUX.ColorPicker">
+		<item name="dux_orientation">auto</item>
+	</style>
+	<style name="DroidUX.ColorPicker.Dialog" >
+		<item name="dux_showAlphaPanel">true</item>
+		<item name="dux_showSelectionPanel">true</item>
+		<item name="dux_border_color">#f777</item>
+	</style>
+    <style name="DroidUX.ColorPicker.PreferenceColorBox">
+        <item name="dux_border_width">3dp</item>
+        <item name="dux_border_color">#ffe3e3e3</item>
+    </style>
+
+</resources>

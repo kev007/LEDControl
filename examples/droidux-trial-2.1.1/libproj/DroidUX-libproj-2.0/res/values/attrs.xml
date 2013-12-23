@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+	<!-- Reflections -->
+    <declare-styleable name="Reflection">
+    	<attr name="dux_reflected" format="boolean" />
+    	<attr name="dux_floorGap" format="dimension"/>
+    	<attr name="dux_reflectionStrength" format="float"/>
+    	<attr name="dux_reflectionHeight" format="float" />
+		<attr name="dux_effectType">
+			<enum name="none" value="0" />
+			<enum name="dim" value="1" />
+			<enum name="fade" value="2" />
+		</attr>
+    	<attr name="dux_effectStrength" format="float" />
+    </declare-styleable>
+    <!-- Action icon effects -->
+    <declare-styleable name="ActionEffects">
+    	<attr name="dux_drawableEffect_type">
+			<enum name="none" value="0" />
+			<enum name="glow" value="1" />
+			<enum name="colorize" value="2" />
+		</attr>
+		<attr name="dux_drawableEffect_colors" format="color" />
+		<attr name="dux_glow_radius" format="float" />
+    </declare-styleable>
+	<!-- Colorable -->
+	<declare-styleable name="Colorable">
+		<attr name="dux_color" format="color" />
+	</declare-styleable>
+	<!-- Cornered View -->
+	<declare-styleable name="CorneredView">
+	    <attr name="dux_cornerRadius" format="dimension"/>
+	</declare-styleable>
+	<!-- Masked View -->
+	<declare-styleable name="MaskedView">
+	    <attr name="dux_maskDrawable" format="reference"/>
+		<attr name="dux_maskMode">
+			<enum name="all" value="0" />
+			<enum name="content" value="1" />
+		</attr>
+	</declare-styleable>
+</resources>

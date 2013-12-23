@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Descriptions -->
+    <string name="activity_actn_drawer_listactivity_desc">
+        This demo shows how to use the action drawer in a ListActivity in combination with the CONTENT_OVERLAY mode.
+        \n\nWhen you use the drawer with CONTENT_OVERLAY mode, you need to make sure that the activity\'s
+        setContentView() is
+        called first. In ListActivity, calling getListView() will make sure that the setContentView() is called.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_listmenu_desc">
+        This demo shows how to use list view in the drawer to create list menu following the design pattern commonly
+        used
+        by modern apps, such as G+, Facebook, Youtube, Prixing, etc.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_fragment_static_desc">
+        This demo shows how to use how to use fragment with the ActionDrawer component.  In this demo the
+        fragment is statically added to the drawer\'s layout via the XML declaration using the &lt;fragment&gt; element.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_fragment_dynamic_desc">
+        This demo shows how to use fragment with the ActionDrawer component.  In this demo the fragment
+        is dynamically/programmatically added to the drawer\'s layout using <b>FragmentTransaction</b>.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_listener_arrowhiding_desc">
+        This demo shows how to hide the drawer\'s arrow when it passes certain thresholds/margins,
+        by implementing the drawing listener.
+        \n\nTo see the effect:\n
+        1. Select [Item 3] from the drawer, then\n
+        2. Scroll up to see the arrow fade away when it passes the action bar.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_listener_drawerscale_desc">
+        This demo shows how to implement a scale animation when the drawer is opening.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_content_desc">
+        This demo shows an ActionDrawer with the Mode set to CONTENT_OVERLAY.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_window_desc">
+        This demo shows an ActionDrawer with the Mode set to WINDOW_OVERLAY.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_left_desc">
+        This demo shows how to position the action drawer on the left side of the content.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_right_desc">
+        This demo shows how to position the action drawer on the right side of the content.
+        \n\nTo open the drawer, you can either press on the home button on the action bar,
+        or the drawer icon (the vertical ellipses) on the right side of the action bar,
+        or use \"bezel swipe\" gesture.
+    </string>
+    <string name="activity_actn_drawer_leftright_desc">
+        This demo shows how to position the action drawer on both side, left and right, of the content.
+        \n\nTo open the left drawer, you can press on the home button on the action bar. To open the right drawer,
+        you can press the the drawer icon (the vertical ellipses) on the right side of the action bar.
+        As usual, you can also use \"bezel swipe\" gesture to open the drawers.
+    </string>
+    <string name="activity_actnpth_circular_desc">
+        This demo shows how to use the action path menu with circular layout.
+        \n\nTo expand or collapse the menu, press on the control view (round button with plus sign).
+    </string>
+    <string name="activity_actnpth_linear_desc">
+        This demo shows how to use the action path menu with linear layout.
+        \n\nTo expand or collapse the menu, press on the control view (round button with plus sign).
+    </string>
+    <string name="activity_appbar_enhanced_desc">
+        This demo shows the use of the enhanced color application bar. The AppBar widgets are older implementation of
+        the Android action bar design pattern.
+        \n\n
+        <b>Note:</b>
+        As the Android design pattern is evolving to become more mature and better,
+        these older widgets will be deprecated in the future. They are here for
+        backward compatibility reasons. We recommend you to use a better alternatives for new apps, such as the
+        excellent ActionBarSherlock library (http://www.actionbarsherlock.com), also used in this demo project.
+    </string>
+    <string name="activity_appbar_standard_desc">
+        This demo shows the use of the standard application bar. The AppBar widgets are older implementation of
+        the Android action bar design pattern.
+        \n\n
+        <b>Note:</b>
+        As the Android design pattern is evolving to become more mature and better,
+        these older widgets will be deprecated in the future. They are here for
+        backward compatibility reasons. We recommend you to use a better alternatives for new apps, such as the
+        excellent ActionBarSherlock library (http://www.actionbarsherlock.com), also used in this demo project.
+    </string>
+    <string name="activity_appbar_standardcolor_desc">
+        This demo shows the use of the standard color application bar. The AppBar widgets are older implementation of
+        the Android action bar design pattern.
+        \n\n
+        <b>Note:</b>
+        As the Android design pattern is evolving to become more mature and better,
+        these older widgets will be deprecated in the future. They are here for
+        backward compatibility reasons. We recommend you to use a better alternatives for new apps, such as the
+        excellent ActionBarSherlock library (http://www.actionbarsherlock.com), also used in this demo project.
+    </string>
+    <string name="activity_qact_oldstyle_desc">
+        This demo shows the use of the old style quick actions widgets.
+        \n\n
+        <b>Note:</b>
+        As the Android design pattern is evolving to become more mature and better,
+        these older widgets will be deprecated in the future. They are here for
+        backward compatibility reasons. We recommend you to use a better alternatives for new apps, such as the
+        QuickPopover, QuickActionList, QuickTooltip, etc.
+    </string>
+    <string name="activity_qact_list_desc">
+        This demo shows how to use the quick action list widget to allow users select an action from a list menu.
+        This might be useful as a contextual menu or a custom menu for the action bar item.
+        \n\nPress the buttons to see a quick action list menu.
+    </string>
+    <string name="activity_qact_popover_desc">
+        This demo shows how to use the quick popover widget to show a custom view within a callout window.
+        This might be useful as a contextual menu or a custom menu for the action bar item.
+        \n\nPress the buttons to see a quick popover window.
+    </string>
+    <string name="activity_qact_tooltip_desc">
+        This demo shows how to use the quick tooltip widget to show a tooltip window to present
+        contextual information to the user.
+        \n\nPress the buttons to see a quick tooltip window.
+    </string>
+
+    <!-- Color Pickers -->
+    <string name="activity_clrpkr_dialog_desc">
+        This demo shows how to open and use a color dialog box.
+        \n\nPress on the color box to open the color dialog.
+    </string>
+    <string name="activity_clrpkr_preference_desc">
+        This demo shows how to create a preference that allow users to change color settings.
+    </string>
+    <string name="activity_clrpkr_panel_desc">
+        This demo shows how to use the color picker panel to allow user select a color.
+    </string>
+
+    <!-- Drawables -->
+    <string name="activity_drwbl_masked_desc">
+        This demo shows the use of masked drawable component, using an oval shape to mask an image.
+    </string>
+    <string name="activity_drwbl_reflection_desc">
+        This demo shows the use of reflection drawable component to easily add reflection to another drawable.
+    </string>
+
+    <!-- Dashboards -->
+    <string name="activity_dshbrd_multipage_desc">
+        This demo shows the use of multipage dashboard. In a multipage dashboard, when you have more action items that
+        can
+        fit in a single page, it will automatically add new pages as many as needed.
+    </string>
+    <string name="activity_dshbrd_standard_desc">
+        This demo shows the use of standard dashboard. In a standard dashboard, you can only add action items up to
+        the value set by the \"dux_rows\" times the value of \"dux_columns\".
+    </string>
+
+    <!-- Editors -->
+    <string name="activity_edtr_autocomplete_desc">
+        This demo shows the use of autocomplete note editor.
+    </string>
+    <string name="activity_edtr_bubbletext_desc">
+        This demo shows the use of bubble text view, a simple text view with colorized bubble.
+        \n\nTo change the color, simply choose the desired color from the color panel.
+    </string>
+    <string name="activity_edtr_multiautocomplete_desc">
+        This demo shows the use of multi autocomplete note editor.
+    </string>
+    <string name="activity_edtr_noteeditor_desc">
+        This demo shows the use of note editor with customizable lines, paper, and margin.
+    </string>
+    <string name="activity_edtr_noteview_desc">
+        This demo shows the use of note view (non-editable) with customizable lines, paper, and margin.
+    </string>
+
+    <!-- GalleryFlows -->
+    <string name="activity_glrflow_crslin_desc">
+        This demo shows how to use the galleryflow carousel view with
+        <i>viewpoint</i>
+        set to VIEW_POINT_INSIDE.
+    </string>
+    <string name="activity_glrflow_crslout_desc">
+        This demo shows how to use the galleryflow carousel view with
+        <i>viewpoint</i>
+        set to VIEW_POINT_OUTSIDE.
+    </string>
+    <string name="activity_glrflow_cover_desc">
+        This demo shows how to use the galleryflow component to produce a
+        <i>coverflow</i>
+        effect.
+    </string>
+   <string name="activity_glrflow_cover_fragment_desc">
+        This demo shows how to use the galleryflow component in a Fragment to produce a
+        <i>coverflow</i>
+        effect.
+    </string>
+    <string name="activity_glrflow_scale_desc">
+        This demo shows how to use the galleryflow component with a
+        <i>scale</i>
+        effect.
+    </string>
+    <string name="activity_glrflow_train_desc">
+        This demo shows how to use the galleryflow component with a
+        <i>train</i>
+        effect.
+    </string>
+    <string name="activity_glrflow_wallin_desc">
+        This demo shows how to use the galleryflow wall component with
+        <i>viewpoint</i>
+        set to VIEW_POINT_INSIDE.
+    </string>
+    <string name="activity_glrflow_wallout_desc">
+        This demo shows how to use the galleryflow wall component with
+        <i>viewpoint</i>
+        set to VIEW_POINT_OUTSIDE.
+    </string>
+    <string name="activity_glrflow_zoom_desc">
+        This demo shows how to use the galleryflow component to produce a
+        <i>zoom</i>
+        effect.
+    </string>
+
+    <!-- Lists -->
+    <string name="activity_list_web_desc">
+        This demo shows the use droidux\'s listview component to work with web images by simply implementing
+        certain interface. The hard works of downloading the images from the given url is done internally.
+    </string>
+    <string name="activity_list_ondemand_auto_desc">
+        This demo shows the use droidux\'s listview component to easily load data on demand automatically, practically
+        showing
+        endless data.
+    </string>
+    <string name="activity_list_ondemand_manual_desc">
+        This demo shows how to use droidux\'s listview component to manually load data on demand, by allowing user to
+        initiate the data loading by tapping on the \"loading view\".
+    </string>
+    <string name="activity_list_p2r_desc">
+        This demo shows how to use droidux\'s listview component in combination with the pull-to-refresh layout to allow
+        users refresh the list data by pulling down/up when the list has reached to top/bottom of its contents.
+        \n\nIn this demo, the pull-to-refresh layout only contains the listview without the empty view.
+    </string>
+    <string name="activity_list_p2r_empty_desc">
+        This demo shows how to use droidux\'s listview component in combination with the pull-to-refresh layout to allow
+        users refresh the list data by pulling down/up when the list has reached to top/bottom of its contents.
+        \n\nIn this demo, the pull-to-refresh layout contains both the listview and the empty view.
+    </string>
+    <string name="activity_list_rounded_desc">
+        This demo shows the use of listview with a rounded corner. The rounded corner listview will draw the list
+        selector properly on the rounded corners (top and bottom).
+    </string>
+
+    <!-- Layouts -->
+    <string name="activity_lyt_masked_long1_desc">
+        This demo shows the use of masked layout to mask another layout that have long content.
+    </string>
+    <string name="activity_lyt_masked_long2_desc">
+        This demo shows the use of masked layout to mask a child view that have long content.
+        \n\nIf you hit ISSUE #24023 (http://code.google.com/p/android/issues/detail?id=24023),
+        just set the \"android:hardwareAccelerated\" to false in your &lt;activity /&gt; declarations.
+    </string>
+    <string name="activity_lyt_masked_scroll_desc">
+        This demo shows the use of masked layout to mask a scrollview content.
+    </string>
+    <string name="activity_lyt_masked_short_desc">
+        This demo shows the use of masked layout to mask another layout that have short content.
+    </string>
+    <string name="activity_lyt_reflection_desc">
+        This demo shows how to use the reflection layout to add reflection to the child view.
+        The reflection layout is more powerful than the reflection drawable component, but requires more
+        resources. If you only need to add a reflection to another drawable, just use the reflection drawable.
+        But if you need to add reflection to a view, the reflection layout is more suitable.
+        \n\nThis widget is not compatible with the hardware acceleration. You need to set the
+        \"android:hardwareAccelerated\" attribute to false on your \"&lt;activity/&gt;\" declaration in the manifest.
+    </string>
+    <string name="activity_lyt_rounded_long1_desc">
+        This demo shows the use of rounded corner layout to mask another layout that have long content.
+    </string>
+    <string name="activity_lyt_rounded_long2_desc">
+        This demo shows the use of rounded corner layout to mask a child view that have long content.
+        \n\nIf you hit ISSUE #24023 (http://code.google.com/p/android/issues/detail?id=24023),
+        just set the \"android:hardwareAccelerated\" to false in your &lt;activity /&gt; declarations.
+    </string>
+    <string name="activity_lyt_rounded_scroll_desc">
+        This demo shows the use of rounded corner layout to mask a scrollview content.
+    </string>
+    <string name="activity_lyt_rounded_short_desc">
+        This demo shows the use of rounded corner layout to mask another layout that have short content.
+    </string>
+    <string name="activity_lyt_flip3d_desc">
+        This demo shows how simple it is to use the view flipper with 3d flip animation.
+        \n\nTo flip the view, tap on the \"flip\" action on the action bar.
+    </string>
+
+    <!-- Common -->
+    <string name="activity_cmn_clrbtn_desc">
+        This demo shows the use of color button. With the widget, you can easily change the color of the button
+        drawables. We recommend that you use grey drawables as the background for the buttons.
+    </string>
+    <string name="activity_cmn_clrimgbtn_desc">
+        This demo shows the use of color image button. With the widget, you can easily change the color of the button
+        drawables. We recommend that you use grey drawables as the background for the buttons.
+    </string>
+    <string name="activity_cmn_urlimgview_desc">
+        This demo shows how to use the url image view component to work with web images easily. Just set the url of the
+        image,
+        and the widget will take care of the rest.
+    </string>
+
+    <!-- Miscellaneous -->
+    <string name="activity_misc_rotaryselector_desc">
+        This demo shows the use of a rotary selector component. The rotary selector is a binary widget that allow user
+        to do an action out of two possible actions.
+    </string>
+    <string name="activity_misc_slidingtab_desc">
+        This demo shows the use of a sliding tab selector component. The sliding tab component is a binary widget that
+        allow user
+        to do an action out of two possible actions.
+    </string>
+
+    <!-- Pull-to-refresh -->
+    <string name="activity_p2r_scroll_desc">
+        This demo shows the use of a pull-to-refresh component with a scroll view to allow user refresh the
+        content on demand by pulling down/up when the content reach top/bottom.
+    </string>
+
+    <!-- Progress -->
+    <string name="activity_prgrs_circular_desc">
+        This demo shows the use of a circular progress bar component with a customizable appearance, such as
+        color and drawables that can be changed at runtime.
+    </string>
+    <string name="activity_prgrs_bar_color_desc">
+        This demo shows the use of enhanced progress bar component with a customizable appearance, such as
+        color that can be changed at runtime.
+    </string>
+    <string name="activity_prgrs_bar_indeterminate_desc">
+        This demo shows the use of enhanced progress bar component to show indeterminate progress with
+        customizable color.
+    </string>
+    <string name="activity_prgrs_bar_pattern_desc">
+        This demo shows the use of enhanced progress bar component with an overlay pattern.
+    </string>
+    <string name="activity_prgrs_ratingbar_desc">
+        This demo shows the use of enhanced rating bar component with customizable appearance.
+    </string>
+    <string name="activity_prgrs_seekbar_desc">
+        This demo shows the use of enhanced seek bar component with customizable appearance.
+    </string>
+
+    <!-- Tabs -->
+    <string name="activity_tabs_scroll_byid_desc">
+        This demo shows the use of a scrollable tabs component that set the content by using the view ids.
+    </string>
+    <string name="activity_tabs_scroll_byfactory_desc">
+        This demo shows the use of a scrollable tabs component that set the content by using a view factory.
+    </string>
+    <string name="activity_tabs_scroll_byintent_desc">
+        This demo shows the use of a scrollable tabs component that set the content by using intents.
+    </string>
+    <string name="activity_tabs_segment_desc">
+        This demo shows the use of a segmented buttons component. You can use segmented button component to allow user
+        select a view from a set of available views.
+    </string>
+
+    <!-- Wheel -->
+    <string name="activity_whl_datepicker_desc">
+        This demo shows how to use the date picker component to allow user select a date by scrolling
+        through wheel spinners.
+    </string>
+    <string name="activity_whl_datetimepicker_desc">
+        This demo shows how to use the date-time picker component to allow user select a date and time by scrolling
+        through wheel spinners.
+    </string>
+    <string name="activity_whl_timepicker_desc">
+        This demo shows how to use the time picker component to allow user select time by scrolling
+        through wheel spinners.
+    </string>
+    <string name="activity_whl_carousel_desc">
+        This demo shows how to use the wheel carousel component to allow user select an item from
+        a collection of items in a 3D carousel.
+        \n\nTo use the wheel carousel component in your application, you need to set the \"android:hardwareAccelerated\"
+        attribute of the &lt;activity /&gt; to <i>false</i>.
+    </string>
+    <string name="activity_whl_spinner_desc">
+        This demo shows how to use the wheel spinner component.  Wheel spinner component is an alternative
+        to the standard Android spinner widget, that allow user to select an item from a set of items presented
+        in a spinnable \"drum/cylinder\".
+    </string>
+
+
+</resources>

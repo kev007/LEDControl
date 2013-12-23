@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DroidUX API Demos</string>
+
+    <!-- Actions -->
+    <string name="activity_actn_drawer_window">Action/Drawer/Drawer Mode/Window Overlay</string>
+    <string name="activity_actn_drawer_content">Action/Drawer/Drawer Mode/Content Overlay</string>
+    <string name="activity_actn_drawer_left">Action/Drawer/Drawer Position/Left</string>
+    <string name="activity_actn_drawer_right">Action/Drawer/Drawer Position/Right</string>
+    <string name="activity_actn_drawer_leftright">Action/Drawer/Drawer Position/Left and Right</string>
+    <string name="activity_actn_drawer_listactivity">Action/Drawer/List Activity</string>
+    <string name="activity_actn_drawer_listmenu">Action/Drawer/List Menu</string>
+    <string name="activity_actn_drawer_fragment_static">Action/Drawer/Fragment/Static</string>
+    <string name="activity_actn_drawer_fragment_dynamic">Action/Drawer/Fragment/Dynamic</string>
+    <string name="activity_actn_drawer_listener_arrowhiding">Action/Drawer/Drawing Listeners/Arrow Hiding</string>
+    <string name="activity_actn_drawer_listener_drawerscale">Action/Drawer/Drawing Listeners/Drawer Scale</string>
+    <string name="activity_actnpth_circular">Action/Path/Circular Menu</string>
+    <string name="activity_actnpth_linear">Action/Path/Linear Menu</string>
+    <string name="activity_appbar_enhanced">Action/AppBar/Enhanced Color AppBar</string>
+    <string name="activity_appbar_standard">Action/AppBar/Standard AppBar</string>
+    <string name="activity_appbar_standardcolor">Action/AppBar/Standard Color AppBar</string>
+    <string name="activity_qact_oldstyle">Action/Quick Actions/Old Styles</string>
+    <string name="activity_qact_list">Action/Quick Actions/List Menu</string>
+    <string name="activity_qact_popover">Action/Quick Actions/Popover</string>
+    <string name="activity_qact_tooltip">Action/Quick Actions/Tooltip</string>
+
+    <!-- Color Pickers -->
+    <string name="activity_clrpkr_dialog">Color Picker/Dialog</string>
+    <string name="activity_clrpkr_panel">Color Picker/Panel</string>
+    <string name="instruct_test_clrpkr_panel_portrait">- Press the top right box to accept the new color
+        \n- Press the top left box to reset the color selection</string>
+    <string name="instruct_test_clrpkr_panel_landscape">- Press the top left box to accept the new color
+        \n- Press the bottom left box to reset the color selection</string>
+    <!-- ColorPickerPreference -->
+    <string name="activity_clrpkr_preference">Color Picker/Preference</string>
+    <string name="pref_category">Color Preferences</string>
+    <string name="color1_key">color1</string>
+    <string name="color1_title">With alpha</string>
+    <string name="color1_summary">Show a color dialog\nwith the alpha slider</string>
+    <string name="color2_key">color2</string>
+    <string name="color2_title">No alpha</string>
+    <string name="color2_summary">Show a color dialog\nwithout the alpha slider</string>
+    <string name="color3_key">color3</string>
+    <string name="color3_title">Non persistent</string>
+    <string name="color3_summary">The value of this preference\nwill not be persisted</string>
+    <string name="color4_key">color4</string>
+    <string name="color4_title">Color value</string>
+    <string name="color4_summary">This will show the HEX value\nof the selected color</string>
+
+    <!-- Drawables -->
+    <string name="activity_drwbl_masked">Drawables/Masked</string>
+    <string name="activity_drwbl_reflection">Drawables/Reflection</string>
+
+    <!-- Dashboards -->
+    <string name="activity_dshbrd_multipage">Dashboards/MultiPage</string>
+    <string name="activity_dshbrd_standard">Dashboards/Standard</string>
+
+    <!-- Editors -->
+    <string name="activity_edtr_autocomplete">Editors/Auto Complete Note</string>
+    <string name="activity_edtr_bubbletext">Editors/Bubble Text View</string>
+    <string name="activity_edtr_multiautocomplete">Editors/Multi AutoComplete Note</string>
+    <string name="activity_edtr_noteeditor">Editors/Note Editor</string>
+    <string name="activity_edtr_noteview">Editors/Note View</string>
+
+    <!-- GalleryFlows -->
+    <string name="activity_glrflw_crsl_in">GalleryFlows/Carousel/Viewpoint Inside</string>
+    <string name="activity_glrflw_crsl_out">GalleryFlows/Carousel/Viewpoint Outside</string>
+    <string name="activity_glrflw_cover">GalleryFlows/Cover flow</string>
+    <string name="activity_glrflw_cover_fragment">GalleryFlows/Fragment/Cover flow</string>
+    <string name="activity_glrflw_scale">GalleryFlows/Scale</string>
+    <string name="activity_glrflw_train">GalleryFlows/Train</string>
+    <string name="activity_glrflw_wall_in">GalleryFlows/Wall/Viewpoint Inside</string>
+    <string name="activity_glrflw_wall_out">GalleryFlows/Wall/Viewpoint Outside</string>
+    <string name="activity_glrflw_zoom">GalleryFlows/Zoom</string>
+
+    <!-- Lists -->
+    <string name="activity_list_web">Lists/Web Images</string>
+    <string name="activity_list_ondemand_auto">Lists/On Demand/Auto loading</string>
+    <string name="activity_list_ondemand_manual">Lists/On Demand/Manual loading</string>
+    <string name="activity_list_p2r">Lists/Pull-to-refresh/List Only</string>
+    <string name="activity_list_p2r_empty">Lists/Pull-to-refresh/With Empty</string>
+    <string name="activity_list_rounded">Lists/Rounded Corner</string>
+
+    <!-- Layouts -->
+    <string name="activity_lyt_masked_long1">Layouts/Masked/Long Content 1</string>
+    <string name="activity_lyt_masked_long2">Layouts/Masked/Long Content 2</string>
+    <string name="activity_lyt_masked_scroll">Layouts/Masked/Scrolled Content</string>
+    <string name="activity_lyt_masked_short">Layouts/Masked/Short Content</string>
+    <string name="activity_lyt_reflection">Layouts/Reflection</string>
+    <string name="activity_lyt_rounded_long1">Layouts/Rounded Corner/Long Content 1</string>
+    <string name="activity_lyt_rounded_long2">Layouts/Rounded Corner/Long Content 2</string>
+    <string name="activity_lyt_rounded_scroll">Layouts/Rounded Corner/Scrolled Content</string>
+    <string name="activity_lyt_rounded_short">Layouts/Rounded Corner/Short Content</string>
+    <string name="activity_lyt_flip3d">Layouts/ViewFlipper 3D</string>
+
+    <!-- Common Controls -->
+    <string name="activity_cmn_clrbtn">Common Controls/Color Button</string>
+    <string name="activity_cmn_clrimgbtn">Common Controls/Color Image Button</string>
+    <string name="activity_cmn_urlimgview">Common Controls/Url Image View</string>
+
+    <!-- Misc -->
+    <string name="activity_misc_rotaryselector">Miscellaneous/Rotary Selector</string>
+    <string name="activity_misc_slidingtab">Miscellaneous/Sliding Tab</string>
+
+    <!-- Pull-to-refresh -->
+    <string name="activity_p2r_scroll">Pull-to-refresh/Scroll View</string>
+
+    <!-- Progress -->
+    <string name="activity_prgrs_circular">Progress/Circular</string>
+    <string name="activity_prgrs_bar_color">Progress/Bar/Color</string>
+    <string name="activity_prgrs_bar_indeterminate">Progress/Bar/Indeterminate</string>
+    <string name="activity_prgrs_bar_pattern">Progress/Bar/Pattern</string>
+    <string name="activity_prgrs_ratingbar">Progress/RatingBar</string>
+    <string name="activity_prgrs_seekbar">Progress/SeekBar</string>
+
+    <!-- Tabs -->
+    <string name="activity_tabs_scroll_byid">Tabs/Scrollable/Content By Id</string>
+    <string name="activity_tabs_scroll_byfactory">Tabs/Scrollable/Content By Factory</string>
+    <string name="activity_tabs_scroll_byintent">Tabs/Scrollable/Content By Intent</string>
+    <string name="activity_tabs_segment">Tabs/Segmented Button</string>
+
+    <!-- Wheel -->
+    <string name="activity_whl_datepicker">Wheel/Date Picker</string>
+    <string name="activity_whl_datetimepicker">Wheel/Date Time Picker</string>
+    <string name="activity_whl_timepicker">Wheel/Time Picker</string>
+    <string name="activity_whl_carousel">Wheel/3D Carousel</string>
+    <string name="activity_whl_spinner">Wheel/Spinner</string>
+
+
+    <!-- Texts -->
+    <string name="text_sample_content">Sample content...</string>
+    <string name="text_instruct_actionwindow_oldstyle">- Press on the buttons for anchored actions
+        \n- Long press in the empty area for floating actions</string>
+    <string name="text_tooltip_noimage">Tooltip without image.</string>
+    <string name="text_tooltip_withimage">Tooltip with image.</string>
+    <string name="text_loremipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent odio nibh, suscipit eu viverra non.</string>
+    <string name="text_bubble_default">This is a default bubble text.</string>
+    <string name="text_bubble_custom">This is a bubble text with custom bubble drawable.</string>
+    <string name="text_info_bounce_anim">Tap on the selected item to see bouncing animation.</string>
+    <string name="text_pull_to_refresh">Pull up or down\nto refresh this view</string>
+    <string name="text_flip_back_title">Far Far Away</string>
+    <string name="text_flip_back_description">It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</string>
+    <!-- Incoming call hint shown on tab (must be kept very short): answer incoming call -->
+    <string name="text_slide_to_answer_hint">Answer</string>
+    <!-- Incoming call hint shown on tab (must be kept very short): decline incoming call -->
+    <string name="text_slide_to_decline_hint">Decline</string>
+    <string name="text_content_scrltb">Content for tab with tag: %s\n\nTo go to the next tab,
+        you can use fling/swipe gesture, or click on the tab indicator.</string>
+    <string name="text_content_scrltb_1">Content for 1st tab.\n\nTo go to the next tab,
+        you can use fling/swipe gesture, or click on the tab indicator.</string>
+    <string name="text_content_scrltb_2">Content for 2nd tab.\n\nTo go to the next tab,
+        you can use fling/swipe gesture, or click on the tab indicator.</string>
+    <string name="text_content_scrltb_3">Content for 3rd tab.\n\nTo go to the next tab,
+        you can use fling/swipe gesture, or click on the tab indicator.</string>
+    <string name="text_content_scrltb_4">Content for 4th tab.\n\nTo go to the next tab,
+        you can use fling/swipe gesture, or click on the tab indicator.</string>
+    <string name="text_content_scrltb_5">Content for 5th tab.\n\nTo go to the next tab,
+        you can use fling/swipe gesture, or click on the tab indicator.</string>
+    <string name="text_content_scrltb_6">Content for 6th tab.\n\nTo go to the next tab,
+        you can use fling/swipe gesture, or click on the tab indicator.</string>
+
+
+</resources>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Type in the text field for auto-completion." />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+        	android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Country"
+            android:paddingRight="5dp"/>
+	   	<com.droidux.widget.editor.MultiAutoCompleteNoteEditor
+			android:id="@+id/edit"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="8dp"
+			android:maxLines="5"
+            android:background="@null"
+			app:dux_paperColor="#EFECCA"
+			app:dux_paperColorType="gradient"
+			app:dux_drawLine="true"
+			app:dux_drawMargin="true"
+			app:dux_marginColor="#046380"
+		/>
+    </LinearLayout>
+</LinearLayout>
+

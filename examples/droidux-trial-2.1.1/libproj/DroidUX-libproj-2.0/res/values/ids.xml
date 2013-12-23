@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources>
+    <item type="id" name="dux_header" />
+    <item type="id" name="dux_header_title" />
+    <item type="id" name="dux_title" />
+    <item type="id" name="dux_contentWrapper" />
+    <item type="id" name="dux_content" />
+    <item type="id" name="dux_footer" />
+    <item type="id" name="dux_arrowUp" />
+    <item type="id" name="dux_arrowDown" />
+    <item type="id" name="dux_scroller" />
+    <item type="id" name="dux_tracks" />
+    <item type="id" name="dux_icon" />
+    <item type="id" name="dux_wrkspc" />
+    <item type="id" name="dux_pg_indctr" />
+    <item type="id" name="dux_actn_prgrs" />
+    <item type="id" name="dux_logo" />
+    <item type="id" name="dux_tabs" />
+    <item type="id" name="dux_day" />
+    <item type="id" name="dux_date" />
+    <item type="id" name="dux_picker_year"/>
+    <item type="id" name="dux_picker_month"/>
+    <item type="id" name="dux_picker_date" />
+    <item type="id" name="dux_picker_hour"/>
+    <item type="id" name="dux_picker_minute"/>
+    <item type="id" name="dux_picker_ampm"/>
+    <item type="id" name="dux_dashButton" />
+	<item type="id" name="dux_text" />
+	<item type="id" name="dux_p2r_ldvw_txt"/>
+	<item type="id" name="dux_p2r_ldvw_prgrs"/>
+	<item type="id" name="dux_p2r_ldvw_img" />
+	<item type="id" name="dux_colorBox" />
+    <item type="id" name="dux_actndrwr_content" />
+    <item type="id" name="dux_actndrwr_drawer" />
+    <item type="id" name="dux_actndrwr_layout" />
+
+</resources>

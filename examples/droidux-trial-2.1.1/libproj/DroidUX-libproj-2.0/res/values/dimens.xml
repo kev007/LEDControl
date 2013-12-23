@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources>
+	<dimen name="dux_textSizeSmaller">12sp</dimen>
+    <dimen name="dux_textSizeSmall">14sp</dimen>
+    <dimen name="dux_textSizeMedium">18sp</dimen>
+    <dimen name="dux_textSizeLarge">22sp</dimen>
+    <dimen name="dux_appbar_height">45dip</dimen>
+    <dimen name="dux_scrltb_height">80dip</dimen>
+    <dimen name="dux_scrltb_arw_width">32dip</dimen>
+    <dimen name="dux_scrltb_indctr_minWidth">70dip</dimen>
+    <dimen name="dux_dtpkr_dayWidth">40dp</dimen>
+    <dimen name="dux_dtpkr_textSize">18dp</dimen>
+    <dimen name="dux_clrpkr_preference_colorbox">30dp</dimen>
+</resources>

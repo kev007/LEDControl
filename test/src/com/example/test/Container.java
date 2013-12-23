@@ -13,6 +13,7 @@ public class Container implements Serializable
 		 * Kettenstatus
 		 * 			Status1- Status5: ture = Kette ist an, false= Kette ist aus
 		 * Kettenarray: besteht aus 7 Zellen zur Beschreibung der Funktionen
+		 * 			Feld 0		: Aktivität der Kette (1 = Ein, 0 = Aus)
 		 * 			Feld 1 - 3	: RGB Werte
 		 * 			Feld 4		: Intensität (Benutzerung wahrscheinlich erst für richtige LED Ketten)
 		 * 			Feld 5		: Zeitkonstante für jeweiligen Übergang 
@@ -20,7 +21,7 @@ public class Container implements Serializable
 		
 		//Colorbereich
 		private int modus = 0;
-		private String name;
+		private String name = "";
 		
 		//Kettenstatus
 		boolean status1 = false;
@@ -37,9 +38,11 @@ public class Container implements Serializable
 		private int[][] kette5;
 		
 		//Konstruktor für Color
-		public Container(int modus, int kette1[][], boolean s1, int kette2 [][], 
+		public Container(int modus,String name, int kette1[][], boolean s1, int kette2 [][], 
 						boolean s2, int kette3 [][], boolean s3,int kette4 [][], boolean s4, int kette5 [][], boolean s5)
 		{
+				this.name = name;
+				
 				this.modus = modus;
 				this.kette1 = kette1;
 				this.kette2 = kette2;
@@ -156,5 +159,37 @@ public class Container implements Serializable
 		public void setName(String name)
 		{
 				this.name = name;
+		}
+		
+		public void setStandard()
+		{
+				this.modus = 1;
+				this.name = "";
+				this.status1 = true;
+				this.status2 = false;
+				this.status3 = false;
+				this.status4 = false;
+				this.status5 = false;
+				
+				int [][]temp = {{0,0,0,0,0}};
+				kette1 = temp;
+		}
+		public void coppyContainer(Container c)
+		{
+				this.kette1 = c.getKette1();
+				this.kette2 = c.getKette2();
+				this.kette3 = c.getKette3();
+				this.kette4 = c.getKette4();
+				this.kette5 = c.getKette5();
+				
+				this.modus = c.getModus();
+				this.name = c.getName();
+				
+				this.status1 = c.isStatus1();
+				this.status2 = c.isStatus2();
+				this.status3 = c.isStatus3();
+				this.status4 = c.isStatus4();
+				this.status5 = c.isStatus5();
+				
 		}
 }

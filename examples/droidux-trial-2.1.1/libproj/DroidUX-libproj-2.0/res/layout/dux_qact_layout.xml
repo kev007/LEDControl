@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/DroidUX.QuickAction.Layout"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	>
+     <FrameLayout
+     	style="@style/DroidUX.QuickAction.Layout.Header"
+		android:id="@id/dux_header"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dip"
+     	>
+     	<TextView
+     		style="@style/DroidUX.QuickAction.Layout.Title"
+     		android:id="@id/dux_header_title"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+		  	android:visibility="gone"
+     		/>
+     </FrameLayout>
+
+	<ViewStub
+		style="@style/DroidUX.QuickAction.Layout.Content.Stub"
+		android:id="@id/dux_content"
+		android:inflatedId="@id/dux_content"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/dux_header"
+		/>
+
+    <FrameLayout
+    	style="@style/DroidUX.QuickAction.Layout.Footer"
+    	android:id="@id/dux_footer"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_below="@id/dux_content"
+    	/>
+
+  	<ImageView
+  		style="@style/DroidUX.QuickAction.Layout.ArrowUp"
+  		android:id="@id/dux_arrowUp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+  		/>
+
+    <ImageView
+    	style="@style/DroidUX.QuickAction.Layout.ArrowDown"
+    	android:id="@id/dux_arrowDown"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="-1dip"
+		android:layout_below="@id/dux_footer"
+   	/>
+</RelativeLayout>

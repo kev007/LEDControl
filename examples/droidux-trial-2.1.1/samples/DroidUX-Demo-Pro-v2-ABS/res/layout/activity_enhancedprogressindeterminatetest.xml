@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2011-2012 Ximpl
+  ~ All Rights Reserved. This program and the accompanying materials
+  ~ are owned by Ximpl or its suppliers.  The program is protected by
+  ~ international copyright laws and treaty provisions.
+  ~ Any violation will be prosecuted under applicable laws.
+  ~ NOTICE: The following is Source Code and is subject to all
+  ~ restrictions on such code as contained in the End User License Agreement
+  ~ accompanying this product.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <com.droidux.widget.progress.EnhancedProgressBar
+        style="?attr/dux_progressBarLargeStyle"
+        android:id="@+id/progressLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+    <com.droidux.widget.progress.EnhancedProgressBar
+        style="?attr/dux_progressBarStyle"
+        android:id="@+id/progressMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         />
+
+    <com.droidux.widget.progress.EnhancedProgressBar
+        style="?attr/dux_progressBarSmallStyle"
+        android:id="@+id/progressSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+    <com.droidux.widget.progress.EnhancedProgressBar
+        style="?attr/dux_progressBarHorizontalStyle"
+        android:id="@+id/progressHorizontal"
+        android:indeterminate="true"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        />
+
+
+</LinearLayout>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Ximpl All Rights Reserved. This program and the accompanying
+	materials are owned by Ximpl or its suppliers. The program is protected by
+	international copyright laws and treaty provisions. Any violation will be
+	prosecuted under applicable laws. NOTICE: The following is Source Code and
+	is subject to all restrictions on such code as contained in the End User
+	License Agreement accompanying this product.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/circular_bg"
+        >
+
+        <com.droidux.widget.progress.CircularProgressBar
+            android:id="@+id/progress_circular"
+            style="?attr/dux_progressBarCircularStyle"
+            android:layout_width="106dp"
+            android:layout_height="106dp"
+            android:max="100"
+            android:progress="25"
+            android:secondaryProgress="75"
+            android:layout_gravity="center"
+            />
+
+        <ImageView
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/circular_volume_button"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Default progress"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.droidux.widget.ColorButton
+                    android:id="@+id/decrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"
+                    app:dux_color="@color/holo_green_1"
+                    />
+
+                <com.droidux.widget.ColorButton
+                    android:id="@+id/increase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+"
+                    app:dux_color="@color/holo_red_1"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Secondary progress"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.droidux.widget.ColorButton
+                    android:id="@+id/decrease_secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"
+                    app:dux_color="@color/holo_green_1"
+                    />
+
+                <com.droidux.widget.ColorButton
+                    android:id="@+id/increase_secondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+"
+                    app:dux_color="@color/holo_red_1"
+                    />
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/chkCustomDrawables"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Custom Drawables"/>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

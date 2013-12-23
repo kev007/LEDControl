@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Progress styles -->
+    <style name="DroidUX.Progress.Horizontal" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/dux_prgrs_hrzntl</item>
+    </style>
+
+    <style name="DroidUX.Holo.Progress.Horizontal" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/dux_prgrs_hrzntl_holo_drk</item>
+        <item name="android:indeterminateDrawable">@drawable/dux_prgrs_indtrmnt_hrzntl_holo</item>
+        <item name="dux_progressColor">#429BD1</item>
+        <item name="dux_secondaryProgressColor">#429BD1</item>
+    </style>
+
+    <style name="DroidUX.Holo.Light.Progress.Horizontal" parent="@android:style/Widget.Holo.Light.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/dux_prgrs_hrzntl_holo_lght</item>
+        <item name="dux_progressColor">#429BD1</item>
+        <item name="dux_secondaryProgressColor">#429BD1</item>
+    </style>
+
+    <style name="DroidUX.Progress.Medium" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/dux_prgrs_med</item>
+    </style>
+
+    <style name="DroidUX.Holo.Progress.Medium" parent="@android:style/Widget.Holo.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/dux_prgrs_med_holo</item>
+    </style>
+
+    <style name="DroidUX.Progress.Circular" parent="@android:style/Widget.ProgressBar.Large">
+        <item name="android:progressDrawable">@drawable/dux_prgrs_circ</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:minHeight">56dip</item>
+        <item name="android:maxHeight">56dip</item>
+    </style>
+
+    <style name="DroidUX.Progress.Large" parent="@android:style/Widget.ProgressBar.Large">
+        <item name="android:indeterminateDrawable">@drawable/dux_prgrs_lrg</item>
+    </style>
+
+    <style name="DroidUX.Holo.Progress.Large" parent="@android:style/Widget.Holo.ProgressBar.Large">
+        <item name="android:indeterminateDrawable">@drawable/dux_prgrs_lrg_holo</item>
+    </style>
+
+    <style name="DroidUX.Progress.Small" parent="@android:style/Widget.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/dux_prgrs_sml</item>
+    </style>
+
+    <style name="DroidUX.Holo.Progress.Small" parent="@android:style/Widget.Holo.ProgressBar.Small">
+        <item name="android:indeterminateDrawable">@drawable/dux_prgrs_sml_holo</item>
+    </style>
+
+    <style name="DroidUX.Progress.SeekBar" parent="@android:style/Widget.SeekBar">
+        <item name="android:progressDrawable">@drawable/dux_prgrs_hrzntl</item>
+        <item name="android:indeterminateDrawable">@drawable/dux_prgrs_hrzntl</item>
+    </style>
+
+    <style name="DroidUX.Holo.Progress.SeekBar" parent="@android:style/Widget.Holo.SeekBar">
+        <item name="android:progressDrawable">@drawable/dux_scrbbr_prgrs_hrzntl_holo_drk</item>
+        <item name="android:indeterminateDrawable">@drawable/dux_scrbbr_prgrs_hrzntl_holo_drk</item>
+        <item name="android:thumb">@drawable/dux_scrbbr_cntl_slctr_holo</item>
+        <item name="dux_progressColor">#429BD1</item>
+        <item name="dux_secondaryProgressColor">#429BD1</item>
+    </style>
+
+    <style name="DroidUX.Holo.Light.Progress.SeekBar" parent="@android:style/Widget.Holo.Light.SeekBar">
+        <item name="android:progressDrawable">@drawable/dux_scrbbr_prgrs_hrzntl_holo_lght</item>
+        <item name="android:indeterminateDrawable">@drawable/dux_scrbbr_prgrs_hrzntl_holo_lght</item>
+        <item name="android:thumb">@drawable/dux_scrbbr_cntl_slctr_holo</item>
+        <item name="dux_progressColor">#429BD1</item>
+        <item name="dux_secondaryProgressColor">#429BD1</item>
+    </style>
+
+    <style name="DroidUX.Progress.RatingBar" parent="@android:style/Widget">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/dux_rtngbr</item>
+        <item name="android:indeterminateDrawable">@drawable/dux_rtngbr</item>
+        <item name="android:minHeight">57dip</item>
+        <item name="android:maxHeight">57dip</item>
+        <item name="android:thumb">@null</item>
+    </style>
+
+    <style name="DroidUX.Progress.RatingBar.Indicator">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/dux_rtngbr_indc</item>
+        <item name="android:indeterminateDrawable">@drawable/dux_rtngbr_indc</item>
+        <item name="android:minHeight">38dip</item>
+        <item name="android:maxHeight">38dip</item>
+        <item name="android:thumb">@null</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
+    <style name="DroidUX.Progress.RatingBar.Small">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/dux_rtngbr_sml</item>
+        <item name="android:indeterminateDrawable">@drawable/dux_rtngbr_sml</item>
+        <item name="android:minHeight">14dip</item>
+        <item name="android:maxHeight">14dip</item>
+        <item name="android:thumb">@null</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
+</resources>

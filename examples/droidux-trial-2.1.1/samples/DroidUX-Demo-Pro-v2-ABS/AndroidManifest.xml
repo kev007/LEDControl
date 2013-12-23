@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.droidux.components.demo.abs"
+          android:versionCode="20"
+          android:versionName="2.0"
+    >
+
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17"/>
+    <application
+        android:name=".DroidUXApp"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/DroidUX.Theme.Sherlock.Demo"
+        >
+        <activity android:name="DroidUXDemos">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".internal.DroidUXDemosBrowser"/>
+
+        <!-- Actions -->
+        <activity
+            android:name=".aw.ActionDrawerModeWindowTest"
+            android:label="@string/activity_actn_drawer_window"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerModeContentTest"
+            android:label="@string/activity_actn_drawer_content"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerPositionLeftTest"
+            android:label="@string/activity_actn_drawer_left"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerPositionRightTest"
+            android:label="@string/activity_actn_drawer_right"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerPositionBothTest"
+            android:label="@string/activity_actn_drawer_leftright"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerListActivityTest"
+            android:label="@string/activity_actn_drawer_listactivity"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerListMenuTest"
+            android:label="@string/activity_actn_drawer_listmenu"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerArrowHidingTest"
+            android:label="@string/activity_actn_drawer_listener_arrowhiding"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerScaleTest"
+            android:label="@string/activity_actn_drawer_listener_drawerscale"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionDrawerFragmentStaticTest"
+            android:label="@string/activity_actn_drawer_fragment_static"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+       <activity
+            android:name=".aw.ActionDrawerFragmentDynamicTest"
+            android:label="@string/activity_actn_drawer_fragment_dynamic"
+            android:theme="@style/DroidUX.Theme.Sherlock.Demo.WithDrawer"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionPathMenuCircularTest"
+            android:label="@string/activity_actnpth_circular"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.ActionPathMenuLinearTest"
+            android:label="@string/activity_actnpth_linear"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.EnhancedColorAppBarTest"
+            android:label="@string/activity_appbar_enhanced"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.StandardAppBarTest"
+            android:label="@string/activity_appbar_standard"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.StandardColorAppBarTest"
+            android:label="@string/activity_appbar_standardcolor"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.QuickActionOldStyleTest"
+            android:label="@string/activity_qact_oldstyle"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.QuickActionListTest"
+            android:label="@string/activity_qact_list"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.QuickPopoverTest"
+            android:label="@string/activity_qact_popover"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".aw.QuickTooltipTest"
+            android:label="@string/activity_qact_tooltip"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Color Pickers -->
+        <activity
+            android:name=".clrpkr.ColorPickerDialogTests"
+            android:label="@string/activity_clrpkr_dialog"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".clrpkr.ColorPickerPreferenceTests"
+            android:label="@string/activity_clrpkr_preference"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".clrpkr.ColorPickerPanelTests"
+            android:label="@string/activity_clrpkr_panel"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Drawables -->
+        <activity
+            android:name=".drwbl.MaskedDrawableTest"
+            android:label="@string/activity_drwbl_masked"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".drwbl.ReflectionDrawableTest"
+            android:label="@string/activity_drwbl_reflection"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Dashboards -->
+        <activity
+            android:name=".dshbrd.MultiPageDashboardTest"
+            android:label="@string/activity_dshbrd_multipage"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".dshbrd.StandardDashboardTest"
+            android:label="@string/activity_dshbrd_standard"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Editors -->
+        <activity
+            android:name=".edtr.AutoCompleteNoteTest"
+            android:label="@string/activity_edtr_autocomplete"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edtr.BubbleTextViewTest"
+            android:label="@string/activity_edtr_bubbletext"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edtr.MultiAutoCompleteNoteTest"
+            android:label="@string/activity_edtr_multiautocomplete"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edtr.NoteEditorTest"
+            android:label="@string/activity_edtr_noteeditor"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".edtr.NoteViewTest"
+            android:label="@string/activity_edtr_noteview"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- GalleryFlows -->
+        <activity
+            android:name=".glrflw.GalleryFlowCarouselInTests"
+            android:label="@string/activity_glrflw_crsl_in"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".glrflw.GalleryFlowCarouselOutTests"
+            android:label="@string/activity_glrflw_crsl_out"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".glrflw.GalleryFlowCoverTests"
+            android:label="@string/activity_glrflw_cover"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".glrflw.GalleryFlowCoverFragmentTests"
+            android:label="@string/activity_glrflw_cover_fragment"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".glrflw.GalleryFlowScaleTests"
+            android:label="@string/activity_glrflw_scale"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".glrflw.GalleryFlowTrainTests"
+            android:label="@string/activity_glrflw_train"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".glrflw.GalleryFlowWallInTests"
+            android:label="@string/activity_glrflw_wall_in"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".glrflw.GalleryFlowWallOutTests"
+            android:label="@string/activity_glrflw_wall_out"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".glrflw.GalleryFlowZoomTests"
+            android:label="@string/activity_glrflw_zoom"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Lists -->
+        <activity
+            android:name=".list.DuxListViewTest"
+            android:label="@string/activity_list_web"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".list.DuxListViewOnDemandAutoTest"
+            android:label="@string/activity_list_ondemand_auto"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".list.DuxListViewOnDemandManualTest"
+            android:label="@string/activity_list_ondemand_manual"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".list.PullToRefreshListViewTest"
+            android:label="@string/activity_list_p2r"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".list.PullToRefreshListViewEmptyTest"
+            android:label="@string/activity_list_p2r_empty"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".list.RoundedCornerListTest"
+            android:label="@string/activity_list_rounded"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Layouts -->
+        <activity
+            android:name=".lyt.MaskedLayoutLongTest"
+            android:label="@string/activity_lyt_masked_long1"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.MaskedLayoutLong2Test"
+            android:label="@string/activity_lyt_masked_long2"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.MaskedLayoutScrollTest"
+            android:label="@string/activity_lyt_masked_scroll"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.MaskedLayoutShortTest"
+            android:label="@string/activity_lyt_masked_short"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.ReflectionLayoutTest"
+            android:label="@string/activity_lyt_reflection"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.RoundedCornerLongTest"
+            android:label="@string/activity_lyt_rounded_long1"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.RoundedCornerLong2Test"
+            android:label="@string/activity_lyt_rounded_long2"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.RoundedCornerScrollTest"
+            android:label="@string/activity_lyt_rounded_scroll"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.RoundedCornerShortTest"
+            android:label="@string/activity_lyt_rounded_short"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".lyt.ViewFlipper3dTest"
+            android:label="@string/activity_lyt_flip3d"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Common Controls -->
+        <activity
+            android:name=".cmn.ColorButtonTest"
+            android:label="@string/activity_cmn_clrbtn"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".cmn.ColorImageButtonTest"
+            android:label="@string/activity_cmn_clrimgbtn"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".cmn.UrlImageViewTest"
+            android:label="@string/activity_cmn_urlimgview"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Miscellaneous -->
+        <activity
+            android:name=".misc.RotarySelectorTest"
+            android:label="@string/activity_misc_rotaryselector"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".misc.SlidingTabTest"
+            android:label="@string/activity_misc_slidingtab"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Pull-to-refresh -->
+        <activity
+            android:name=".p2r.PullToRefreshScrollViewTest"
+            android:label="@string/activity_p2r_scroll"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Progress -->
+        <activity
+            android:name=".prgrs.CircularProgressBarTest"
+            android:label="@string/activity_prgrs_circular"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".prgrs.EnhancedProgressBarTest"
+            android:label="@string/activity_prgrs_bar_color"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".prgrs.EnhancedProgressIndeterminateTest"
+            android:label="@string/activity_prgrs_bar_indeterminate"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".prgrs.EnhancedProgressPatternTest"
+            android:label="@string/activity_prgrs_bar_pattern"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".prgrs.EnhancedRatingBarTest"
+            android:label="@string/activity_prgrs_ratingbar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".prgrs.EnhancedSeekBarTest"
+            android:label="@string/activity_prgrs_seekbar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Tabs -->
+        <activity
+            android:name=".tabs.ScrollableTabsById"
+            android:label="@string/activity_tabs_scroll_byid"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tabs.ScrollableTabsByFactory"
+            android:label="@string/activity_tabs_scroll_byfactory"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".tabs.ScrollableTab_ListContent"/>
+        <activity android:name=".tabs.ScrollableTab_TextContent"/>
+        <activity
+            android:name=".tabs.ScrollableTabsByIntent"
+            android:label="@string/activity_tabs_scroll_byintent"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".tabs.SegmentedButtonTest"
+            android:label="@string/activity_tabs_segment"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Wheel -->
+        <activity
+            android:name=".whl.DatePickerTest"
+            android:label="@string/activity_whl_datepicker"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".whl.DateTimePickerTest"
+            android:label="@string/activity_whl_datetimepicker"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".whl.TimePickerTest"
+            android:label="@string/activity_whl_timepicker"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".whl.WheelCarouselTest"
+            android:label="@string/activity_whl_carousel"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+       <activity
+            android:name=".whl.WheelSpinnerTest"
+            android:label="@string/activity_whl_spinner"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="com.droidux.intent.category.API_DEMOS"/>
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

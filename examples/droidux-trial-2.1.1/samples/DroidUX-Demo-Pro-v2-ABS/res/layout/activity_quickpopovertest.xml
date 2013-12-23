@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#d9d9d9">
+
+    <com.droidux.widget.ColorButton
+        android:layout_height="wrap_content"
+        android:text="Top"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/btnTop"
+        app:dux_color="#FFFCC4"
+        />
+
+    <com.droidux.widget.ColorButton
+        android:layout_height="wrap_content"
+        android:text="Right"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/btnRight"
+        app:dux_color="#E8E546"
+        />
+
+    <com.droidux.widget.ColorButton
+        android:layout_height="wrap_content"
+        android:text="Left"
+        android:layout_width="wrap_content"
+        android:id="@+id/btnLeft"
+        android:layout_alignBaseline="@+id/btnRight"
+        android:layout_alignBottom="@+id/btnRight"
+        android:layout_alignParentLeft="true"
+        app:dux_color="#FFD447"
+        />
+
+    <com.droidux.widget.ColorButton
+        android:layout_height="wrap_content"
+        android:text="Bottom"
+        android:layout_width="wrap_content"
+        android:id="@+id/btnBottom"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:dux_color="#F7A634"
+        />
+
+    <com.droidux.widget.ColorButton
+        android:layout_height="wrap_content"
+        android:text="LeftTop"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/btnLeftTop"
+        app:dux_color="#FFB5A1"
+        />
+
+    <com.droidux.widget.ColorButton
+        android:layout_height="wrap_content"
+        android:text="RightTop"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/btnRightTop"
+        app:dux_color="#B6F863"
+        />
+
+    <com.droidux.widget.ColorButton
+        android:layout_height="wrap_content"
+        android:text="LeftBottom"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/btnLeftBottom"
+        app:dux_color="#FFA7A1"
+        />
+
+    <com.droidux.widget.ColorButton
+        android:layout_height="wrap_content"
+        android:text="RightBottom"
+        android:layout_width="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:id="@+id/btnRightBottom"
+        app:dux_color="#A6B9F7"/>
+
+</RelativeLayout>

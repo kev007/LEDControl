@@ -5,14 +5,23 @@ import java.net.UnknownHostException;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener, OnSeekBarChangeListener {
@@ -22,54 +31,13 @@ public class MainActivity extends Activity implements OnClickListener, OnSeekBar
 	private int keyframeCount = 0; 
 	private int [][] tempKette = new int[255][5];
 	private TextView TextTime;
+	private TableLayout table;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		RadioButton radioButton1 = (RadioButton) findViewById(R.id.radioButton1);
-		RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
-		RadioButton radioButton3 = (RadioButton) findViewById(R.id.radioButton3);
-		RadioButton radioButton4 = (RadioButton) findViewById(R.id.radioButton4);
-		RadioButton radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
-		seekBarT = (SeekBar) findViewById(R.id.seekBarT);
-		seekBarR = (SeekBar) findViewById(R.id.seekBarR);
-		seekBarG = (SeekBar) findViewById(R.id.seekBarG);
-		seekBarB = (SeekBar) findViewById(R.id.seekBarB);
-		seekBarL = (SeekBar) findViewById(R.id.seekBarL);
-		TextTime = (TextView) findViewById(R.id.TextTime);
-		Button update = (Button) findViewById(R.id.update);
-		Button broadcast = (Button) findViewById(R.id.broadcast);
-		Button add = (Button) findViewById(R.id.add);
-		
-		/*
-		radioButton1.setOnClickListener(this);
-		radioButton2.setOnClickListener(this);
-		radioButton3.setOnClickListener(this);
-		radioButton4.setOnClickListener(this);
-		radioButton5.setOnClickListener(this);*/
-		seekBarT.setOnSeekBarChangeListener(this);
-		seekBarR.setOnClickListener(this);
-		seekBarG.setOnClickListener(this);
-		seekBarB.setOnClickListener(this);
-		seekBarL.setOnClickListener(this);
-		
-		update.setOnClickListener(this);
-		broadcast.setOnClickListener(this);
-		add.setOnClickListener(this);
-		
-		radioButton1.setChecked(true);
-		radioButton2.setChecked(false);
-		radioButton3.setChecked(false);
-		radioButton4.setChecked(false);
-		radioButton5.setChecked(false);
-
-		seekBarT.setProgress(3000);
-		seekBarR.setProgress(128);
-		seekBarG.setProgress(128);
-		seekBarB.setProgress(128);
-		seekBarL.setProgress(100);
-
+		init();
 		
 		createManagement();
         sendBroadcast();
@@ -103,24 +71,8 @@ public class MainActivity extends Activity implements OnClickListener, OnSeekBar
 				
 			break;
 			*/
-		
 			case R.id.broadcast:
 				m.sendPackage(m.createZeroContainer());
-			break;
-			case R.id.add:
-				keyframeCount++;
-				tempKette[0][4] = 0;
-				tempKette[keyframeCount][4] = ((int) seekBarT.getProgress() + tempKette[keyframeCount-1][4]);
-				tempKette[keyframeCount][0] = (int) seekBarR.getProgress();
-				tempKette[keyframeCount][1] = (int) seekBarG.getProgress();
-				tempKette[keyframeCount][2] = (int) seekBarB.getProgress();
-				tempKette[keyframeCount][3] = (int) seekBarL.getProgress();
-				
-				System.out.println("T: " + tempKette[keyframeCount][4]);
-				System.out.println("R: " + tempKette[keyframeCount][0]);
-				System.out.println("G: " + tempKette[keyframeCount][1]);
-				System.out.println("B: " + tempKette[keyframeCount][2]);
-				System.out.println("L: " + tempKette[keyframeCount][3]);
 			break;
 			case R.id.update:
 				int [][] kette1 = new int[keyframeCount][5];
@@ -132,9 +84,52 @@ public class MainActivity extends Activity implements OnClickListener, OnSeekBar
 					kette1[i][4] = tempKette[i+1][4];
 				}
 				
-				m.sendPackage(new Container(1, kette1,true, null,false, null,false, null,false, null,false));
+				m.sendPackage(new Container(1, "test", kette1,true, null,false, null,false, null,false, null,false));
 			break;
-			
+			case R.id.add:
+				keyframeCount++;
+				tempKette[0][4] = 0;
+				tempKette[keyframeCount][4] = ((int) seekBarT.getProgress() + tempKette[keyframeCount-1][4]);
+				tempKette[keyframeCount][0] = (int) seekBarR.getProgress();
+				tempKette[keyframeCount][1] = (int) seekBarG.getProgress();
+				tempKette[keyframeCount][2] = (int) seekBarB.getProgress();
+				tempKette[keyframeCount][3] = (int) seekBarL.getProgress();
+				
+				TableRow row= new TableRow(this);
+		        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
+		        row.setLayoutParams(lp);
+		        TextView Index = new TextView(this);
+		        TextView T = new TextView(this);
+		        TextView R = new TextView(this);
+		        TextView G = new TextView(this);
+		        TextView B = new TextView(this);
+		        TextView L = new TextView(this);
+		        ImageButton minusBtn = new ImageButton(this);
+		        minusBtn.setImageResource(android.R.drawable.ic_delete);
+		        minusBtn.setScaleX((float) 0.25);
+		        minusBtn.setScaleY((float) 0.25);
+		        Index.setText(Integer.toString(keyframeCount));
+		        T.setText(Integer.toString(seekBarT.getProgress()) + "         ");
+		        R.setText(Integer.toString(seekBarR.getProgress()) + "         ");
+		        G.setText(Integer.toString(seekBarG.getProgress()) + "         ");
+		        B.setText(Integer.toString(seekBarB.getProgress()) + "         ");
+		        L.setText(Integer.toString(seekBarL.getProgress()) + "         ");
+		        row.addView(Index);
+		        row.addView(T);
+		        row.addView(R);
+		        row.addView(G);
+		        row.addView(B);
+		        row.addView(L);
+		        //row.addView(minusBtn);
+		        
+		        table.addView(row, keyframeCount);
+				
+				System.out.println("T: " + tempKette[keyframeCount][4]);
+				System.out.println("R: " + tempKette[keyframeCount][0]);
+				System.out.println("G: " + tempKette[keyframeCount][1]);
+				System.out.println("B: " + tempKette[keyframeCount][2]);
+				System.out.println("L: " + tempKette[keyframeCount][3]);
+			break;
 		}
 	}
 	
@@ -182,5 +177,62 @@ public class MainActivity extends Activity implements OnClickListener, OnSeekBar
 	public void onStopTrackingTouch(SeekBar seekBar) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void init(){
+		RadioButton radioButton1 = (RadioButton) findViewById(R.id.radioButton1);
+		RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);
+		RadioButton radioButton3 = (RadioButton) findViewById(R.id.radioButton3);
+		RadioButton radioButton4 = (RadioButton) findViewById(R.id.radioButton4);
+		RadioButton radioButton5 = (RadioButton) findViewById(R.id.radioButton5);
+		seekBarT = (SeekBar) findViewById(R.id.seekBarT);
+		seekBarR = (SeekBar) findViewById(R.id.seekBarR);
+		seekBarG = (SeekBar) findViewById(R.id.seekBarG);
+		seekBarB = (SeekBar) findViewById(R.id.seekBarB);
+		seekBarL = (SeekBar) findViewById(R.id.seekBarL);
+		TextTime = (TextView) findViewById(R.id.TextTime);
+		Button update = (Button) findViewById(R.id.update);
+		Button broadcast = (Button) findViewById(R.id.broadcast);
+		Button add = (Button) findViewById(R.id.add);
+		
+		radioButton1.setOnClickListener(this);
+		radioButton2.setOnClickListener(this);
+		radioButton3.setOnClickListener(this);
+		radioButton4.setOnClickListener(this);
+		radioButton5.setOnClickListener(this);
+		seekBarT.setOnSeekBarChangeListener(this);
+		seekBarR.setOnClickListener(this);
+		seekBarG.setOnClickListener(this);
+		seekBarB.setOnClickListener(this);
+		seekBarL.setOnClickListener(this);
+		
+		update.setOnClickListener(this);
+		broadcast.setOnClickListener(this);
+		add.setOnClickListener(this);
+		
+		radioButton1.setChecked(true);
+		radioButton2.setChecked(false);
+		radioButton3.setChecked(false);
+		radioButton4.setChecked(false);
+		radioButton5.setChecked(false);
+/*
+		seekBarT.setProgress(3000);
+		seekBarR.setProgress(128);
+		seekBarG.setProgress(128);
+		seekBarB.setProgress(128);
+		seekBarL.setProgress(100);
+*/
+		seekBarT.setProgress(300);
+		seekBarR.setProgress(12);
+		seekBarG.setProgress(12);
+		seekBarB.setProgress(12);
+		seekBarL.setProgress(10);
+
+		table = (TableLayout)findViewById(R.id.table);
+		
+		ShapeDrawable border = new ShapeDrawable(new RectShape());
+		border.getPaint().setStyle(Style.STROKE);
+		border.getPaint().setColor(Color.BLACK);
+		table.setBackground(border);
 	}
 }

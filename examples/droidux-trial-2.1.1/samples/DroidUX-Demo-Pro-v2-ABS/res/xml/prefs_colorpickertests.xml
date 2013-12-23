@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2011 Ximpl
+  All Rights Reserved. This program and the accompanying materials
+  are owned by Ximpl or its suppliers.  The program is protected by international copyright laws and treaty provisions.  Any violation will be prosecuted under applicable laws.
+  NOTICE: The following is Source Code and is subject to all
+  restrictions on such code as contained in the End User License Agreement accompanying this product.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+	<PreferenceCategory android:title="@string/pref_category">
+		<com.droidux.widget.color.ColorPickerPreference
+			android:key="@string/color1_key"
+			android:title="@string/color1_title"
+			android:summary="@string/color1_summary"
+			android:defaultValue="#B1B44A4A"
+			app:dux_showAlphaPanel="true"
+		/>
+		<com.droidux.widget.color.ColorPickerPreference
+			android:key="@string/color2_key"
+			android:title="@string/color2_title"
+			android:summary="@string/color2_summary"
+			android:defaultValue="#ff00ff00"
+			app:dux_showAlphaPanel="false"
+		/>
+		<com.droidux.widget.color.ColorPickerPreference
+			android:key="@string/color3_key"
+			android:title="@string/color3_title"
+			android:summary="@string/color3_summary"
+			android:persistent="false"
+			android:defaultValue="#CDE855"
+		/>
+		<com.droidux.widget.color.ColorPickerPreference
+			android:key="@string/color4_key"
+			android:title="@string/color4_title"
+			android:summary="@string/color4_summary"
+			android:defaultValue="#C43434DD"
+		/>
+	</PreferenceCategory>
+</PreferenceScreen>
