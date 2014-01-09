@@ -22,7 +22,7 @@
     <PreferenceCategory android:title="@string/pref_config" >
         
         
-         <com.ppp.ledcontrol.colorpicker.calendarstock.dashclockpicker.ColorPreference
+         <com.ppp.ledcontrol.colorpicker.colorpicker.ColorPreference
             android:key="dash_colorkey"
             android:title="Preference Title"
             android:summary="Preference summary"

@@ -71,24 +71,29 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020004;
     }
     public static final class id {
-        public static final int action_settings=0x7f0a0011;
-        public static final int button1=0x7f0a0010;
+        public static final int action_settings=0x7f0a0016;
+        public static final int button1=0x7f0a0015;
         public static final int calendar_color_view=0x7f0a0008;
         public static final int color_grid=0x7f0a0009;
         public static final int color_picker=0x7f0a0005;
         public static final int color_picker_checkmark=0x7f0a0007;
         public static final int color_picker_swatch=0x7f0a0006;
+        public static final int color_picker_view=0x7f0a000b;
         public static final int color_view=0x7f0a000a;
         public static final int content_frame=0x7f0a0001;
         public static final int drawer_layout=0x7f0a0000;
-        public static final int image=0x7f0a000c;
+        public static final int hex_val=0x7f0a000d;
+        public static final int image=0x7f0a0011;
         public static final int indexLabel=0x7f0a0003;
         public static final int left_drawer=0x7f0a0004;
-        public static final int menurow_square=0x7f0a000e;
-        public static final int menurow_title=0x7f0a000f;
-        public static final int ns_menu_row=0x7f0a000d;
+        public static final int menurow_square=0x7f0a0013;
+        public static final int menurow_title=0x7f0a0014;
+        public static final int new_color_panel=0x7f0a000f;
+        public static final int ns_menu_row=0x7f0a0012;
+        public static final int old_color_panel=0x7f0a000e;
         public static final int table=0x7f0a0002;
-        public static final int textView1=0x7f0a000b;
+        public static final int textView1=0x7f0a0010;
+        public static final int text_hex_wrapper=0x7f0a000c;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -98,12 +103,13 @@ containing a value of this type.
         public static final int dash_dialog_colors=0x7f030004;
         public static final int dash_grid_item_color=0x7f030005;
         public static final int dialog_about=0x7f030006;
-        public static final int display_fragment=0x7f030007;
-        public static final int drawer_item_list=0x7f030008;
-        public static final int fragment_item=0x7f030009;
-        public static final int ns_menu_row=0x7f03000a;
-        public static final int ns_menu_row_header=0x7f03000b;
-        public static final int start_fragment=0x7f03000c;
+        public static final int dialog_color_picker=0x7f030007;
+        public static final int display_fragment=0x7f030008;
+        public static final int drawer_item_list=0x7f030009;
+        public static final int fragment_item=0x7f03000a;
+        public static final int ns_menu_row=0x7f03000b;
+        public static final int ns_menu_row_header=0x7f03000c;
+        public static final int start_fragment=0x7f03000d;
     }
     public static final class menu {
         public static final int main=0x7f090000;
@@ -113,6 +119,14 @@ containing a value of this type.
         public static final int about_ok=0x7f06000a;
         public static final int action_settings=0x7f060004;
         public static final int app_name=0x7f060003;
+        public static final int color1_summary=0x7f060011;
+        public static final int color1_title=0x7f060010;
+        public static final int color2_summary=0x7f060013;
+        public static final int color2_title=0x7f060012;
+        public static final int color3_summary=0x7f060015;
+        public static final int color3_title=0x7f060014;
+        public static final int color4_summary=0x7f060017;
+        public static final int color4_title=0x7f060016;
         /**  Default title for color picker dialog [CHAR LIMIT=30] 
          */
         public static final int color_picker_default_title=0x7f060000;
@@ -122,13 +136,23 @@ containing a value of this type.
         /**  Content description for a selected color square. 
          */
         public static final int color_swatch_description_selected=0x7f060002;
-        public static final int drawer_close=0x7f06000d;
-        public static final int drawer_open=0x7f06000c;
+        /**  Color Picker 
+         */
+        public static final int dialog_color_picker=0x7f06000d;
+        public static final int drawer_close=0x7f060019;
+        public static final int drawer_open=0x7f060018;
+        /**  App 
+         */
+        public static final int hello=0x7f06000c;
         public static final int hello_world=0x7f060005;
         public static final int home_screen=0x7f060006;
+        /**  Preferences 
+         */
+        public static final int pref_category=0x7f06000f;
         /**  Prefs Dash
          */
         public static final int pref_config=0x7f060007;
+        public static final int press_color_to_apply=0x7f06000e;
         public static final int title_about=0x7f060009;
         public static final int title_activity_settings=0x7f060008;
     }
@@ -163,6 +187,7 @@ containing a value of this type.
     public static final class xml {
         public static final int pref_calendarcolor=0x7f040000;
         public static final int pref_dashcolor=0x7f040001;
+        public static final int settings=0x7f040002;
     }
     public static final class styleable {
         /** Attributes that can be used with a ColorPickerPreference.

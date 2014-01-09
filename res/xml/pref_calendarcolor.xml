@@ -20,7 +20,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto" >
 
     <PreferenceCategory android:title="@string/pref_config" >
-        <com.ppp.ledcontrol.colorpicker.calendarstock.ColorPickerPreference
+        <com.ppp.ledcontrol.colorpicker.colorpicker.ColorPickerPreference
             android:defaultValue="@android:color/white"
             android:key="calendar_colorkey"
             android:negativeButtonText="@null"

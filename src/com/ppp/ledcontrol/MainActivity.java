@@ -31,16 +31,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import com.ppp.ledcontrol.colorpicker.calendarstock.ColorPickerDialog;
-import com.ppp.ledcontrol.colorpicker.calendarstock.ColorPickerSwatch;
-import com.ppp.ledcontrol.colorpicker.calendarstock.SettingsPickerActivity;
-import com.ppp.ledcontrol.colorpicker.dashclockpicker.ColorPickerDialogDash;
-import com.ppp.ledcontrol.colorpicker.dashclockpicker.SettingsActivity;
-import com.ppp.ledcontrol.colorpicker.internal.NsMenuAdapter;
-import com.ppp.ledcontrol.colorpicker.internal.NsMenuItemModel;
 
 
-public class MainActivity extends Activity implements OnClickListener {
+
+public abstract class MainActivity extends Activity implements OnClickListener {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
@@ -51,29 +45,6 @@ public class MainActivity extends Activity implements OnClickListener {
     
     private TableLayout table;
     private int keyframeCount = 0; 
-    
-	// Only for Menu
-	private NsMenuAdapter mAdapter;
-
-	private String[] menuItems;
-	private static final int MENU_DASH_0 = 0;
-	private static final int MENU_DASH_1 = 1;
-	private static final int MENU_DASH_2 = 2;
-	private static final int MENU_CALENDAR_0 = 100;
-	private static final int MENU_CALENDAR_1 = 101;
-	// ---------------------------------------------------------------
-    // Selected colors
-    private int mSelectedColorDash0 = 0;
-	private int mSelectedColorDash1 = 0;
-	private int mSelectedColorCal0 = 0;
-	private int mSelectedColorCal1 = 0;
-	// Keys for savedInstanceState
-	private final static String KEY_BUNDLE_POSITION = "KEY_BUNDLE_POSITION";
-	private final static String KEY_BUNDLE_SCD0 = "KEY_BUNDLE_SCD0";
-	private final static String KEY_BUNDLE_SCD1 = "KEY_BUNDLE_SCD1";
-	private final static String KEY_BUNDLE_SCC0 = "KEY_BUNDLE_SCC0";
-	private final static String KEY_BUNDLE_SCC1 = "KEY_BUNDLE_SCC1";
-	int mLastPosition;
 	
     private Management m;
 
@@ -109,29 +80,6 @@ public class MainActivity extends Activity implements OnClickListener {
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         
-        
-        
-        restoreSelectedColor(savedInstanceState);
-        //Re-bind listeners
-      		if (savedInstanceState!=null){
-      			
-      			ColorPickerDialogDash colordash = (ColorPickerDialogDash)
-      					getFragmentManager().findFragmentByTag("dash");
-      	        if (colordash != null) {
-      	            // re-bind listener to fragment
-      	            //colordash.setOnColorSelectedListener(colordashListener);
-      	        }
-      	        
-      			ColorPickerDialog colorcalendar = (ColorPickerDialog) 
-      					getFragmentManager().findFragmentByTag("cal");
-      	        if (colorcalendar != null) {
-      	            // re-bind listener to fragment
-      	            //colorcalendar.setOnColorSelectedListener(colorcalendarListener);
-      	        }
-      		}
-        
-        
-
       	init();
     }
     
@@ -141,9 +89,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		border.getPaint().setStyle(Style.STROKE);
 		border.getPaint().setColor(Color.BLACK);
 		//table.setBackground(border);
-
-	    
-		
 		
 		TableRow row1 = new TableRow(this);
 		TableRow rowgrad = new TableRow(this);
@@ -179,7 +124,6 @@ public class MainActivity extends Activity implements OnClickListener {
         grad.setMinHeight(200);
         
         
-        
         row1.addView(time1);
         row1.addView(button1);
         row1.setPadding(1, 5, 1, 5);
@@ -204,72 +148,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	public void onClick(View v) {
-		int[] mColor = Utils.ColorUtils.colorChoice(this);
-		ColorPickerDialog colorcalendar = ColorPickerDialog.newInstance(
-				R.string.color_picker_default_title, mColor,
-				mSelectedColorCal0, 5,
-				Utils.isTablet(this) ? ColorPickerDialog.SIZE_LARGE
-						: ColorPickerDialog.SIZE_SMALL);
-					
-		colorcalendar.setOnColorSelectedListener(colorcalendarListener);
-		colorcalendar.show(getFragmentManager(), "cal");
+	
 	}    
-    
-    @Override
-	protected void onRestoreInstanceState(Bundle state) {
-		super.onRestoreInstanceState(state);
-		// Get selected colors
-		restoreSelectedColor(state);
-	}
-	
-	private void restoreSelectedColor(Bundle savedInstanceState){
-		// Get selected colors
-		if (savedInstanceState != null) {
-			mSelectedColorDash0 = savedInstanceState.getInt(KEY_BUNDLE_SCD0);
-			mSelectedColorDash1 = savedInstanceState.getInt(KEY_BUNDLE_SCD1);
-			mSelectedColorCal0 = savedInstanceState.getInt(KEY_BUNDLE_SCC0);
-			mSelectedColorCal1 = savedInstanceState.getInt(KEY_BUNDLE_SCC1);
-			mLastPosition = savedInstanceState.getInt(KEY_BUNDLE_POSITION);
-		}
-	}
-	
-	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-
-		// Save selected color
-		outState.putInt(KEY_BUNDLE_SCD0, mSelectedColorDash0);
-		outState.putInt(KEY_BUNDLE_SCD1, mSelectedColorDash1);
-		outState.putInt(KEY_BUNDLE_SCC0, mSelectedColorCal0);
-		outState.putInt(KEY_BUNDLE_SCC1, mSelectedColorCal1);
-		outState.putInt(KEY_BUNDLE_POSITION, mLastPosition);
-	}
-    
-    ColorPickerDialogDash.OnColorSelectedListener colordashListner=new ColorPickerDialogDash.OnColorSelectedListener(){
-
-		@Override
-		public void onColorSelected(int color) {
-			mSelectedColorDash1 = color;
-			NsMenuItemModel item = mAdapter.getItem(mLastPosition);
-			if (item!=null)
-				item.colorSquare = color;
-			mAdapter.notifyDataSetChanged();
-		}
-
-	};
-	
-	// Implement listener to get selected color value
-		ColorPickerSwatch.OnColorSelectedListener colorcalendarListener = new ColorPickerSwatch.OnColorSelectedListener(){
-
-			@Override
-			public void onColorSelected(int color) {
-				mSelectedColorCal0 = color;
-				NsMenuItemModel item = mAdapter.getItem(mLastPosition);
-				if (item!=null)
-					item.colorSquare = color;
-				mAdapter.notifyDataSetChanged();
-			}
-		};
     
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
