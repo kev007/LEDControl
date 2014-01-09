@@ -6,7 +6,7 @@
   NOTICE: The following is Source Code and is subject to all
   restrictions on such code as contained in the End User License Agreement accompanying this product.
 -->
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <!-- The duration (in milliseconds) of a short animation. -->
     <integer name="config_shortAnimTime">1000</integer>
     

@@ -11,6 +11,7 @@
 package com.droidux.components.demo.abs.glrflw;
 
 import android.os.Bundle;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.widget.gallery.GalleryFlowWall;
 

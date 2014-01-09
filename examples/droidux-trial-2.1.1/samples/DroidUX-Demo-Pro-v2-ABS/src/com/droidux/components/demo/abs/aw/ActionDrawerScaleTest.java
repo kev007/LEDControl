@@ -14,9 +14,8 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
-import android.view.View;
+
 import com.droidux.components.demo.abs.R;
-import com.droidux.components.demo.abs.utils.Utilities;
 import com.droidux.widget.action.ActionDrawer;
 
 /**

@@ -1,8 +1,8 @@
 package com.example.android.actionbarcompat;
 
-import com.droidux.components.DroidUxLib;
-
 import android.app.Application;
+
+import com.droidux.components.DroidUxLib;
 
 public class MyApp extends Application {
 

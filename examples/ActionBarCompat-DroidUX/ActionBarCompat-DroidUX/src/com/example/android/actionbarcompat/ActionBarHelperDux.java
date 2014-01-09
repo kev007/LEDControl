@@ -17,10 +17,6 @@
 
 package com.example.android.actionbarcompat;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -31,6 +27,10 @@ import com.droidux.interfaces.ActionInterfaces.Item.ActionItem;
 import com.droidux.interfaces.ActionInterfaces.Item.ActionItem.OnActionListener;
 import com.droidux.interfaces.ActionInterfaces.Layout.AppBarLayoutInterface;
 import com.droidux.widget.appbar.StandardAppBar;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * A class that implements the action bar pattern for pre-Honeycomb devices, using DroidUX AppBar widgets.

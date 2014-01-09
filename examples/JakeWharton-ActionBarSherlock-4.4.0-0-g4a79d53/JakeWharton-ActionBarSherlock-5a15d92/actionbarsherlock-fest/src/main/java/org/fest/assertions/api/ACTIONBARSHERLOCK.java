@@ -4,6 +4,7 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
+
 import org.fest.assertions.api.com.actionbarsherlock.app.ActionBarAssert;
 import org.fest.assertions.api.com.actionbarsherlock.view.ActionModeAssert;
 import org.fest.assertions.api.com.actionbarsherlock.view.MenuAssert;

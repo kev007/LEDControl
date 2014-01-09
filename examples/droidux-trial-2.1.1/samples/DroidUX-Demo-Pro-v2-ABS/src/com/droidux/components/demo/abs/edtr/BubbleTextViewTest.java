@@ -11,6 +11,7 @@
 package com.droidux.components.demo.abs.edtr;
 
 import android.view.View;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestActivity;
 import com.droidux.interfaces.ColorPickerInterfaces.Listeners.OnColorChangedListener;

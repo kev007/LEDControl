@@ -12,6 +12,7 @@ package com.droidux.components.demo.abs.glrflw;
 
 import android.os.Bundle;
 import android.widget.SpinnerAdapter;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.interfaces.GalleryFlowInterfaces.Adapters.AdapterLooper;
 import com.droidux.interfaces.GalleryFlowInterfaces.GalleryFlowViewInterface;

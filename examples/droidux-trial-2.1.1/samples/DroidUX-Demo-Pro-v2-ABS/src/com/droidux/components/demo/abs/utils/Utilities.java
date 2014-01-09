@@ -9,7 +9,6 @@ package com.droidux.components.demo.abs.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.util.TypedValue;
 

@@ -2,8 +2,10 @@ package org.fest.assertions.api.com.actionbarsherlock.view;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import com.actionbarsherlock.view.MenuItem;
 import android.view.View;
+
+import com.actionbarsherlock.view.MenuItem;
+
 import org.fest.assertions.api.AbstractAssert;
 
 import static org.fest.assertions.api.Assertions.assertThat;

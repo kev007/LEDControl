@@ -12,6 +12,7 @@ package com.droidux.components.demo.abs.tabs;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestScrollableTabActivity;
 import com.droidux.widget.tabs.ScrollableTabHost;

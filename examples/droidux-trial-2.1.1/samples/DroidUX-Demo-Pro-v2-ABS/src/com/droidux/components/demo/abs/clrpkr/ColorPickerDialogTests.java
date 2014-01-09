@@ -11,9 +11,9 @@
 package com.droidux.components.demo.abs.clrpkr;
 
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestActivity;
 import com.droidux.interfaces.ColorPickerInterfaces.Listeners.OnColorDialogListener;

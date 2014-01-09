@@ -7,16 +7,7 @@
  ******************************************************************************/
 package com.droidux.components.demo.abs.aw;
 
-import android.graphics.Color;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.Gravity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.actionbarsherlock.view.MenuItem;
 import com.droidux.components.demo.abs.R;
-import com.droidux.components.demo.abs.internal.BaseTestActivity;
 import com.droidux.widget.action.ActionDrawer;
 
 /**

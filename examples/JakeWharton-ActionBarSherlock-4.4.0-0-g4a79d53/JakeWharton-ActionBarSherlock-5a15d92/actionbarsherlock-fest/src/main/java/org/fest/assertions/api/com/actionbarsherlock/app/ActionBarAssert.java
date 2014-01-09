@@ -1,10 +1,12 @@
 package org.fest.assertions.api.com.actionbarsherlock.app;
 
 import com.actionbarsherlock.app.ActionBar;
+
+import org.fest.assertions.api.AbstractAssert;
 import org.fest.assertions.api.android.Utils;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.fest.assertions.api.AbstractAssert;
 
 import static com.actionbarsherlock.app.ActionBar.DISPLAY_HOME_AS_UP;
 import static com.actionbarsherlock.app.ActionBar.DISPLAY_SHOW_CUSTOM;

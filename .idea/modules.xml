@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LEDControl.iml" filepath="$PROJECT_DIR$/LEDControl.iml" />
+      <module fileurl="file://$PROJECT_DIR$/examples/JakeWharton-ActionBarSherlock-4.4.0-0-g4a79d53/JakeWharton-ActionBarSherlock-5a15d92/actionbarsherlock-samples/fragments/fragments.iml" filepath="$PROJECT_DIR$/examples/JakeWharton-ActionBarSherlock-4.4.0-0-g4a79d53/JakeWharton-ActionBarSherlock-5a15d92/actionbarsherlock-samples/fragments/fragments.iml" />
+    </modules>
+  </component>
+</project>
+

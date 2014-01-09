@@ -16,9 +16,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.actionbarsherlock.view.MenuItem;
 import com.droidux.components.demo.abs.R;
-import com.droidux.components.demo.abs.internal.ActivityHelper;
 import com.droidux.components.demo.abs.internal.BaseTestListActivity;
 import com.droidux.widget.action.ActionDrawer;
 import com.droidux.widget.list.DuxListView;

@@ -4,15 +4,17 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.widget.TextView;
+
 import com.actionbarsherlock.sample.roboguice.R;
 import com.actionbarsherlock.sample.roboguice.controller.Astroboy;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockActivity;
 import com.google.inject.Inject;
+
+import java.util.Random;
+
 import roboguice.inject.InjectResource;
 import roboguice.inject.InjectView;
 import roboguice.util.RoboAsyncTask;
-
-import java.util.Random;
 
 /**
  * Things you'll learn in this class:

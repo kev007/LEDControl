@@ -15,14 +15,15 @@
  */
 package com.actionbarsherlock.sample.demos;
 
-import com.actionbarsherlock.ActionBarSherlock;
-import com.actionbarsherlock.ActionBarSherlock.OnCreateOptionsMenuListener;
-import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuItem;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.actionbarsherlock.ActionBarSherlock;
+import com.actionbarsherlock.ActionBarSherlock.OnCreateOptionsMenuListener;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 
 public class StaticAttachment extends Activity implements OnCreateOptionsMenuListener {
     ActionBarSherlock mSherlock = ActionBarSherlock.wrap(this);

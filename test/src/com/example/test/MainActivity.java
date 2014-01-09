@@ -1,21 +1,17 @@
 package com.example.test;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
-import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Paint.Style;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.SeekBar;
@@ -23,6 +19,9 @@ import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class MainActivity extends Activity implements OnClickListener, OnSeekBarChangeListener {
 
@@ -95,7 +94,7 @@ public class MainActivity extends Activity implements OnClickListener, OnSeekBar
 				tempKette[keyframeCount][2] = (int) seekBarB.getProgress();
 				tempKette[keyframeCount][3] = (int) seekBarL.getProgress();
 				
-				TableRow row= new TableRow(this);
+				TableRow row = new TableRow(this);
 		        TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
 		        row.setLayoutParams(lp);
 		        TextView Index = new TextView(this);
@@ -155,7 +154,7 @@ public class MainActivity extends Activity implements OnClickListener, OnSeekBar
 		{
 				e.printStackTrace();
 		}	
-		//Fenster und Management erzeugen + übergeben
+		//Fenster und Management erzeugen + ï¿½bergeben
 		m = new Management(BROAD_ADDRESS, PORT);
 		Log.d("management", "create management");
 	}
@@ -179,6 +178,7 @@ public class MainActivity extends Activity implements OnClickListener, OnSeekBar
 		
 	}
 	
+	@SuppressLint("NewApi")
 	public void init(){
 		RadioButton radioButton1 = (RadioButton) findViewById(R.id.radioButton1);
 		RadioButton radioButton2 = (RadioButton) findViewById(R.id.radioButton2);

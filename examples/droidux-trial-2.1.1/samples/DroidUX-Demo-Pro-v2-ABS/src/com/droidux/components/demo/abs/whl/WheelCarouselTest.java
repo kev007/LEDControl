@@ -21,6 +21,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
+
 import com.droidux.anim.FloorBounceAnimation;
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestActivity;

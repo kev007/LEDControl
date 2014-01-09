@@ -1,12 +1,12 @@
 package com.droidux.components.demo.abs.internal;
 
-import android.app.ListActivity;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
+
 import com.actionbarsherlock.ActionBarSherlock;
 import com.actionbarsherlock.ActionBarSherlock.*;
 import com.actionbarsherlock.app.ActionBar;

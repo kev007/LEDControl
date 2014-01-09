@@ -14,7 +14,7 @@ package com.droidux.components.demo.abs.edtr;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
-import android.view.View;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestActivity;
 import com.droidux.components.demo.abs.utils.Utilities;

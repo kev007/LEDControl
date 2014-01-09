@@ -17,7 +17,6 @@
 package com.actionbarsherlock.sample.fragments;
 
 
-import java.util.HashMap;
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.ContentUris;
@@ -43,11 +42,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+
+import java.util.HashMap;
 
 /**
  * Demonstration of bottom to top implementation of a content provider holding

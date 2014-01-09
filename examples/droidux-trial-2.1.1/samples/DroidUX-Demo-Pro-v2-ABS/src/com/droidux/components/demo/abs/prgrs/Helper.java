@@ -11,6 +11,7 @@
 package com.droidux.components.demo.abs.prgrs;
 
 import android.widget.ProgressBar;
+
 import com.droidux.components.demo.abs.utils.Utilities;
 import com.droidux.widget.progress.CircularProgressBar;
 import com.droidux.widget.progress.EnhancedProgressBar;

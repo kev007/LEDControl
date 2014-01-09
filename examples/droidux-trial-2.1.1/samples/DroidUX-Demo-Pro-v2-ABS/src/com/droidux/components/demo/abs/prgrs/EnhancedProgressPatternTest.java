@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestActivity;
 import com.droidux.widget.progress.EnhancedProgressBar;

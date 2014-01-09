@@ -11,6 +11,7 @@
 package com.droidux.components.demo.abs;
 
 import android.app.Application;
+
 import com.droidux.components.DroidUxLib;
 
 public class DroidUXApp extends Application {

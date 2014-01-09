@@ -17,6 +17,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.text.Html;
 import android.text.TextUtils;
+
 import com.droidux.components.demo.abs.DroidUXDemos;
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.utils.Utilities;

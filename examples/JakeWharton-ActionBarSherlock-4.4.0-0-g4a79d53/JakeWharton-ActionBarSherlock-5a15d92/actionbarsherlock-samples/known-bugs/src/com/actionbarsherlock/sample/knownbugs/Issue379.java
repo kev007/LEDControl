@@ -19,6 +19,7 @@ package com.actionbarsherlock.sample.knownbugs;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.widget.TextView;
+
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;

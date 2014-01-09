@@ -16,6 +16,7 @@
 package com.actionbarsherlock.sample.demos;
 
 import android.os.Bundle;
+
 import com.actionbarsherlock.app.SherlockPreferenceActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;

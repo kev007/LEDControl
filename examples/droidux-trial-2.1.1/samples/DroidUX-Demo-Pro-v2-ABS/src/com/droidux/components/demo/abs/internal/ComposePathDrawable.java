@@ -11,7 +11,13 @@
 
 package com.droidux.components.demo.abs.internal;
 
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.ComposePathEffect;
+import android.graphics.CornerPathEffect;
+import android.graphics.DiscretePathEffect;
+import android.graphics.Paint;
+import android.graphics.PathEffect;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.graphics.drawable.shapes.Shape;

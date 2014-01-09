@@ -2,6 +2,7 @@ package com.actionbarsherlock.sample.knownbugs;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
 

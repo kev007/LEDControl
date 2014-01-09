@@ -1,6 +1,7 @@
 package org.fest.assertions.api.com.actionbarsherlock.view;
 
 import com.actionbarsherlock.view.Menu;
+
 import org.fest.assertions.api.AbstractAssert;
 import org.fest.assertions.api.Assertions;
 

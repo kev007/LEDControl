@@ -14,6 +14,7 @@ package com.droidux.components.demo.abs.edtr;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.MultiAutoCompleteTextView;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestActivity;
 import com.droidux.widget.editor.MultiAutoCompleteNoteEditor;

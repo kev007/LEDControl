@@ -5,7 +5,6 @@ import android.os.Parcelable;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.droidux.tutorials.ui.ActionDrawerToggle;
 import com.droidux.widget.action.ActionDrawer;
 
 class BaseDualActionDrawerActivity extends BaseSingleActionDrawerActivity {

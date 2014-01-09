@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.Menu;
 import com.droidux.components.demo.abs.internal.ActivityHelper;
@@ -23,7 +24,12 @@ import com.droidux.components.demo.abs.internal.DroidUXDemosBrowser;
 import com.droidux.widget.action.QuickTooltip;
 
 import java.text.Collator;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DroidUXDemos extends SherlockListActivity {
 	static final String EXTRA_PATH = "com.droidux.components.demo.Path";

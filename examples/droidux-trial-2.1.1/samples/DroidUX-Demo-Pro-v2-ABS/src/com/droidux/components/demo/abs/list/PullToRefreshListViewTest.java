@@ -13,6 +13,7 @@ package com.droidux.components.demo.abs.list;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.interfaces.OnRefreshListener;
 import com.droidux.widget.pull2refresh.VerticalPullToRefreshLayout;

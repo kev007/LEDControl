@@ -7,11 +7,10 @@
   restrictions on such code as contained in the End User License Agreement accompanying this product.
 -->
 <view
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res/com.droidux.components.tests"
-	class="com.droidux.widget.appbar.AppBarActions$ActionButton"
-	style="@style/DroidUX.AppBarAction.Button"
-	android:layout_height="fill_parent"
-	android:layout_width="@dimen/dux_appbar_height"
-	/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    class="com.droidux.widget.appbar.AppBarActions$ActionButton"
+    style="@style/DroidUX.AppBarAction.Button"
+    android:layout_height="fill_parent"
+    android:layout_width="@dimen/dux_appbar_height"
+    />
 

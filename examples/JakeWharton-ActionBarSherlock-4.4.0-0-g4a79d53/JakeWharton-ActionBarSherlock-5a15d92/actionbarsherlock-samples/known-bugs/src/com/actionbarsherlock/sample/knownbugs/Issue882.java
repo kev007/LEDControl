@@ -1,8 +1,5 @@
 package com.actionbarsherlock.sample.knownbugs;
 
-import static android.view.Gravity.CENTER;
-import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
-import static com.actionbarsherlock.app.ActionBar.NAVIGATION_MODE_TABS;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,6 +16,10 @@ import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+
+import static android.view.Gravity.CENTER;
+import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
+import static com.actionbarsherlock.app.ActionBar.NAVIGATION_MODE_TABS;
 
 public class Issue882 extends SherlockFragmentActivity implements
         OnPageChangeListener, TabListener {

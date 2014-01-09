@@ -1,12 +1,12 @@
 package com.actionbarsherlock.sample.roboguice.controller;
 
-import roboguice.inject.ContextSingleton;
-import roboguice.util.Ln;
-
 import android.app.Activity;
 import android.widget.Toast;
 
 import com.google.inject.Inject;
+
+import roboguice.inject.ContextSingleton;
+import roboguice.util.Ln;
 
 /**
  * A class to control Astroboy remotely.

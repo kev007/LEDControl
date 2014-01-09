@@ -6,7 +6,7 @@
   NOTICE: The following is Source Code and is subject to all
   restrictions on such code as contained in the End User License Agreement accompanying this product.
 -->
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
 	<!-- Dashboard -->
 	<declare-styleable name="Dashboard" uses="ActionEffects">
 		<attr name="dux_page_width" format="dimension">

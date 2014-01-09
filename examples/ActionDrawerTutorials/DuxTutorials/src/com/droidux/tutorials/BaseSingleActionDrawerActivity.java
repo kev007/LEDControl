@@ -1,17 +1,11 @@
 package com.droidux.tutorials;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.os.Parcelable;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 
 import com.droidux.tutorials.ui.ActionDrawerToggle;
 import com.droidux.widget.action.ActionDrawer;
 import com.droidux.widget.action.ActionDrawer.Callback;
-import com.droidux.widget.action.ActionDrawer.DrawerPosition;
 
 class BaseSingleActionDrawerActivity extends BaseActionDrawerActivity implements Callback, ActionDrawer.OnDrawerStateChangeListener{
     private CharSequence mTitle;

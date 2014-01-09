@@ -12,11 +12,10 @@ package com.droidux.components.demo.abs.edtr;
 
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestActivity;
 import com.droidux.widget.editor.AutoCompleteNoteEditor;
-import com.droidux.widget.editor.MultiAutoCompleteNoteEditor;
 
 public class AutoCompleteNoteTest extends BaseTestActivity {
 	@Override

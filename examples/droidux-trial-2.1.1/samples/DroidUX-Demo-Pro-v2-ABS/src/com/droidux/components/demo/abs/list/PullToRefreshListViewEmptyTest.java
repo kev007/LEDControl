@@ -13,9 +13,9 @@ package com.droidux.components.demo.abs.list;
 
 import android.os.Bundle;
 import android.view.View;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.widget.pull2refresh.VerticalEdgeDetector;
-import com.droidux.widget.pull2refresh.VerticalPullToRefreshLayout;
 
 public class PullToRefreshListViewEmptyTest extends PullToRefreshListViewTest {
 	@Override

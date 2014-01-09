@@ -1,7 +1,9 @@
 package org.fest.assertions.api.com.actionbarsherlock.view;
 
-import com.actionbarsherlock.view.ActionMode;
 import android.view.View;
+
+import com.actionbarsherlock.view.ActionMode;
+
 import org.fest.assertions.api.AbstractAssert;
 
 import static org.fest.assertions.api.Assertions.assertThat;

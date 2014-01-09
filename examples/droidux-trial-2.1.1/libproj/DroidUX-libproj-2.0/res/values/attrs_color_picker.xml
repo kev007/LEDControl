@@ -6,7 +6,7 @@
   NOTICE: The following is Source Code and is subject to all
   restrictions on such code as contained in the End User License Agreement accompanying this product.
 -->
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<resources>
 	<!-- ColorPicker -->
 	<declare-styleable name="ColorPicker">
 		<attr name="dux_showAlphaPanel" format="boolean" />

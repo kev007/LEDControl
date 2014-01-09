@@ -15,7 +15,6 @@
  */
 package com.actionbarsherlock.sample.fragments;
 
-import java.util.ArrayList;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -26,7 +25,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TabHost;
 import android.widget.TabWidget;
+
 import com.actionbarsherlock.app.SherlockFragmentActivity;
+
+import java.util.ArrayList;
 
 /**
  * Demonstrates combining a TabHost with a ViewPager to implement a tab UI

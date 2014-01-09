@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
     <string name="application_name">ActionBarSherlock Fragments</string>
     <string name="activity_sample_code">ABS: Fragments</string>
 

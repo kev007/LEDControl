@@ -13,6 +13,7 @@ package com.droidux.components.demo.abs.clrpkr;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestPreferenceActivity;
 import com.droidux.components.demo.abs.utils.Utilities;

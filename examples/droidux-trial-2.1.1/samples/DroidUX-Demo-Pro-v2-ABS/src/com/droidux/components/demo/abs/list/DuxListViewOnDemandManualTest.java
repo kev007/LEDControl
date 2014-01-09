@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListAdapter;
+
 import com.droidux.components.demo.abs.R;
 
 public class DuxListViewOnDemandManualTest extends DuxListViewTest {

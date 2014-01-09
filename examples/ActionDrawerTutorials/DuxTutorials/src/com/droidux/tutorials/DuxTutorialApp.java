@@ -1,8 +1,8 @@
 package com.droidux.tutorials;
 
-import com.droidux.components.DroidUxLib;
-
 import android.app.Application;
+
+import com.droidux.components.DroidUxLib;
 
 public class DuxTutorialApp extends Application {
 

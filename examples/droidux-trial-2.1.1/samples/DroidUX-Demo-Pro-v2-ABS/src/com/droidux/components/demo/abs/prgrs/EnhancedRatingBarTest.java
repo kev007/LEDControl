@@ -14,6 +14,7 @@ package com.droidux.components.demo.abs.prgrs;
 import android.os.Bundle;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.components.demo.abs.internal.BaseTestActivity;
 import com.droidux.widget.progress.EnhancedRatingBar;

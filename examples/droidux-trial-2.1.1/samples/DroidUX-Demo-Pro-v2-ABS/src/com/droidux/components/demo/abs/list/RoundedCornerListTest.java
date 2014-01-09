@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
+
 import com.droidux.components.demo.abs.R;
 
 public class RoundedCornerListTest extends DuxListViewTest {

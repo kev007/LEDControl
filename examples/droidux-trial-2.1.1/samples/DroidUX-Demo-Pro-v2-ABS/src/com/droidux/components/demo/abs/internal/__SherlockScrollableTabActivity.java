@@ -15,6 +15,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
 import com.droidux.components.demo.abs.R;
 import com.droidux.widget.tabs.ScrollableTabHost;
 import com.droidux.widget.tabs.ScrollableTabWidget;
