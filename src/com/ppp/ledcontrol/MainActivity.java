@@ -81,73 +81,7 @@ public class MainActivity extends Activity implements OnClickListener {
         }); 
         
         colorAdapter.insert(new SingleColor(255, 255, 255, 255, 255), 0);
-        	
-
-		/*
-		table = (TableLayout)findViewById(R.id.table);
-        ShapeDrawable border = new ShapeDrawable(new RectShape());
-		border.getPaint().setStyle(Style.STROKE);
-		border.getPaint().setColor(Color.BLACK);
-		//table.setBackground(border);
-		
-		TableRow row1 = new TableRow(this);
-		TableRow rowgrad = new TableRow(this);
-		TableRow rowLast = new TableRow(this);
-		TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
-		row1.setLayoutParams(lp);
-		rowgrad.setLayoutParams(lp);
-		rowLast.setLayoutParams(lp);
-        
-		TextView time1 = new TextView(this);
-		TextView timegrad = new TextView(this);
-		TextView timeLast = new TextView(this);
-		time1.setText("Start Color");
-		timegrad.setText("500ms");
-		timeLast.setText("End Color");
-		Button button1 = new Button(this);
-		Button grad = new Button(this);
-		Button buttonLast = new Button(this);
-        button1.setOnClickListener(this);
-        //grad.setOnClickListener(this);
-        buttonLast.setOnClickListener(this);
-        button1.setBackgroundColor(0xFFFF0000);
-        buttonLast.setBackgroundColor(0xFFFFB000);
-        ImageButton add = new ImageButton(this);
-        add.setImageResource(android.R.drawable.ic_delete);
-        
-        GradientDrawable gd = new GradientDrawable(
-	            GradientDrawable.Orientation.TOP_BOTTOM,
-	            new int[] {0xFFFF0000,0xFFFFB000}
-	    gd.setCornerRadius(0f);
-
-        grad.setBackground(gd);
-        grad.setMinHeight(200);
-        
-        
-        row1.addView(time1);
-        row1.addView(button1);
-        row1.setPadding(1, 5, 1, 5);
-        rowgrad.addView(timegrad);
-        rowgrad.addView(grad);
-        rowgrad.setPadding(1, 5, 1, 5);
-        rowLast.addView(timeLast);
-        rowLast.addView(buttonLast);
-        rowLast.setPadding(1, 5, 1, 5);
-        
-        keyframeCount++;
-        table.addView(row1, 1);
-        table.addView(rowgrad, 2);
-        table.addView(rowLast, 3);
-        //table.addView(row, 2);
-        //time.setText("End Color");
-        //row.addView(add);
-        //table.addView(row, 2);
-		*/
-	}
-
-	public void onClick(View v) {
-	
-	}    
+	}   
 	
 	private void initDrawer() {
         navMenuTitles = getResources().getStringArray(R.array.drawer_array);
@@ -345,5 +279,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		} catch (UnknownHostException e) {e.printStackTrace();}
 		m = new Management(BROAD_ADDRESS, PORT);
 		Log.d("management", "create management");
-    }  
+    }
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}  
 }

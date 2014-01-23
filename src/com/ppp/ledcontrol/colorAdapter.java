@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.drawable.GradientDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -55,12 +57,24 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 		holder.B.setText(String.valueOf(color.getB()));
 		holder.L.setText(String.valueOf(color.getL()));
 		final int currentColor = color.getColor();
-		
+
 		holder.btnColor.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				new ColorPickerDialog(context, currentColor).show();
-				Toast.makeText(context, "Edit Color button Clicked",
-				Toast.LENGTH_SHORT).show();
+				final ColorPickerDialog cp = new ColorPickerDialog(context, currentColor);
+				cp.setAlphaSliderVisible(true);
+				cp.setTitle("Pick a Color!");
+				cp.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+					int newColor = cp.getColor();
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						//holder.btnColor.setBackgroundColor(newColor);
+					}
+					
+				});
+				cp.show();
+				
+				Toast.makeText(context, "Color: " + cp.getColor(), Toast.LENGTH_SHORT).show();
 			}
 		});
 		
