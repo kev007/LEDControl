@@ -124,6 +124,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	            new int[] {prevColor, newColor});
 	    gd.setCornerRadius(0f);
 	    holder.btnTime.setBackground(gd);
+	    
+	    listView.invalidateViews();
 	}
 	
 	private void initDrawer() {
@@ -228,6 +230,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				SingleColor temp = new SingleColor(255, 255, 255, 255, 255);
 				temp.colorFill(cp.getColor());
 				colorArray.add(temp);
+				listView.invalidateViews();
 			}
 		});
 		cp.show();
