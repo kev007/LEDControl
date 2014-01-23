@@ -14,39 +14,15 @@
         <item >Display</item>
         <item >Settings</item>
     </string-array>
-    
-        <!-- Prefs Dash-->
-    <string name="pref_config">Color Picker</string>
-    <string name="title_activity_settings">Setting</string>
-    
-    <string name="title_about">About</string>
-    <string name="about_ok">OK</string>
-    <string name="about_body"><![CDATA[
-        <b>Colorpickercollection Library & Demo</b><br>
-        Version %s<br><br>
-        <a href="https://github.com/gabrielemariotti/colorpickercollection">Source</a><br><br>
-        <a href="https://plus.google.com/114432517923423045208">By Gabriele Mariotti</a><br><br>
-
-    ]]></string>
+    <string name="settings_bg_color_dialog">Pick a Color</string>
+    <string name="settings_bg_color_confirm">Color Settings</string>
+    <string name="settings_default_color_confirm">Color Settings</string>
+    <string name="press_color_to_apply">Press Color to Apply</string>
     
 	<!-- App -->
     <string name="hello">Hello World, Main!</string>
-    
-    <!-- Color Picker -->
-    <string name="dialog_color_picker">Color Picker</string>
-    <string name="press_color_to_apply">Press on Color to apply</string>    
-    
-    <!-- Preferences -->
-    <string name="pref_category">Category</string>
-    <string name="color1_title">Color 1</string>
-    <string name="color1_summary">black color by default, set by reference</string>
-    <string name="color2_title">Color 2</string>
-    <string name="color2_summary">not persistent color\nalpha slider added via code</string>
-    <string name="color3_title">Color 3</string>
-    <string name="color3_summary">picker with alpha slider</string>
-    <string name="color4_title">Color 4</string>
-    <string name="color4_summary">color set with HEX code in xml</string>
-    
+  
+    <string name="add">Add</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 </resources>
