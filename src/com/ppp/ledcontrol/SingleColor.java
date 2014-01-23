@@ -44,8 +44,11 @@ public class SingleColor {
 		 this.l = l;
 	 }
 	 
-	 public void hexFill() {
-		 
+	 public void colorFill(int color) {
+		 this.r = Color.red(color);
+		 this.g = Color.green(color);
+		 this.b = Color.blue(color);
+		 this.l = Color.alpha(color);
 	 }
 	 
 	 public int getColor() {		 

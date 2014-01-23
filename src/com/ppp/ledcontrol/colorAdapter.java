@@ -22,6 +22,7 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 	Context context;
 	int layoutResourceId;
 	ArrayList<SingleColor> colorArray = new ArrayList<SingleColor>();
+	//ColorHolder[] holderArray;
 
 	public colorAdapter(Context context, int layoutResourceId, ArrayList<SingleColor> colorArray) {
 		super(context, layoutResourceId, colorArray);
@@ -34,7 +35,7 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 		ColorHolder holder = null;
-
+				
 		if (row == null) {
 			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
 			row = inflater.inflate(layoutResourceId, parent, false);
@@ -43,41 +44,24 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 			holder.G = (TextView) row.findViewById(R.id.textViewG);
 			holder.B = (TextView) row.findViewById(R.id.textViewB);
 			holder.L = (TextView) row.findViewById(R.id.textViewL);
+			holder.T = (TextView) row.findViewById(R.id.textViewT);
 			holder.btnColor = (Button) row.findViewById(R.id.btnColor);
 			holder.btnTime = (Button) row.findViewById(R.id.btnTime);
 			row.setTag(holder);
 		} else {
 			holder = (ColorHolder) row.getTag();
 		}
-		SingleColor color = colorArray.get(position);
+		final SingleColor color = colorArray.get(position);
 		//Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
 				
 		holder.R.setText(String.valueOf(color.getR()));
 		holder.G.setText(String.valueOf(color.getG()));
 		holder.B.setText(String.valueOf(color.getB()));
 		holder.L.setText(String.valueOf(color.getL()));
+		holder.T.setText(String.valueOf(color.getT()));
 		final int currentColor = color.getColor();
+		final int index = position;
 
-		holder.btnColor.setOnClickListener(new OnClickListener() {
-			public void onClick(View v) {
-				final ColorPickerDialog cp = new ColorPickerDialog(context, currentColor);
-				cp.setAlphaSliderVisible(true);
-				cp.setTitle("Pick a Color!");
-				cp.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
-					int newColor = cp.getColor();
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						//holder.btnColor.setBackgroundColor(newColor);
-					}
-					
-				});
-				cp.show();
-				
-				Toast.makeText(context, "Color: " + cp.getColor(), Toast.LENGTH_SHORT).show();
-			}
-		});
-		
 		holder.btnColor.setBackgroundColor(currentColor);
 		
 		int previousColor = color.getColor();
@@ -98,19 +82,35 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 	            new int[] {previousColor, currentColor});
 	    gd.setCornerRadius(0f);
 	    holder.btnTime.setBackground(gd);
-	    //holder.btnTime.setScaleY(8);
+//	    holder.btnTime.setScaleY(8);
 	    if (position == 0) {
 	    	holder.btnTime.setScaleX(0);
 	    	holder.btnTime.setScaleY(0);
 	    	holder.btnTime.setHeight(0);
 	    }
+	    final int prevColor = previousColor;
+	    holder.btnColor.setOnClickListener(new OnClickListener() {
+			public void onClick(View v) {
+				final ColorPickerDialog cp = new ColorPickerDialog(context, color.getColor());
+				cp.setAlphaSliderVisible(true);
+				cp.setTitle("Pick a Color!");
+				cp.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+						MainActivity.updateColor(index, prevColor, cp.getColor());
+					}
+					
+				});
+				cp.show();
+				
+				Toast.makeText(context, "Color: " + cp.getColor(), Toast.LENGTH_SHORT).show();
+			}
+		});
 		
 		return row;		
 	}
 	
 	public String timePicker() {
 		String time = null;
-		
 		
 		return time;
 	}
@@ -120,6 +120,7 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 		TextView G;
 		TextView B;
 		TextView L;
+		TextView T;
 		Button btnColor;
 		Button btnTime;
 	}

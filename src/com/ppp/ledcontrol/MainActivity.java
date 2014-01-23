@@ -1,6 +1,7 @@
 package com.ppp.ledcontrol;
 
 import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -8,6 +9,8 @@ import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -21,12 +24,15 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+
+import com.ppp.ledcontrol.colorAdapter.ColorHolder;
 
 
 
@@ -39,9 +45,9 @@ public class MainActivity extends Activity implements OnClickListener {
     private CharSequence mTitle;
     private String[] navMenuTitles;
     
-    public ListView listView;
+    public static ListView listView;
     public colorAdapter colorAdapter;
-    public ArrayList<SingleColor> colorArray = new ArrayList<SingleColor>();
+    public static ArrayList<SingleColor> colorArray;
     //private int keyframeCount = 0; 
 	
     private Management m;
@@ -59,11 +65,11 @@ public class MainActivity extends Activity implements OnClickListener {
     }
     
 	private void initList() {
+		colorArray = new ArrayList<SingleColor>();
 		for (int i = 0; i < 5; i++)
 		{
-			colorArray.add(i, new SingleColor(i*50, i*50, i*50, 255-(i*50), 255));
+			colorArray.add(i, new SingleColor(i*50, i*50, i*50, 0, 255));
 		}
-		
 		// Define a new Adapter
 		colorAdapter = new colorAdapter(this, R.layout.row, colorArray);
         
@@ -71,17 +77,54 @@ public class MainActivity extends Activity implements OnClickListener {
         listView.setItemsCanFocus(false);
         listView.setAdapter(colorAdapter); 
         listView.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-               int position, long id) {
-            	Log.i("List View Clicked", "**********");
-                Toast.makeText(MainActivity.this,
-                  "List View Clicked: " + position, Toast.LENGTH_SHORT)
-                  .show();
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "List View Clicked: " + position, Toast.LENGTH_SHORT).show();
             }
-        }); 
-        
+        });
         colorAdapter.insert(new SingleColor(255, 255, 255, 255, 255), 0);
 	}   
+	
+	@SuppressLint("CutPasteId")
+	public static void updateColor(int index, int prevColor, int newColor){
+	    View row = listView.getChildAt(index - listView.getFirstVisiblePosition());
+	    ColorHolder holder = (ColorHolder) row.getTag();
+	    
+		holder.btnColor = (Button) row.findViewById(R.id.btnColor);
+		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
+	    holder.R = (TextView) row.findViewById(R.id.textViewR);
+		holder.G = (TextView) row.findViewById(R.id.textViewG);
+		holder.B = (TextView) row.findViewById(R.id.textViewB);
+		holder.L = (TextView) row.findViewById(R.id.textViewL);
+		holder.T = (TextView) row.findViewById(R.id.textViewT);
+	    colorArray.get(index).colorFill(newColor);
+	    SingleColor color = colorArray.get(index);
+		holder.R.setText(String.valueOf(color.getR()));
+		holder.G.setText(String.valueOf(color.getG()));
+		holder.B.setText(String.valueOf(color.getB()));
+		holder.L.setText(String.valueOf(color.getL()));
+		holder.T.setText(String.valueOf(color.getT()));
+	    holder.btnColor.setBackgroundColor(newColor);
+	    
+	    if (index > 1) {
+	    	prevColor = colorArray.get(index - 1).getColor();
+	    }
+	    if (index < (colorArray.size()-1)) {
+	    	row = listView.getChildAt(index - listView.getFirstVisiblePosition() + 1);
+	    	Button btnNextTime = (Button) row.findViewById(R.id.btnTime);
+	    	int nextColor = colorArray.get(index + 1).getColor();
+	    	GradientDrawable gd = new GradientDrawable(
+		            GradientDrawable.Orientation.TOP_BOTTOM,
+		            new int[] {newColor, nextColor});
+		    gd.setCornerRadius(0f);
+		    btnNextTime.setBackground(gd);
+	    }
+	    	    
+	    GradientDrawable gd = new GradientDrawable(
+	            GradientDrawable.Orientation.TOP_BOTTOM,
+	            new int[] {prevColor, newColor});
+	    gd.setCornerRadius(0f);
+	    holder.btnTime.setBackground(gd);
+	}
 	
 	private void initDrawer() {
         navMenuTitles = getResources().getStringArray(R.array.drawer_array);
@@ -176,39 +219,18 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClickColorPickerDialog(MenuItem item) {
 		//The color picker menu item as been clicked. Show 
 		//a dialog using the custom ColorPickerDialog class.
-		
-		final SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-		int initialValue = prefs.getInt("color_2", 0xFF000000);
-		
-		Log.d("mColorPicker", "initial value:" + initialValue);
-				
-		final ColorPickerDialog colorDialog = new ColorPickerDialog(this, initialValue);
-		
-		colorDialog.setAlphaSliderVisible(true);
-		colorDialog.setTitle("Pick a Color!");
-		
-		colorDialog.setButton(DialogInterface.BUTTON_POSITIVE, getString(android.R.string.ok), new DialogInterface.OnClickListener() {
-			
-			@Override
+		final ColorPickerDialog cp = new ColorPickerDialog(this, Color.MAGENTA);
+		cp.setAlphaSliderVisible(true);
+		cp.setTitle("Pick a Color!");
+		cp.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int which) {
-				Toast.makeText(MainActivity.this, "Selected Color: " + colorDialog.getColor(), Toast.LENGTH_LONG).show();
-							
-				//Save the value in our preferences.
-				SharedPreferences.Editor editor = prefs.edit();
-				editor.putInt("color_2", colorDialog.getColor());
-				editor.commit();
+				//MainActivity.updateColor(index, prevColor, cp.getColor());
+				SingleColor temp = new SingleColor(255, 255, 255, 255, 255);
+				temp.colorFill(cp.getColor());
+				colorArray.add(temp);
 			}
 		});
-		
-		colorDialog.setButton(DialogInterface.BUTTON_NEGATIVE, getString(android.R.string.cancel), new DialogInterface.OnClickListener() {
-			
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				//Nothing to do here.
-			}
-		});
-		
-		colorDialog.show();
+		cp.show();
 	}
 
 	protected void onPostCreate(Bundle savedInstanceState) {
