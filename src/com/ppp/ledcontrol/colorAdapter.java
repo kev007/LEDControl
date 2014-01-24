@@ -52,7 +52,7 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 			holder = (ColorHolder) row.getTag();
 		}
 		final SingleColor color = colorArray.get(position);
-		//Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
+		Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
 				
 		holder.R.setText(String.valueOf(color.getR()));
 		holder.G.setText(String.valueOf(color.getG()));
@@ -71,8 +71,9 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 		}
 		holder.btnTime.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-				String time = timePicker();
-				//holder.btnTime.setText(time);
+				
+				
+				
 				Toast.makeText(context, "Edit Time button Clicked",
 				Toast.LENGTH_SHORT).show();
 			}
@@ -83,10 +84,10 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 	    gd.setCornerRadius(0f);
 	    holder.btnTime.setBackground(gd);
 //	    holder.btnTime.setScaleY(8);
-	    if (position == 0) {
-	    	holder.btnTime.setScaleX(0);
-	    	holder.btnTime.setScaleY(0);
-	    	holder.btnTime.setHeight(0);
+	    if (index == 0) {
+	    	holder.btnTime.setScaleX((float) 0.2);
+	    	holder.btnTime.setScaleY((float) 0.2);
+	    	holder.btnTime.setHeight(110);
 	    }
 	    final int prevColor = previousColor;
 	    holder.btnColor.setOnClickListener(new OnClickListener() {

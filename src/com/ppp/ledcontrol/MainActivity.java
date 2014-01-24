@@ -7,12 +7,10 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -48,7 +46,7 @@ public class MainActivity extends Activity implements OnClickListener {
     public static ListView listView;
     public colorAdapter colorAdapter;
     public static ArrayList<SingleColor> colorArray;
-    //private int keyframeCount = 0; 
+    public int keyframeCount = 0; 
 	
     private Management m;
 
@@ -68,7 +66,8 @@ public class MainActivity extends Activity implements OnClickListener {
 		colorArray = new ArrayList<SingleColor>();
 		for (int i = 0; i < 5; i++)
 		{
-			colorArray.add(i, new SingleColor(i*50, i*50, i*50, 0, 255));
+			colorArray.add(keyframeCount, new SingleColor(i*50, i*50, i*50, 0, 255));
+			keyframeCount++;
 		}
 		// Define a new Adapter
 		colorAdapter = new colorAdapter(this, R.layout.row, colorArray);
@@ -81,7 +80,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 Toast.makeText(MainActivity.this, "List View Clicked: " + position, Toast.LENGTH_SHORT).show();
             }
         });
-        colorAdapter.insert(new SingleColor(255, 255, 255, 255, 255), 0);
+//        colorAdapter.insert(new SingleColor(255, 255, 255, 255, 255), 0);
 	}   
 	
 	@SuppressLint("CutPasteId")
@@ -229,7 +228,8 @@ public class MainActivity extends Activity implements OnClickListener {
 				//MainActivity.updateColor(index, prevColor, cp.getColor());
 				SingleColor temp = new SingleColor(255, 255, 255, 255, 255);
 				temp.colorFill(cp.getColor());
-				colorArray.add(temp);
+				colorArray.add(colorArray.size(), temp);
+				keyframeCount++;
 				listView.invalidateViews();
 			}
 		});
