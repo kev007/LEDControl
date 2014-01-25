@@ -16,7 +16,7 @@ public final class R {
 		public static final int showSelectedColorInList = 0x7f010001;
 	}
 	public static final class drawable {
-		public static final int icon = 0x7f020007;
+		public static final int icon = 0x7f020005;
 	}
 	public static final class id {
 		public static final int color_panel_new = 0x7f050002;
@@ -28,7 +28,7 @@ public final class R {
 	}
 	public static final class layout {
 		public static final int dialog_color_picker = 0x7f030001;
-		public static final int preference_preview_layout = 0x7f030005;
+		public static final int preference_preview_layout = 0x7f030004;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f060000;
@@ -37,7 +37,7 @@ public final class R {
 		public static final int dialog_color_pciker_view_portrait = 0x7f070000;
 	}
 	public static final class styleable {
-		public static final int[] ColorPickerPreference = { 0x7f010000, 0x7f010001, 0x7f010006, 0x7f010007, 0x7f010008 };
+		public static final int[] ColorPickerPreference = { 0x7f010000, 0x7f010001 };
 		public static final int ColorPickerPreference_showDialogTitle = 0;
 		public static final int ColorPickerPreference_showSelectedColorInList = 1;
 		public static final int[] ColorPickerView = { 0x7f010002, 0x7f010003, 0x7f010004, 0x7f010005 };

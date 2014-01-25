@@ -52,7 +52,7 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 			holder = (ColorHolder) row.getTag();
 		}
 		final SingleColor color = colorArray.get(position);
-		Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
+		//Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
 				
 		holder.R.setText(String.valueOf(color.getR()));
 		holder.G.setText(String.valueOf(color.getG()));

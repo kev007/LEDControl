@@ -9,9 +9,7 @@ package com.ppp.ledcontrol;
 
 public final class R {
     public static final class array {
-        public static final int default_color_choice_values=0x7f090000;
-        public static final int drawer_array=0x7f090002;
-        public static final int homescreen_color_choice_values=0x7f090001;
+        public static final int drawer_array=0x7f090000;
     }
     public static final class attr {
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -24,26 +22,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
          */
         public static final int alphaChannelVisible=0x7f010002;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int cal_choices=0x7f010007;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int cal_itemLayout=0x7f010006;
-        /** <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int cal_numColumns=0x7f010008;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int choices=0x7f01000a;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
@@ -56,18 +34,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
         public static final int colorPickerSliderColor=0x7f010004;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int itemLayout=0x7f010009;
-        /** <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int numColumns=0x7f01000b;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
@@ -85,92 +51,72 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f080005;
-        public static final int activity_vertical_margin=0x7f080006;
-        public static final int color_swatch_large=0x7f080000;
-        public static final int color_swatch_margins_large=0x7f080002;
-        public static final int color_swatch_margins_small=0x7f080003;
-        public static final int color_swatch_small=0x7f080001;
+        public static final int activity_horizontal_margin=0x7f080001;
+        public static final int activity_vertical_margin=0x7f080002;
         /**  Default screen margins, per the Android Design guidelines. 
          */
-        public static final int text_size_medium=0x7f080004;
+        public static final int text_size_medium=0x7f080000;
     }
     public static final class drawable {
-        public static final int calendar_color_picker_swatch=0x7f020000;
-        public static final int calendar_color_square=0x7f020001;
-        public static final int ic_colorpicker_swatch_selected=0x7f020002;
-        public static final int ic_drawer=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int ic_menu_color_palette=0x7f020005;
-        public static final int ic_menu_color_palette_holo_light=0x7f020006;
-        public static final int icon=0x7f020007;
+        public static final int ic_colorpicker_swatch_selected=0x7f020000;
+        public static final int ic_drawer=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int ic_menu_color_palette=0x7f020003;
+        public static final int ic_menu_color_palette_holo_light=0x7f020004;
+        public static final int icon=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f050018;
-        public static final int add=0x7f050017;
-        public static final int broadcast=0x7f05001a;
-        public static final int btnColor=0x7f050015;
-        public static final int btnTime=0x7f050014;
+        public static final int action_settings=0x7f050014;
+        public static final int add=0x7f050013;
+        public static final int broadcast=0x7f050016;
+        public static final int btnColor=0x7f050011;
+        public static final int btnTime=0x7f050010;
         public static final int color_panel_new=0x7f050002;
         public static final int color_panel_old=0x7f050001;
         public static final int color_picker_view=0x7f050000;
         public static final int content_frame=0x7f050006;
         public static final int dialog_color_picker_extra_layout_landscape=0x7f050004;
         public static final int drawer_layout=0x7f050005;
-        public static final int getProfiles=0x7f050019;
-        public static final int hex_val=0x7f05000c;
+        public static final int getProfiles=0x7f050015;
         public static final int layout1=0x7f05000a;
         public static final int left_drawer=0x7f050008;
         public static final int listView=0x7f050007;
-        public static final int menu_color_picker_dialog=0x7f050016;
-        public static final int new_color_panel=0x7f05000e;
-        public static final int old_color_panel=0x7f05000d;
+        public static final int menu_color_picker_dialog=0x7f050012;
         public static final int preference_preview_color_panel=0x7f050003;
         public static final int right_drawer=0x7f050009;
-        public static final int textViewB=0x7f050011;
-        public static final int textViewG=0x7f050010;
-        public static final int textViewL=0x7f050012;
-        public static final int textViewR=0x7f05000f;
-        public static final int textViewT=0x7f050013;
-        public static final int text_hex_wrapper=0x7f05000b;
+        public static final int textViewB=0x7f05000d;
+        public static final int textViewG=0x7f05000c;
+        public static final int textViewL=0x7f05000e;
+        public static final int textViewR=0x7f05000b;
+        public static final int textViewT=0x7f05000f;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int dialog_color_picker=0x7f030001;
-        public static final int dialog_color_picker_old=0x7f030002;
-        public static final int drawer_item_list=0x7f030003;
-        public static final int fragment_item=0x7f030004;
-        public static final int preference_preview_layout=0x7f030005;
-        public static final int row=0x7f030006;
+        public static final int drawer_item_list=0x7f030002;
+        public static final int fragment_item=0x7f030003;
+        public static final int preference_preview_layout=0x7f030004;
+        public static final int row=0x7f030005;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f060004;
-        public static final int add=0x7f06000c;
+        public static final int action_settings=0x7f060001;
+        public static final int add=0x7f060009;
         public static final int app_name=0x7f060000;
-        /**  Default title for color picker dialog [CHAR LIMIT=30] 
-         */
-        public static final int color_picker_default_title=0x7f060001;
-        /**  Content description for a color square. 
-         */
-        public static final int color_swatch_description=0x7f060002;
-        /**  Content description for a selected color square. 
-         */
-        public static final int color_swatch_description_selected=0x7f060003;
-        public static final int drawer_close=0x7f06000f;
-        public static final int drawer_open=0x7f06000e;
-        public static final int getProfiles=0x7f06000d;
+        public static final int drawer_close=0x7f06000c;
+        public static final int drawer_open=0x7f06000b;
+        public static final int getProfiles=0x7f06000a;
         /**  App 
          */
-        public static final int hello=0x7f06000b;
-        public static final int hello_world=0x7f060005;
-        public static final int home_screen=0x7f060006;
-        public static final int press_color_to_apply=0x7f06000a;
-        public static final int settings_bg_color_confirm=0x7f060008;
-        public static final int settings_bg_color_dialog=0x7f060007;
-        public static final int settings_default_color_confirm=0x7f060009;
+        public static final int hello=0x7f060008;
+        public static final int hello_world=0x7f060002;
+        public static final int home_screen=0x7f060003;
+        public static final int press_color_to_apply=0x7f060007;
+        public static final int settings_bg_color_confirm=0x7f060005;
+        public static final int settings_bg_color_dialog=0x7f060004;
+        public static final int settings_default_color_confirm=0x7f060006;
     }
     public static final class style {
         /** 
@@ -211,56 +157,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ColorPickerPreference_cal_choices com.ppp.ledcontrol:cal_choices}</code></td><td></td></tr>
-           <tr><td><code>{@link #ColorPickerPreference_cal_itemLayout com.ppp.ledcontrol:cal_itemLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #ColorPickerPreference_cal_numColumns com.ppp.ledcontrol:cal_numColumns}</code></td><td></td></tr>
            <tr><td><code>{@link #ColorPickerPreference_showDialogTitle com.ppp.ledcontrol:showDialogTitle}</code></td><td></td></tr>
            <tr><td><code>{@link #ColorPickerPreference_showSelectedColorInList com.ppp.ledcontrol:showSelectedColorInList}</code></td><td></td></tr>
            </table>
-           @see #ColorPickerPreference_cal_choices
-           @see #ColorPickerPreference_cal_itemLayout
-           @see #ColorPickerPreference_cal_numColumns
            @see #ColorPickerPreference_showDialogTitle
            @see #ColorPickerPreference_showSelectedColorInList
          */
         public static final int[] ColorPickerPreference = {
-            0x7f010000, 0x7f010001, 0x7f010006, 0x7f010007,
-            0x7f010008
+            0x7f010000, 0x7f010001
         };
-        /**
-          <p>This symbol is the offset where the {@link com.ppp.ledcontrol.R.attr#cal_choices}
-          attribute's value can be found in the {@link #ColorPickerPreference} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.ppp.ledcontrol:cal_choices
-        */
-        public static final int ColorPickerPreference_cal_choices = 3;
-        /**
-          <p>This symbol is the offset where the {@link com.ppp.ledcontrol.R.attr#cal_itemLayout}
-          attribute's value can be found in the {@link #ColorPickerPreference} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.ppp.ledcontrol:cal_itemLayout
-        */
-        public static final int ColorPickerPreference_cal_itemLayout = 2;
-        /**
-          <p>This symbol is the offset where the {@link com.ppp.ledcontrol.R.attr#cal_numColumns}
-          attribute's value can be found in the {@link #ColorPickerPreference} array.
-
-
-          <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.ppp.ledcontrol:cal_numColumns
-        */
-        public static final int ColorPickerPreference_cal_numColumns = 4;
         /**
           <p>This symbol is the offset where the {@link com.ppp.ledcontrol.R.attr#showDialogTitle}
           attribute's value can be found in the {@link #ColorPickerPreference} array.
@@ -348,56 +253,5 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           @attr name com.ppp.ledcontrol:colorPickerSliderColor
         */
         public static final int ColorPickerView_colorPickerSliderColor = 2;
-        /** Attributes that can be used with a ColorPreference.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #ColorPreference_choices com.ppp.ledcontrol:choices}</code></td><td></td></tr>
-           <tr><td><code>{@link #ColorPreference_itemLayout com.ppp.ledcontrol:itemLayout}</code></td><td></td></tr>
-           <tr><td><code>{@link #ColorPreference_numColumns com.ppp.ledcontrol:numColumns}</code></td><td></td></tr>
-           </table>
-           @see #ColorPreference_choices
-           @see #ColorPreference_itemLayout
-           @see #ColorPreference_numColumns
-         */
-        public static final int[] ColorPreference = {
-            0x7f010009, 0x7f01000a, 0x7f01000b
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.ppp.ledcontrol.R.attr#choices}
-          attribute's value can be found in the {@link #ColorPreference} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.ppp.ledcontrol:choices
-        */
-        public static final int ColorPreference_choices = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.ppp.ledcontrol.R.attr#itemLayout}
-          attribute's value can be found in the {@link #ColorPreference} array.
-
-
-          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-          @attr name com.ppp.ledcontrol:itemLayout
-        */
-        public static final int ColorPreference_itemLayout = 0;
-        /**
-          <p>This symbol is the offset where the {@link com.ppp.ledcontrol.R.attr#numColumns}
-          attribute's value can be found in the {@link #ColorPreference} array.
-
-
-          <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.ppp.ledcontrol:numColumns
-        */
-        public static final int ColorPreference_numColumns = 2;
     };
 }
