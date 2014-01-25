@@ -7,19 +7,20 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 
+import com.ppp.ledcontrol.Container;
 
 
 public class Management
 {
 		//Konstanten
-		int zielport = 5000;
+		private int [] portVector = {2797,8167,4603,11173,21121};	//Portvektor für Portauswahl
+		private int finalPort=0;
 		int quellport = 0;
 		InetAddress address = null;
 		InetAddress broad = null;
 		DatagramSocket socket = null;
 		ClientTransmitThread cTT =  null;
 		ClientReceiveThread cRT =  null;
-		//Window w = null;
 		
 		//Konstruktor
 		public Management(InetAddress broad_address, int quellport)
@@ -44,6 +45,7 @@ public class Management
 		//Senden eines Containers
 		public void sendPackage(Container co)
 		{
+				//Notwendig für die Rückgabe
 				try 
 				{
 						//Falls vorhanden IP Adresse ansonst Broadcast
@@ -66,15 +68,31 @@ public class Management
 						//Umwandlung byte[]
 						byte[] buffer = baos.toByteArray();	
 	
-						//ï¿½bergabe an ClienttrasmitThread
-						cTT= new ClientTransmitThread(socket,inet_address,zielport,buffer);
-						cTT.start();
-						//Warte auf Packet (ClienteceiveThread)
-						if(cRT == null)
+						//Übergabe an ClienttrasmitThread
+						if (finalPort == 0)
 						{
-								cRT = new ClientReceiveThread(socket,this);
-								cRT.start();
+							for(int port : portVector)
+							{
+									cTT= new ClientTransmitThread(socket,inet_address,port,buffer);
+									cTT.start();
+									//Warte auf Packet (ClienteceiveThread)
+									if(cRT == null)
+									{
+											cRT = new ClientReceiveThread(socket,this);
+											cRT.start();
+									}
+							}
+						} else {
+							cTT= new ClientTransmitThread(socket,inet_address,finalPort,buffer);
+							cTT.start();
+							//Warte auf Packet (ClienteceiveThread)
+							if(cRT == null)
+							{
+									cRT = new ClientReceiveThread(socket,this);
+									cRT.start();
+							}
 						}
+
 				}
 				catch (IOException e2)
 				{
@@ -85,8 +103,7 @@ public class Management
 		public void detectedServer(InetAddress address, int port)
 		{
 				this.address = address;
-				this.zielport = port;
-				//w.setLabelAddress(address + " : " + port);
+				this.finalPort = port;
 		}
 		public void changePort(int port)
 		{

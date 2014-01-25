@@ -18,13 +18,13 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class colorAdapter extends ArrayAdapter<SingleColor>{
+public class ColorAdapter extends ArrayAdapter<SingleColor>{
 	Context context;
 	int layoutResourceId;
 	ArrayList<SingleColor> colorArray = new ArrayList<SingleColor>();
 	//ColorHolder[] holderArray;
 
-	public colorAdapter(Context context, int layoutResourceId, ArrayList<SingleColor> colorArray) {
+	public ColorAdapter(Context context, int layoutResourceId, ArrayList<SingleColor> colorArray) {
 		super(context, layoutResourceId, colorArray);
 		this.layoutResourceId = layoutResourceId;
 		this.context = context;
@@ -35,7 +35,7 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View row = convertView;
 		ColorHolder holder = null;
-		
+				
 		if (row == null) {
 			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
 			row = inflater.inflate(layoutResourceId, parent, false);
@@ -52,6 +52,7 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 			holder = (ColorHolder) row.getTag();
 		}
 		final SingleColor color = colorArray.get(position);
+		Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
 				
 		holder.R.setText(String.valueOf(color.getR()));
 		holder.G.setText(String.valueOf(color.getG()));
@@ -59,6 +60,7 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 		holder.L.setText(String.valueOf(color.getL()));
 		holder.T.setText(String.valueOf(color.getT()));
 		final int currentColor = color.getColor();
+		final int index = position;
 
 		holder.btnColor.setBackgroundColor(currentColor);
 		
@@ -69,7 +71,8 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 		}
 		holder.btnTime.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
-//				timePicker();
+				
+				
 				
 				Toast.makeText(context, "Edit Time button Clicked",
 				Toast.LENGTH_SHORT).show();
@@ -80,15 +83,13 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 	            new int[] {previousColor, currentColor});
 	    gd.setCornerRadius(0f);
 	    holder.btnTime.setBackground(gd);
-	    /*
-	    if (position == 0) {
+//	    holder.btnTime.setScaleY(8);
+	    if (index == 0) {
 	    	holder.btnTime.setScaleX((float) 0.2);
 	    	holder.btnTime.setScaleY((float) 0.2);
 	    	holder.btnTime.setHeight(110);
 	    }
-	    */
 	    final int prevColor = previousColor;
-	    final int index = position;
 	    holder.btnColor.setOnClickListener(new OnClickListener() {
 			public void onClick(View v) {
 				final ColorPickerDialog cp = new ColorPickerDialog(context, color.getColor());
@@ -97,7 +98,6 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 				cp.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						MainActivity.updateColor(index, prevColor, cp.getColor());
-//						MainActivity.updateRow(this, prevColor, cp.getColor());
 					}
 					
 				});
@@ -106,14 +106,14 @@ public class colorAdapter extends ArrayAdapter<SingleColor>{
 				Toast.makeText(context, "Color: " + cp.getColor(), Toast.LENGTH_SHORT).show();
 			}
 		});
-	    
+		
 		return row;		
 	}
 	
-	public void timePicker() {
-//		String time = null;
-
-//		holder.T.setText(time);
+	public String timePicker() {
+		String time = null;
+		
+		return time;
 	}
 	
 	static class ColorHolder {

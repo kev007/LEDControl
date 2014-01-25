@@ -48,6 +48,16 @@ public class ClientReceiveThread extends Thread
 						    			//Aktulaisieren des Management
 						    			m.detectedServer(packet.getAddress(), packet.getPort());	
 						    	}
+						    	
+						    	//Container Modus 2 (Get Modus)
+						    	if(c1.getModus() == 2)
+						    	{
+						    			MainActivity.saveSetting(c1);
+						    			System.out.println("Container: " + c1.getName());
+						    			
+						    			MainActivity.loadContainers();
+						    	}
+						    	
 				    	} 
 				    	catch (IOException e)
 				    	{

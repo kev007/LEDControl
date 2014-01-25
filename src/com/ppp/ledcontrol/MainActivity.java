@@ -3,9 +3,11 @@ package com.ppp.ledcontrol;
 import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -14,53 +16,76 @@ import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Vector;
 
-import com.ppp.ledcontrol.colorAdapter.ColorHolder;
-
-
+import com.ppp.ledcontrol.ColorAdapter.ColorHolder;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
+	private ListView mDrawerList;
+	static ListView mDrawerList2;
     private ActionBarDrawerToggle mDrawerToggle;
 
     //private CharSequence mDrawerTitle = "Menu";
     private CharSequence mTitle;
     private String[] navMenuTitles;
+    public static String[] navMenuTitles2;
     
     public static ListView listView;
-    public colorAdapter colorAdapter;
+    public static ColorAdapter colorAdapter;
     public static ArrayList<SingleColor> colorArray;
     public int keyframeCount = 0; 
 	
     private Management m;
+	private static String speicherort;
+	private static Vector <Container> vector;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        speicherort = getFilesDir().getAbsolutePath() + File.separator ;
+        vector = new Vector<Container>();
+  
+//        Container c = new Container(2, "tempcont", null, false, null, false, null, false, null, false, null, false);
+//        saveSetting(c);
+        		
         initDrawer();
-
+        
       	initList();
       	
       	createManagement();
         sendBroadcast();
     }
+    
 
 	private void initList() {
 		colorArray = new ArrayList<SingleColor>();
@@ -70,7 +95,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			keyframeCount++;
 		}
 		// Define a new Adapter
-		colorAdapter = new colorAdapter(this, R.layout.row, colorArray);
+		colorAdapter = new ColorAdapter(this, R.layout.row, colorArray);
         
         listView = (ListView) findViewById(R.id.listView);
         listView.setItemsCanFocus(false);
@@ -80,12 +105,11 @@ public class MainActivity extends Activity implements OnClickListener {
                 Toast.makeText(MainActivity.this, "List View Clicked: " + position, Toast.LENGTH_SHORT).show();
             }
         });
-        
+//        colorAdapter.insert(new SingleColor(255, 255, 255, 255, 255), 0);
 	}   
 	
 	@SuppressLint("CutPasteId")
 	public static void updateColor(int index, int prevColor, int newColor){
-		
 	    View row = listView.getChildAt(index - listView.getFirstVisiblePosition());
 	    ColorHolder holder = (ColorHolder) row.getTag();
 	    
@@ -125,18 +149,23 @@ public class MainActivity extends Activity implements OnClickListener {
 	    gd.setCornerRadius(0f);
 	    holder.btnTime.setBackground(gd);
 	    
-	    
-        row = listView.getChildAt(0);
-        holder.btnColor = (Button) row.findViewById(R.id.btnColor);
-        holder.btnColor.setBackgroundColor(Color.GREEN);
+	    //listView.invalidateViews();
+//	    listView.invalidate();
+//	    colorAdapter.notifyDataSetChanged();
 	}
 	
 	private void initDrawer() {
+		loadContainers();
+		
         navMenuTitles = getResources().getStringArray(R.array.drawer_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerList2 = (ListView) findViewById(R.id.right_drawer);
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_item_list, navMenuTitles));
+        mDrawerList2.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_item_list, navMenuTitles2));
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        mDrawerList2.setOnItemClickListener(new DrawerItemClickListener());
+        mDrawerList2.setOnItemLongClickListener(new DrawerItemClickListener());
         
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
@@ -158,10 +187,9 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-		
 	}
-	
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+
+	private class DrawerItemClickListener implements ListView.OnItemClickListener, ListView.OnItemLongClickListener {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
         {
         	String[] menuItems = getResources().getStringArray(R.array.drawer_array);
@@ -185,11 +213,22 @@ public class MainActivity extends Activity implements OnClickListener {
             getActionBar().setTitle(mTitle);
             Toast.makeText(MainActivity.this, ((TextView)view).getText(), Toast.LENGTH_SHORT).show();
         }
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) 
+        {
+            final int index = position;
+            deleteContainer(navMenuTitles2[index]);
+//            Toast.makeText(MainActivity.this, "Delete?:  " + navMenuTitles2[index], Toast.LENGTH_SHORT).show();
+        	loadContainers();
+//        	((ArrayAdapter<String>) mDrawerList2.getAdapter()).notifyDataSetChanged();
+			return true;
+        }
     }
     
     public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.main, menu);
+
+      	initDrawer();
 	    return super.onCreateOptionsMenu(menu);
     }
     
@@ -213,6 +252,15 @@ public class MainActivity extends Activity implements OnClickListener {
 			return true;
        case R.id.action_settings:
     	   Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+    	   return true;
+       case R.id.broadcast:
+       		sendBroadcast();
+       return true;
+       case R.id.getProfiles:
+    	   m.sendPackage(new Container(3));
+
+
+    	   return true;
        case R.id.add:
     	   Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
     	   onClickColorPickerDialog(item);
@@ -235,6 +283,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				colorArray.add(colorArray.size(), temp);
 				keyframeCount++;
 				listView.invalidateViews();
+				//colorAdapter.notifyDataSetChanged();
 			}
 		});
 		cp.show();
@@ -249,7 +298,7 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }    
-    /*
+    
     private void selectItem(int position) {
             
             Fragment fragment = new MenuFragment();
@@ -289,7 +338,112 @@ public class MainActivity extends Activity implements OnClickListener {
             //getActivity().setTitle(fragment);
             return rootView;
         }
-    }*/
+    }
+
+	//Speichert einen Zustand am angegebene Speicherort
+	public static void saveSetting(Container c_save)
+	{
+			File file = new File(speicherort + c_save.getName() + ".ser");
+			try {
+				file.createNewFile();
+				FileOutputStream fos = new FileOutputStream(file);
+				ObjectOutputStream os = new ObjectOutputStream(fos);
+				os.writeObject(c_save);
+				os.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+	
+	public void deleteContainer(final String name)
+	{
+      //Erstellen des Alertdialoges
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+		alertDialogBuilder.setTitle("Delete");
+		
+		alertDialogBuilder
+		.setMessage("Do you really want to delete " + name + " ?")
+		.setCancelable(false)
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+		{
+				//Funktion bei "Ja"
+				public void onClick(DialogInterface dialog,int id)
+				{
+					File file = new File(speicherort + name + ".ser");
+					if(file.exists())
+					{
+						 	System.out.println(name + " deleted");
+						 	System.gc();
+						 	file.delete();
+						 	
+
+					    	initDrawer();
+					}
+				}
+		  })
+		.setNegativeButton("No", new DialogInterface.OnClickListener()
+		{
+				//Funktion bei "Nein"
+				public void onClick(DialogInterface dialog,int id)
+				{
+						dialog.cancel();
+				}
+		});
+		
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
+		
+
+	}
+	
+	public void deleteAllContainers()
+	{
+			File file = new File(speicherort);
+//			System.out.println("PFAD: " + file.getAbsolutePath());
+			for (File temp_file : file.listFiles())
+			{
+			     	if (temp_file.toString().endsWith(".ser"))
+			     	{
+			     			temp_file.delete();
+			     	}
+			}
+	}
+	
+	//Dateien einlesen und ContainerVektor zurückgeben
+	public static Vector <Container> loadDir()
+	{
+			Vector <Container> vector = new Vector<Container>();
+			FileInputStream fis;
+			File [] liste = new File(speicherort).listFiles();
+			for(File temp : liste)
+			{
+					try
+					{
+						fis = new FileInputStream(temp);
+					
+						ObjectInputStream is = new ObjectInputStream(fis);
+						Container c = (Container) is.readObject();
+						vector.add(c);
+						is.close();
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (StreamCorruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ClassNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+			}
+			System.out.println("V: " + vector.size());
+			return vector;
+	}
+    
     
     private void sendBroadcast() {
             m.sendPackage(m.createZeroContainer());
@@ -314,5 +468,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public static void loadContainers() {
+		vector = loadDir();
+		navMenuTitles2 = new String[vector.size()];
+		for (int i=0; i < vector.size(); i++)
+		{
+			navMenuTitles2[i] = vector.get(i).getName();	
+		}
 	}  
 }
