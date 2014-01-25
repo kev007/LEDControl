@@ -61,7 +61,7 @@ public class MainActivity extends Activity implements OnClickListener {
       	createManagement();
         sendBroadcast();
     }
-    
+
 	private void initList() {
 		colorArray = new ArrayList<SingleColor>();
 		for (int i = 0; i < 5; i++)
@@ -80,11 +80,12 @@ public class MainActivity extends Activity implements OnClickListener {
                 Toast.makeText(MainActivity.this, "List View Clicked: " + position, Toast.LENGTH_SHORT).show();
             }
         });
-//        colorAdapter.insert(new SingleColor(255, 255, 255, 255, 255), 0);
+        
 	}   
 	
 	@SuppressLint("CutPasteId")
 	public static void updateColor(int index, int prevColor, int newColor){
+		
 	    View row = listView.getChildAt(index - listView.getFirstVisiblePosition());
 	    ColorHolder holder = (ColorHolder) row.getTag();
 	    
@@ -124,7 +125,10 @@ public class MainActivity extends Activity implements OnClickListener {
 	    gd.setCornerRadius(0f);
 	    holder.btnTime.setBackground(gd);
 	    
-	    listView.invalidateViews();
+	    
+        row = listView.getChildAt(0);
+        holder.btnColor = (Button) row.findViewById(R.id.btnColor);
+        holder.btnColor.setBackgroundColor(Color.GREEN);
 	}
 	
 	private void initDrawer() {
