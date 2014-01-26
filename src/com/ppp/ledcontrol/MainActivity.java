@@ -7,7 +7,6 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -23,11 +22,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -63,7 +60,6 @@ public class MainActivity extends Activity implements OnClickListener {
     public static ListView listView;
     public static ColorAdapter colorAdapter;
     public static ArrayList<SingleColor> colorArray;
-    public int keyframeCount = 0; 
 	
     private Management m;
 	private static String speicherort;
@@ -75,8 +71,8 @@ public class MainActivity extends Activity implements OnClickListener {
         speicherort = getFilesDir().getAbsolutePath() + File.separator ;
         vector = new Vector<Container>();
   
-//        Container c = new Container(2, "tempcont", null, false, null, false, null, false, null, false, null, false);
-//        saveSetting(c);
+//      Container c = new Container(2, "tempcont", null, false, null, false, null, false, null, false, null, false);
+//      saveSetting(c);
         		
         initDrawer();
         
@@ -89,11 +85,7 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	private void initList() {
 		colorArray = new ArrayList<SingleColor>();
-		for (int i = 0; i < 5; i++)
-		{
-			colorArray.add(keyframeCount, new SingleColor(i*50, i*50, i*50, 0, 255));
-			keyframeCount++;
-		}
+		
 		// Define a new Adapter
 		colorAdapter = new ColorAdapter(this, R.layout.row, colorArray);
         
@@ -105,7 +97,13 @@ public class MainActivity extends Activity implements OnClickListener {
                 Toast.makeText(MainActivity.this, "List View Clicked: " + position, Toast.LENGTH_SHORT).show();
             }
         });
-//        colorAdapter.insert(new SingleColor(255, 255, 255, 255, 255), 0);
+        
+        for (int i = 0; i < 22; i++)
+		{
+			colorArray.add(colorArray.size(), new SingleColor(i*75, i*25, i*-50, 0, 255));
+		}
+        
+        
 	}   
 	
 	@SuppressLint("CutPasteId")
@@ -115,23 +113,19 @@ public class MainActivity extends Activity implements OnClickListener {
 	    
 		holder.btnColor = (Button) row.findViewById(R.id.btnColor);
 		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
-	    holder.R = (TextView) row.findViewById(R.id.textViewR);
-		holder.G = (TextView) row.findViewById(R.id.textViewG);
-		holder.B = (TextView) row.findViewById(R.id.textViewB);
-		holder.L = (TextView) row.findViewById(R.id.textViewL);
+//	    holder.R = (TextView) row.findViewById(R.id.textViewR);
+//		holder.G = (TextView) row.findViewById(R.id.textViewG);
+//		holder.B = (TextView) row.findViewById(R.id.textViewB);
+//		holder.L = (TextView) row.findViewById(R.id.textViewL);
 		holder.T = (TextView) row.findViewById(R.id.textViewT);
 	    colorArray.get(index).colorFill(newColor);
 	    SingleColor color = colorArray.get(index);
-		holder.R.setText(String.valueOf(color.getR()));
-		holder.G.setText(String.valueOf(color.getG()));
-		holder.B.setText(String.valueOf(color.getB()));
-		holder.L.setText(String.valueOf(color.getL()));
-		holder.T.setText(String.valueOf(color.getT()));
+//		holder.R.setText(String.valueOf(color.getR()));
+//		holder.G.setText(String.valueOf(color.getG()));
+//		holder.B.setText(String.valueOf(color.getB()));
+//		holder.L.setText(String.valueOf(color.getL()));
 	    holder.btnColor.setBackgroundColor(newColor);
 	    
-	    if (index > 1) {
-	    	prevColor = colorArray.get(index - 1).getColor();
-	    }
 	    if (index < (colorArray.size()-1)) {
 	    	row = listView.getChildAt(index - listView.getFirstVisiblePosition() + 1);
 	    	Button btnNextTime = (Button) row.findViewById(R.id.btnTime);
@@ -142,16 +136,38 @@ public class MainActivity extends Activity implements OnClickListener {
 		    gd.setCornerRadius(0f);
 		    btnNextTime.setBackground(gd);
 	    }
-	    	    
-	    GradientDrawable gd = new GradientDrawable(
-	            GradientDrawable.Orientation.TOP_BOTTOM,
-	            new int[] {prevColor, newColor});
-	    gd.setCornerRadius(0f);
-	    holder.btnTime.setBackground(gd);
+	    if (index > 0) {
+	    	prevColor = colorArray.get(index - 1).getColor();
+	    }
+	    if (index < 1) {
+	    	row = listView.getChildAt(index - listView.getFirstVisiblePosition());
+	    	holder.btnTime = (Button) row.findViewById(R.id.btnTime);
+		    holder.btnTime.setBackgroundColor(Color.TRANSPARENT);
+		    holder.btnTime.setHeight(1);
+	    } else {
+		    GradientDrawable gd = new GradientDrawable(
+		            GradientDrawable.Orientation.TOP_BOTTOM,
+		            new int[] {prevColor, newColor});
+		    gd.setCornerRadius(0f);
+		    holder.btnTime.setBackground(gd);
+
+	    }
 	    
-	    //listView.invalidateViews();
+//	    listView.invalidateViews();
 //	    listView.invalidate();
-//	    colorAdapter.notifyDataSetChanged();
+	    colorAdapter.notifyDataSetChanged();
+	}
+	
+	public static void setHeight(int index, int height){
+		View row = listView.getChildAt(index - listView.getFirstVisiblePosition());
+	    ColorHolder holder = (ColorHolder) row.getTag();
+		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
+		holder.T = (TextView) row.findViewById(R.id.textViewT);
+	    SingleColor color = colorArray.get(index);
+	    color.setT(height);
+
+	    holder.T.setText(String.valueOf(height));
+	    holder.btnTime.setHeight(height);
 	}
 	
 	private void initDrawer() {
@@ -217,7 +233,7 @@ public class MainActivity extends Activity implements OnClickListener {
         {
             final int index = position;
             deleteContainer(navMenuTitles2[index]);
-//            Toast.makeText(MainActivity.this, "Delete?:  " + navMenuTitles2[index], Toast.LENGTH_SHORT).show();
+//          Toast.makeText(MainActivity.this, "Delete?:  " + navMenuTitles2[index], Toast.LENGTH_SHORT).show();
         	loadContainers();
 //        	((ArrayAdapter<String>) mDrawerList2.getAdapter()).notifyDataSetChanged();
 			return true;
@@ -281,9 +297,9 @@ public class MainActivity extends Activity implements OnClickListener {
 				SingleColor temp = new SingleColor(255, 255, 255, 255, 255);
 				temp.colorFill(cp.getColor());
 				colorArray.add(colorArray.size(), temp);
-				keyframeCount++;
-				listView.invalidateViews();
-				//colorAdapter.notifyDataSetChanged();
+				//colorArray.add(colorArray.size(), temp);
+				//listView.invalidateViews();
+				colorAdapter.notifyDataSetChanged();
 			}
 		});
 		cp.show();
@@ -298,7 +314,7 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }    
-    
+/*    
     private void selectItem(int position) {
             
             Fragment fragment = new MenuFragment();
@@ -314,7 +330,7 @@ public class MainActivity extends Activity implements OnClickListener {
         setTitle(navMenuTitles[position]);
         mDrawerLayout.closeDrawer(mDrawerList);
     }
-    
+*/
     public static class MenuFragment extends Fragment {
         public static final String ITEM = "item_number";
 
@@ -351,7 +367,6 @@ public class MainActivity extends Activity implements OnClickListener {
 				os.writeObject(c_save);
 				os.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 	}
@@ -427,16 +442,12 @@ public class MainActivity extends Activity implements OnClickListener {
 						vector.add(c);
 						is.close();
 					} catch (FileNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (StreamCorruptedException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (ClassNotFoundException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 			}
@@ -466,7 +477,6 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		
 	}
 
