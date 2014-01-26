@@ -9,6 +9,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -53,6 +54,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.UUID;
 import java.lang.Math;
 import java.util.Vector;
 
@@ -78,6 +80,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private static Vector <Container> vector;
 
     protected void onCreate(Bundle savedInstanceState) {
+      	createManagement();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         speicherort = getFilesDir().getAbsolutePath() + File.separator ;
@@ -89,8 +92,6 @@ public class MainActivity extends Activity implements OnClickListener {
         initDrawer();
         
       	initList();
-      	
-      	createManagement();
         sendBroadcast();
     }
     
@@ -143,8 +144,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		{
 			colorArray.add(colorArray.size(), new SingleColor(Math.abs((int) (1000 * Math.sin(i))), i*25, i*-50, 0, 255));
 		}
-        
-        
 	}   
 	
 	@SuppressLint("CutPasteId")
@@ -218,6 +217,7 @@ public class MainActivity extends Activity implements OnClickListener {
 //	    listView.invalidate();
 	    colorAdapter.notifyDataSetChanged();
 //	    setHeight(row, index, color.getT());
+	    
 	}
 		
 	public static void setHeight(View row, int index, int height){
@@ -345,6 +345,15 @@ public class MainActivity extends Activity implements OnClickListener {
        case R.id.menu_color_picker_dialog:
 			onClickColorPickerDialog(item);
 			return true;
+       case R.id.send_now:
+    	   
+           Container c1 = new Container(0, "tempkette1", null, false, null, false, null, false, null, false, null, false);
+           c1.setUnid(UUID.randomUUID());
+     	   c1 = saveToContainer(c1, colorArray, null, null, null, null);
+     	   send(2, c1);
+    	   
+    	   Toast.makeText(this, "Sent", Toast.LENGTH_SHORT).show();
+			return true;
        case R.id.action_settings:
     	   Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
     	   return true;
@@ -364,7 +373,124 @@ public class MainActivity extends Activity implements OnClickListener {
        }
    }
 
-    public void onClickColorPickerDialog(MenuItem item) {
+	private void send(int modus, Container c1) {
+		c1.setModus(modus);
+        System.out.println("Container Modus: " + c1.getModus());
+        System.out.println("Container Name: " + c1.getName());
+        System.out.println("Container UUID: " + c1.getUnid());
+		m.sendPackage(c1);
+	}
+
+
+	private Container saveToContainer(Container c1, ArrayList<SingleColor> colorArray1, ArrayList<SingleColor> colorArray2, ArrayList<SingleColor> colorArray3, ArrayList<SingleColor> colorArray4, ArrayList<SingleColor> colorArray5) {
+    	System.out.println("colorArray1.size() = " + colorArray1.size());
+    	int[][] kette1 = null;
+    	int[][] kette2 = null;
+    	int[][] kette3 = null;
+    	int[][] kette4 = null;
+    	int[][] kette5 = null;
+    	boolean s1 = false;
+    	boolean s2 = false;
+    	boolean s3 = false;
+    	boolean s4 = false;
+    	boolean s5 = false;
+    	
+    	if (colorArray1 != null) {
+    		kette1 = new int[colorArray1.size()][5];
+    		s1 = true;
+        	for (int i = 0; i < colorArray1.size(); i++) {
+        		SingleColor color1 = colorArray1.get(i);
+        		kette1[i][0] = color1.getR();
+        		kette1[i][1] = color1.getG();
+        		kette1[i][2] = color1.getB();
+        		kette1[i][3] = color1.getL();
+        		kette1[i][4] = color1.getT();
+        	}
+        	
+        	c1.setKette1(kette1);
+        	c1.setStatus1(s1);
+    	} else {
+    		s1 = false;
+    	}
+    	if (colorArray2 != null) {
+    		kette2 = new int[colorArray1.size()][5];
+    		s2 = true;
+        	for (int i = 0; i < colorArray1.size(); i++) {
+        		SingleColor color1 = colorArray1.get(i);
+        		kette2[i][0] = color1.getR();
+        		kette2[i][1] = color1.getG();
+        		kette2[i][2] = color1.getB();
+        		kette2[i][3] = color1.getL();
+        		kette2[i][4] = color1.getT();
+        	}
+        	
+        	c1.setKette2(kette2);
+        	c1.setStatus2(s2);
+    	} else {
+    		s2 = false;
+    	}
+    	if (colorArray3 != null) {
+    		kette3 = new int[colorArray1.size()][5];
+    		s3 = true;
+        	for (int i = 0; i < colorArray1.size(); i++) {
+        		SingleColor color1 = colorArray1.get(i);
+        		kette3[i][0] = color1.getR();
+        		kette3[i][1] = color1.getG();
+        		kette3[i][2] = color1.getB();
+        		kette3[i][3] = color1.getL();
+        		kette3[i][4] = color1.getT();
+        	}
+        	
+        	c1.setKette3(kette3);
+        	c1.setStatus3(s3);
+    	} else {
+    		s3 = false;
+    	}
+    	if (colorArray4 != null) {
+    		kette4 = new int[colorArray1.size()][5];
+    		s4 = true;
+        	for (int i = 0; i < colorArray1.size(); i++) {
+        		SingleColor color1 = colorArray1.get(i);
+        		kette4[i][0] = color1.getR();
+        		kette4[i][1] = color1.getG();
+        		kette4[i][2] = color1.getB();
+        		kette4[i][3] = color1.getL();
+        		kette4[i][4] = color1.getT();
+        	}
+        	
+        	c1.setKette4(kette4);
+        	c1.setStatus4(s4);
+    	} else {
+    		s4 = false;
+    	}
+    	if (colorArray5 != null) {
+    		kette5 = new int[colorArray1.size()][5];
+    		s5 = true;
+        	for (int i = 0; i < colorArray1.size(); i++) {
+        		SingleColor color1 = colorArray1.get(i);
+        		kette5[i][0] = color1.getR();
+        		kette5[i][1] = color1.getG();
+        		kette5[i][2] = color1.getB();
+        		kette5[i][3] = color1.getL();
+        		kette5[i][4] = color1.getT();
+        	}
+        	
+        	c1.setKette5(kette5);
+        	c1.setStatus5(s5);
+    	} else {
+    		s5 = false;
+    	}
+
+
+
+
+//    	c1 = new Container(2, "tempcont", kette1, s1, kette2, s2, kette3, s3, kette4, s4, kette5, s5);
+    	saveSetting(c1);
+    	return c1;
+	}
+
+
+	public void onClickColorPickerDialog(MenuItem item) {
 		//The color picker menu item as been clicked. Show 
 		//a dialog using the custom ColorPickerDialog class.
 		final ColorPickerDialog cp = new ColorPickerDialog(this, Color.MAGENTA);

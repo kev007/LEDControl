@@ -24,7 +24,7 @@ public class ClientTransmitThread extends Thread
 		
 		public void run() 
 	    {
-				DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, port);
+			DatagramPacket packet = new DatagramPacket(buffer, buffer.length, address, port);
 				try
 				{
 						//Senden des Packets

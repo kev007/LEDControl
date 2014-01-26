@@ -1,10 +1,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 	
     <item
-    android:id="@+id/menu_color_picker_dialog"
-    android:icon="@drawable/ic_menu_color_palette"
-    android:showAsAction="always"
-    android:title="Color Picker Dialog"/>
+	    android:id="@+id/menu_color_picker_dialog"
+	    android:icon="@drawable/ic_menu_color_palette"
+	    android:showAsAction="always"
+	    android:title="Color Picker Dialog"/>
+    
+    <item
+	    android:id="@+id/send_now"
+	    android:icon="@drawable/ic_action_send_now"
+	    android:showAsAction="always"
+	    android:title="Send Profile"/>
     
 	<item
         android:id="@+id/add"

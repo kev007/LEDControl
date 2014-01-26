@@ -66,8 +66,8 @@ public class Management
 						oos.flush();
 						
 						//Umwandlung byte[]
-						byte[] buffer = baos.toByteArray();	
-	
+						byte[] buffer = baos.toByteArray();
+						
 						//Übergabe an ClienttrasmitThread
 						if (finalPort == 0)
 						{

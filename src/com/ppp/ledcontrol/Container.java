@@ -1,9 +1,27 @@
 package com.ppp.ledcontrol;
 import java.io.Serializable;
+import java.util.UUID;
 
+//Container enthält Informationen der Ketten und Farben
 public class Container implements Serializable
 {
 		private static final long serialVersionUID = -872892999902890930L;
+		
+		//Unique ID zur Identifizierung
+		UUID uuid;
+		/*
+		 * Container besteht aus dem Modus und 5 Arrays.
+		 * Modus: gibt an wofür das Paket genutzt wird
+		 * 			Modus 0: Leerer Container zur ermittlung der IP und des Portes
+		 * 			Modus 1: FarbContainer zur einfachen Übernahme der Einstellungen
+		 * 			Modus 2: einfache Farbübernahme und Speicherung auf Pc
+		 * Kettenstatus
+		 * 			Status1- Status5: ture = Kette ist an, false= Kette ist aus
+		 * Kettenarray: besteht aus 7 Zellen zur Beschreibung der Funktionen
+		 * 			Feld 0 - 2	: RGB Werte
+		 * 			Feld 3		: Intensität (Benutzerung wahrscheinlich erst für richtige LED Ketten)
+		 * 			Feld 4		: Zeitkonstante für jeweiligen Übergang 
+		 */
 		
 		//Colorbereich
 		private int modus = 0;
@@ -23,10 +41,13 @@ public class Container implements Serializable
 		private int[][] kette4;
 		private int[][] kette5;
 		
-		//Konstruktor fï¿½r Color
+		//Konstruktor für Color
 		public Container(int modus,String name, int kette1[][], boolean s1, int kette2 [][], 
 						boolean s2, int kette3 [][], boolean s3,int kette4 [][], boolean s4, int kette5 [][], boolean s5)
 		{
+				//Zuweisung der UNID
+			 	uuid = UUID.randomUUID();
+			
 				this.name = name;
 				
 				this.modus = modus;
@@ -43,10 +64,47 @@ public class Container implements Serializable
 				this.status5 = s5;	
 		}
 		
-		//Konstruktor fï¿½r IP Request
+		//Konstruktor für IP Request
 		public Container(int modus)
 		{
 				this.modus = modus;
+		}
+		
+		//Container auf Standart setzen
+		public void setStandard()
+		{
+				this.modus = 1;
+				this.name = "";
+				this.status1 = true;
+				this.status2 = false;
+				this.status3 = false;
+				this.status4 = false;
+				this.status5 = false;
+				
+				int [][]temp = {{0,0,0,0,0}};
+				kette1 = temp;
+		}
+		
+		//Die Werte dieses Containers mit denen eines anderen überschreiben
+		public void coppyContainer(Container c)
+		{
+				this.uuid = c.getUnid();
+			
+				this.kette1 = c.getKette1();
+				this.kette2 = c.getKette2();
+				this.kette3 = c.getKette3();
+				this.kette4 = c.getKette4();
+				this.kette5 = c.getKette5();
+				
+				this.modus = c.getModus();
+				this.name = c.getName();
+				
+				this.status1 = c.isStatus1();
+				this.status2 = c.isStatus2();
+				this.status3 = c.isStatus3();
+				this.status4 = c.isStatus4();
+				this.status5 = c.isStatus5();
+				
 		}
 		
 		//Getter und Setter
@@ -146,36 +204,12 @@ public class Container implements Serializable
 		{
 				this.name = name;
 		}
-		
-		public void setStandard()
-		{
-				this.modus = 1;
-				this.name = "";
-				this.status1 = true;
-				this.status2 = false;
-				this.status3 = false;
-				this.status4 = false;
-				this.status5 = false;
-				
-				int [][]temp = {{0,0,0,0,0}};
-				kette1 = temp;
+
+		public UUID getUnid() {
+			return uuid;
 		}
-		public void coppyContainer(Container c)
-		{
-				this.kette1 = c.getKette1();
-				this.kette2 = c.getKette2();
-				this.kette3 = c.getKette3();
-				this.kette4 = c.getKette4();
-				this.kette5 = c.getKette5();
-				
-				this.modus = c.getModus();
-				this.name = c.getName();
-				
-				this.status1 = c.isStatus1();
-				this.status2 = c.isStatus2();
-				this.status3 = c.isStatus3();
-				this.status4 = c.isStatus4();
-				this.status5 = c.isStatus5();
-				
+
+		public void setUnid(UUID unid) {
+			this.uuid = unid;
 		}
 }
