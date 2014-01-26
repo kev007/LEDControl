@@ -140,9 +140,9 @@ public class MainActivity extends Activity implements OnClickListener {
             }
         });
         
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 5; i++)
 		{
-			colorArray.add(colorArray.size(), new SingleColor(Math.abs((int) (1000 * Math.sin(i))), i*25, i*-50, 0, 255));
+			colorArray.add(colorArray.size(), new SingleColor(Math.abs((int) (1000 * Math.sin(i))), i*25, i*50, 0, 255));
 		}
 	}   
 	
