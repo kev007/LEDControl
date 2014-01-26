@@ -7,7 +7,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Paint.Style;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -64,7 +67,13 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 //		holder.L.setText(String.valueOf(color.getL()));
 		holder.T.setText(String.valueOf(color.getT()));
 
-		holder.btnColor.setBackgroundColor(currentColor);
+		//holder.btnColor.setBackgroundColor(currentColor);
+	    GradientDrawable border = new GradientDrawable(
+	            GradientDrawable.Orientation.TOP_BOTTOM,
+	            new int[] {currentColor, currentColor});
+	    border.setCornerRadius(0f);
+	    border.setStroke(2, 0xEEEEEE);
+	    holder.btnColor.setBackground(border);
 		
 		int previousColor = color.getColor();
 		if (position > 0) {
@@ -111,7 +120,7 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 			}
 		});
 	    
-	    
+	    MainActivity.setHeight(row, position, color.getT());
 		return row;		
 	}
 	

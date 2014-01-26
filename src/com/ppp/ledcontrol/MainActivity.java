@@ -1,6 +1,7 @@
 package com.ppp.ledcontrol;
 
 import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
+import android.R.drawable;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -9,8 +10,15 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
+import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -113,18 +121,17 @@ public class MainActivity extends Activity implements OnClickListener {
 	    
 		holder.btnColor = (Button) row.findViewById(R.id.btnColor);
 		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
-//	    holder.R = (TextView) row.findViewById(R.id.textViewR);
-//		holder.G = (TextView) row.findViewById(R.id.textViewG);
-//		holder.B = (TextView) row.findViewById(R.id.textViewB);
-//		holder.L = (TextView) row.findViewById(R.id.textViewL);
 		holder.T = (TextView) row.findViewById(R.id.textViewT);
 	    colorArray.get(index).colorFill(newColor);
 	    SingleColor color = colorArray.get(index);
-//		holder.R.setText(String.valueOf(color.getR()));
-//		holder.G.setText(String.valueOf(color.getG()));
-//		holder.B.setText(String.valueOf(color.getB()));
-//		holder.L.setText(String.valueOf(color.getL()));
-	    holder.btnColor.setBackgroundColor(newColor);
+	    
+	    //holder.btnColor.setBackgroundColor(newColor);
+	    GradientDrawable border = new GradientDrawable(
+	            GradientDrawable.Orientation.TOP_BOTTOM,
+	            new int[] {newColor, newColor});
+	    border.setCornerRadius(0f);
+	    border.setStroke(2, 0xEEEEEE);
+	    holder.btnColor.setBackground(border);
 	    
 	    if (index < (colorArray.size()-1)) {
 	    	row = listView.getChildAt(index - listView.getFirstVisiblePosition() + 1);
@@ -143,7 +150,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	    	row = listView.getChildAt(index - listView.getFirstVisiblePosition());
 	    	holder.btnTime = (Button) row.findViewById(R.id.btnTime);
 		    holder.btnTime.setBackgroundColor(Color.TRANSPARENT);
-		    holder.btnTime.setHeight(1);
 	    } else {
 		    GradientDrawable gd = new GradientDrawable(
 		            GradientDrawable.Orientation.TOP_BOTTOM,
@@ -156,10 +162,10 @@ public class MainActivity extends Activity implements OnClickListener {
 //	    listView.invalidateViews();
 //	    listView.invalidate();
 	    colorAdapter.notifyDataSetChanged();
+	    setHeight(row, index, color.getT());
 	}
 	
-	public static void setHeight(int index, int height){
-		View row = listView.getChildAt(index - listView.getFirstVisiblePosition());
+	public static void setHeight(View row, int index, int height){
 	    ColorHolder holder = (ColorHolder) row.getTag();
 		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
 		holder.T = (TextView) row.findViewById(R.id.textViewT);
