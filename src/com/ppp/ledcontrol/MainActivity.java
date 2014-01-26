@@ -32,9 +32,12 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,6 +53,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.lang.Math;
 import java.util.Vector;
 
 import com.ppp.ledcontrol.ColorAdapter.ColorHolder;
@@ -102,17 +106,68 @@ public class MainActivity extends Activity implements OnClickListener {
         listView.setAdapter(colorAdapter); 
         listView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            	int index = position;
+        	    ColorHolder holder = (ColorHolder) view.getTag();
+        	    holder.T = (TextView) view.findViewById(R.id.textViewT);
+        	    final SingleColor color = colorArray.get(index);
+        	    
+            	final EditText time = new EditText(getBaseContext());
+				time.setHint(String.valueOf(color.getT()) + " ms");
+				
+				//Erstellen des Alertdialoges
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getBaseContext());
+				alertDialogBuilder
+				.setTitle("Duration")
+				.setMessage("Set the duration, in milliseconds, for this transition.")
+				.setCancelable(false)
+				.setView(time)
+				.setPositiveButton("Set", new DialogInterface.OnClickListener(){
+					public void onClick(DialogInterface dialog,int id){
+							color.setT(Integer.getInteger(time.getText().toString()));
+//							holder.T.setText(time.getText().toString());
+					}
+				})
+				.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+					public void onClick(DialogInterface dialog,int id){
+						dialog.cancel();
+					}
+				});
+				AlertDialog alertDialog = alertDialogBuilder.create();
+				alertDialog.show();		
+				
                 Toast.makeText(MainActivity.this, "List View Clicked: " + position, Toast.LENGTH_SHORT).show();
             }
         });
         
-        for (int i = 0; i < 22; i++)
+        for (int i = 0; i < 50; i++)
 		{
-			colorArray.add(colorArray.size(), new SingleColor(i*75, i*25, i*-50, 0, 255));
+			colorArray.add(colorArray.size(), new SingleColor(Math.abs((int) (1000 * Math.sin(i))), i*25, i*-50, 0, 255));
 		}
         
         
 	}   
+	
+	@SuppressLint("CutPasteId")
+	public static void updateTime(int index, int time){
+	    View row = listView.getChildAt(index - listView.getFirstVisiblePosition());
+	    ColorHolder holder = (ColorHolder) row.getTag();
+	    
+		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
+		holder.T = (TextView) row.findViewById(R.id.textViewT);
+	    colorArray.get(index).setT(time);
+	    
+	    
+	    if (index == 0) {
+	    	holder.T.setText("Start");
+	    } else {
+	    	holder.T.setText(Integer.toString(time));
+	    }
+	    
+//	    listView.invalidateViews();
+//	    listView.invalidate();
+	    colorAdapter.notifyDataSetChanged();
+//	    setHeight(row, index, time);
+	}	
 	
 	@SuppressLint("CutPasteId")
 	public static void updateColor(int index, int prevColor, int newColor){
@@ -129,8 +184,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	    GradientDrawable border = new GradientDrawable(
 	            GradientDrawable.Orientation.TOP_BOTTOM,
 	            new int[] {newColor, newColor});
-	    border.setCornerRadius(0f);
-	    border.setStroke(2, 0xEEEEEE);
+//	    border.setCornerRadius(0f);
+	    border.setStroke(2, 0x000000);
 	    holder.btnColor.setBackground(border);
 	    
 	    if (index < (colorArray.size()-1)) {
@@ -162,19 +217,37 @@ public class MainActivity extends Activity implements OnClickListener {
 //	    listView.invalidateViews();
 //	    listView.invalidate();
 	    colorAdapter.notifyDataSetChanged();
-	    setHeight(row, index, color.getT());
+//	    setHeight(row, index, color.getT());
 	}
-	
+		
 	public static void setHeight(View row, int index, int height){
 	    ColorHolder holder = (ColorHolder) row.getTag();
 		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
-		holder.T = (TextView) row.findViewById(R.id.textViewT);
-	    SingleColor color = colorArray.get(index);
-	    color.setT(height);
 
-	    holder.T.setText(String.valueOf(height));
+		int pixels = 0;		
+		if (height <= 50){
+			pixels = 50;
+		} else if (height >= 750){
+			pixels = 750;
+		} else {
+			pixels = height;
+		}
+		if (height == 0){
+			pixels = 5;
+		    holder.T.setText("Start");
+		} else {
+		    holder.T.setText(String.valueOf(height)+ " ms");
+		}
+		
+		System.out.println("New height for row " + index + " is: " + pixels);
+		
+	    RelativeLayout.LayoutParams params = (LayoutParams) holder.btnTime.getLayoutParams();
+    	params.height = pixels;
+	    holder.btnTime.setLayoutParams(params);
+
 	    holder.btnTime.setHeight(height);
 	}
+	
 	
 	private void initDrawer() {
 		loadContainers();
@@ -381,9 +454,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	{
       //Erstellen des Alertdialoges
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-		alertDialogBuilder.setTitle("Delete");
-		
 		alertDialogBuilder
+		.setTitle("Delete")
 		.setMessage("Do you really want to delete " + name + " ?")
 		.setCancelable(false)
 		.setPositiveButton("Yes", new DialogInterface.OnClickListener()
@@ -414,8 +486,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
-		
-
 	}
 	
 	public void deleteAllContainers()

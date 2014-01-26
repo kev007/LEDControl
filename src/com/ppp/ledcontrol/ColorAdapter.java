@@ -1,9 +1,11 @@
 package com.ppp.ledcontrol;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -11,12 +13,17 @@ import android.graphics.Paint.Style;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,14 +72,14 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 //		holder.G.setText(String.valueOf(color.getG()));
 //		holder.B.setText(String.valueOf(color.getB()));
 //		holder.L.setText(String.valueOf(color.getL()));
-		holder.T.setText(String.valueOf(color.getT()));
+		holder.T.setText(String.valueOf(color.getT()) + " ms");
 
-		//holder.btnColor.setBackgroundColor(currentColor);
+	    //holder.btnColor.setBackgroundColor(newColor);
 	    GradientDrawable border = new GradientDrawable(
 	            GradientDrawable.Orientation.TOP_BOTTOM,
 	            new int[] {currentColor, currentColor});
-	    border.setCornerRadius(0f);
-	    border.setStroke(2, 0xEEEEEE);
+//	    border.setCornerRadius(0f);
+	    border.setStroke(2, 0x000000);
 	    holder.btnColor.setBackground(border);
 		
 		int previousColor = color.getColor();
@@ -82,15 +89,38 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 		}
 		if (position == 0) {
 	    	holder.btnTime.setBackgroundColor(Color.TRANSPARENT);
-	    	holder.btnTime.setText(null);
+	    	holder.btnTime.setText(null);	    	
 	    } else {
 			holder.btnTime.setOnClickListener(new OnClickListener() {
 				public void onClick(View v) {
+					final EditText time = new EditText(getContext());
+					time.setHint(String.valueOf(color.getT()) + " ms");
+					time.setInputType(InputType.TYPE_CLASS_NUMBER);
+//					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+//					imm.showSoftInput(time, InputMethodManager.SHOW_IMPLICIT);
 					
-					
-					
-					Toast.makeText(context, "Edit Time button Clicked: " + index,
-					Toast.LENGTH_SHORT).show();
+					//Erstellen des Alertdialoges
+					AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+					alertDialogBuilder
+					.setTitle("Duration")
+					.setMessage("Set the duration, in milliseconds, for this transition.")
+					.setCancelable(false)
+					.setView(time)
+					.setPositiveButton("Set", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface dialog,int id){
+//							color.setT(Integer.getInteger(time.getText().toString()));
+//							holder.T.setText(time.getText().toString());
+							System.out.println("time: " + time.getText().toString());
+							MainActivity.updateTime(index, Integer.getInteger(time.getText().toString()));
+						}
+					})
+					.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface dialog,int id){
+							dialog.cancel();
+						}
+					});
+					AlertDialog alertDialog = alertDialogBuilder.create();
+					alertDialog.show();					
 				}
 			});
 			
