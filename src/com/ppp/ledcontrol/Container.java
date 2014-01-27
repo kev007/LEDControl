@@ -86,9 +86,9 @@ public class Container implements Serializable
 		}
 		
 		//Die Werte dieses Containers mit denen eines anderen überschreiben
-		public void coppyContainer(Container c)
+		public void copyContainer(Container c)
 		{
-				this.uuid = c.getUnid();
+				this.uuid = c.getUUID();
 			
 				this.kette1 = c.getKette1();
 				this.kette2 = c.getKette2();
@@ -205,7 +205,7 @@ public class Container implements Serializable
 				this.name = name;
 		}
 
-		public UUID getUnid() {
+		public UUID getUUID() {
 			return uuid;
 		}
 

@@ -5,10 +5,8 @@ import android.R.drawable;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.graphics.Canvas;
@@ -77,7 +75,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	
     private Management m;
 	private static String speicherort;
-	private static Vector <Container> vector;
+	public static Vector <Container> vector;
 
     protected void onCreate(Bundle savedInstanceState) {
       	createManagement();
@@ -88,7 +86,7 @@ public class MainActivity extends Activity implements OnClickListener {
   
 //      Container c = new Container(2, "tempcont", null, false, null, false, null, false, null, false, null, false);
 //      saveSetting(c);
-        		
+        findContainers();
         initDrawer();
         
       	initList();
@@ -250,7 +248,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	
 	
 	private void initDrawer() {
-		loadContainers();
+		findContainers();
 		
         navMenuTitles = getResources().getStringArray(R.array.drawer_array);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -289,19 +287,11 @@ public class MainActivity extends Activity implements OnClickListener {
         {
         	String[] menuItems = getResources().getStringArray(R.array.drawer_array);
         	mTitle = menuItems[position];
-        	Fragment fragment = new Fragment();
         	Bundle data = new Bundle();
         	data.putInt("position", position);
-        	//data.putInt(Fragment.ITEM, position);
-            //data.putString("url", getUrl(position));
-            fragment.setArguments(data);
+        	Intent intent = new Intent (MainActivity.this, Profile.class);
+        	startActivity(intent);
 
-            FragmentManager fragmentManager;
-	        fragmentManager = getFragmentManager();
-	        FragmentTransaction ft = fragmentManager.beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
-            
             mDrawerList.setItemChecked(position, true);
             setTitle(navMenuTitles[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
@@ -313,7 +303,7 @@ public class MainActivity extends Activity implements OnClickListener {
             final int index = position;
             deleteContainer(navMenuTitles2[index]);
 //          Toast.makeText(MainActivity.this, "Delete?:  " + navMenuTitles2[index], Toast.LENGTH_SHORT).show();
-        	loadContainers();
+        	findContainers();
 //        	((ArrayAdapter<String>) mDrawerList2.getAdapter()).notifyDataSetChanged();
 			return true;
         }
@@ -347,7 +337,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			return true;
        case R.id.send_now:
     	   
-           Container c1 = new Container(0, "tempkette2", null, false, null, false, null, false, null, false, null, false);
+           Container c1 = new Container(0, "test2", null, false, null, false, null, false, null, false, null, false);
            c1.setUnid(UUID.randomUUID());
      	   c1 = saveToContainer(c1, colorArray, null, null, null, null);
      	   send(2, c1);
@@ -363,7 +353,8 @@ public class MainActivity extends Activity implements OnClickListener {
        case R.id.getProfiles:
     	   m.sendPackage(new Container(3));
 
-
+    	   findContainers();
+    	   initDrawer();
     	   return true;
        case R.id.add:
     	   Toast.makeText(this, "Add", Toast.LENGTH_SHORT).show();
@@ -377,13 +368,16 @@ public class MainActivity extends Activity implements OnClickListener {
 		c1.setModus(modus);
         System.out.println("Container Modus: " + c1.getModus());
         System.out.println("Container Name: " + c1.getName());
-        System.out.println("Container UUID: " + c1.getUnid());
+        System.out.println("Container UUID: " + c1.getUUID());
 		m.sendPackage(c1);
 	}
-
+	
+	public static void loadKette() {
+		
+	} 
 
 	private Container saveToContainer(Container c1, ArrayList<SingleColor> colorArray1, ArrayList<SingleColor> colorArray2, ArrayList<SingleColor> colorArray3, ArrayList<SingleColor> colorArray4, ArrayList<SingleColor> colorArray5) {
-    	System.out.println("colorArray1.size() = " + colorArray1.size());
+//    	System.out.println("colorArray1.size() = " + colorArray1.size());
     	int[][] kette1 = null;
     	int[][] kette2 = null;
     	int[][] kette3 = null;
@@ -395,8 +389,6 @@ public class MainActivity extends Activity implements OnClickListener {
     	boolean s4 = false;
     	boolean s5 = false;
     	
-    	int totaltime = 0;
-    	
     	if (colorArray1 != null) {
     		kette1 = new int[colorArray1.size()][5];
     		s1 = true;
@@ -406,8 +398,7 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette1[i][1] = color1.getG();
         		kette1[i][2] = color1.getB();
         		kette1[i][3] = color1.getL();
-        		totaltime += color1.getT();
-        		kette1[i][4] = totaltime;
+        		kette1[i][4] = color1.getT();
         	}
         	
         	c1.setKette1(kette1);
@@ -424,8 +415,7 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette2[i][1] = color1.getG();
         		kette2[i][2] = color1.getB();
         		kette2[i][3] = color1.getL();
-        		totaltime += color1.getT();
-        		kette2[i][4] = totaltime;
+        		kette2[i][4] = color1.getT();
         	}
         	
         	c1.setKette2(kette2);
@@ -442,8 +432,7 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette3[i][1] = color1.getG();
         		kette3[i][2] = color1.getB();
         		kette3[i][3] = color1.getL();
-        		totaltime += color1.getT();
-        		kette3[i][4] = totaltime;
+        		kette3[i][4] = color1.getT();
         	}
         	
         	c1.setKette3(kette3);
@@ -460,8 +449,7 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette4[i][1] = color1.getG();
         		kette4[i][2] = color1.getB();
         		kette4[i][3] = color1.getL();
-        		totaltime += color1.getT();
-        		kette4[i][4] = totaltime;
+        		kette4[i][4] = color1.getT();
         	}
         	
         	c1.setKette4(kette4);
@@ -478,8 +466,7 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette5[i][1] = color1.getG();
         		kette5[i][2] = color1.getB();
         		kette5[i][3] = color1.getL();
-        		totaltime += color1.getT();
-        		kette5[i][4] = totaltime;
+        		kette5[i][4] = color1.getT();
         	}
         	
         	c1.setKette5(kette5);
@@ -526,61 +513,35 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onConfigurationChanged(newConfig);
         mDrawerToggle.onConfigurationChanged(newConfig);
     }    
-/*    
-    private void selectItem(int position) {
-            
-            Fragment fragment = new MenuFragment();
-        Bundle args = new Bundle();
-        args.putInt(MenuFragment.ITEM, position);
-        fragment.setArguments(args);
-
-        FragmentManager fragmentManager = getFragmentManager();
-        
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-        mDrawerList.setItemChecked(position, true);
-        setTitle(navMenuTitles[position]);
-        mDrawerLayout.closeDrawer(mDrawerList);
-    }
-*/
-    public static class MenuFragment extends Fragment {
-        public static final String ITEM = "item_number";
-
-        public MenuFragment() {
-        }
-
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_item, container, false);
-            int i = getArguments().getInt(ITEM);
-            String fragment = getResources().getStringArray(R.array.drawer_array)[i];
-
-            int fragmentId = getResources().getIdentifier(fragment.toLowerCase(Locale.getDefault()),
-                            "layout", getActivity().getPackageName());
-            
-            Log.d(getTag(), "Inside onCreateView");
-            Log.d(getTag(), fragment);
-            Log.d(getTag(), String.valueOf(fragmentId));
-            
-            //rootView.findViewById(R.layout.drawer_item_list).set;
-            //getActivity().setTitle(fragment);
-            return rootView;
-        }
-    }
 
 	//Speichert einen Zustand am angegebene Speicherort
 	public static void saveSetting(Container c_save)
 	{
-			File file = new File(speicherort + c_save.getName() + ".ser");
-			try {
-				file.createNewFile();
-				FileOutputStream fos = new FileOutputStream(file);
-				ObjectOutputStream os = new ObjectOutputStream(fos);
-				os.writeObject(c_save);
-				os.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+		int checkuuid = MainActivity.checkUUID(c_save.getUUID());
+		if(! (checkuuid==-1))
+		{
+				System.out.println("Profile: " + vector.get(checkuuid).getName() + " has a UUID of: " + vector.get(checkuuid).getUUID() + " and will be replaced by: \n" + "Profile: " + c_save.getName() + " has a UUID of: " + c_save.getUUID());
+				String name = vector.get(checkuuid).getName();
+				//UUID exisitert bereits --> überschreiben des alten Containers
+				File file = new File(speicherort + name + ".ser");
+				if(file.exists())
+				{
+					 	System.gc();
+					 	file.delete();
+				}
+		} else {
+			System.out.println("Profile: " + c_save.getName() + " has a UUID of: " + c_save.getUUID() + " and will be saved for the first time");
+		}
+		File file = new File(speicherort + c_save.getName() + ".ser");
+		try {
+			file.createNewFile();
+			FileOutputStream fos = new FileOutputStream(file);
+			ObjectOutputStream os = new ObjectOutputStream(fos);
+			os.writeObject(c_save);
+			os.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void deleteContainer(final String name)
@@ -589,7 +550,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 		alertDialogBuilder
 		.setTitle("Delete")
-		.setMessage("Do you really want to delete " + name + " ?")
+		.setMessage("Do you really want to delete " + name + "?")
 		.setCancelable(false)
 		.setPositiveButton("Yes", new DialogInterface.OnClickListener()
 		{
@@ -660,7 +621,7 @@ public class MainActivity extends Activity implements OnClickListener {
 						e.printStackTrace();
 					}
 			}
-			System.out.println("V: " + vector.size());
+//			System.out.println("Vector size: " + vector.size());
 			return vector;
 	}
     
@@ -689,12 +650,22 @@ public class MainActivity extends Activity implements OnClickListener {
 		
 	}
 
-	public static void loadContainers() {
+	public static void findContainers() {
 		vector = loadDir();
 		navMenuTitles2 = new String[vector.size()];
 		for (int i=0; i < vector.size(); i++)
 		{
 			navMenuTitles2[i] = vector.get(i).getName();	
 		}
-	}  
+	} 
+	
+	public static int checkUUID(UUID id)
+	{
+		findContainers();
+		for(int i = 0; i<vector.size(); i++)
+		{
+				if(0==id.compareTo(vector.get(i).getUUID()))return i; 
+		}
+		return -1; 
+	}
 }

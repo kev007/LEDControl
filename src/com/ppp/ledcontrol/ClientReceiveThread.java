@@ -51,11 +51,10 @@ public class ClientReceiveThread extends Thread
 						    	
 						    	//Container Modus 2 (Get Modus)
 						    	if(c1.getModus() == 2)
-						    	{
-						    			MainActivity.saveSetting(c1);
+						    	{							    		
+							    		MainActivity.saveSetting(c1);
 						    			System.out.println("Container: " + c1.getName());
-						    			
-						    			MainActivity.loadContainers();
+						    			MainActivity.findContainers();
 						    	}
 						    	
 				    	} 
