@@ -58,7 +58,7 @@ import java.util.Vector;
 
 import com.ppp.ledcontrol.ColorAdapter.ColorHolder;
 
-public class MainActivity extends Activity implements OnClickListener {
+public class Profile extends Activity implements OnClickListener {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	static ListView mDrawerList2;
@@ -80,7 +80,7 @@ public class MainActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
       	createManagement();
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.profile);
         speicherort = getFilesDir().getAbsolutePath() + File.separator ;
         vector = new Vector<Container>();
   
@@ -134,7 +134,7 @@ public class MainActivity extends Activity implements OnClickListener {
 				AlertDialog alertDialog = alertDialogBuilder.create();
 				alertDialog.show();		
 				
-                Toast.makeText(MainActivity.this, "List View Clicked: " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(Profile.this, "List View Clicked: " + position, Toast.LENGTH_SHORT).show();
             }
         });
         
@@ -289,14 +289,14 @@ public class MainActivity extends Activity implements OnClickListener {
         	mTitle = menuItems[position];
         	Bundle data = new Bundle();
         	data.putInt("position", position);
-        	Intent intent = new Intent (MainActivity.this, Profile.class);
+        	Intent intent = new Intent (Profile.this, StartScreen.class);
         	startActivity(intent);
 
             mDrawerList.setItemChecked(position, true);
             setTitle(navMenuTitles[position]);
             mDrawerLayout.closeDrawer(mDrawerList);
             getActionBar().setTitle(mTitle);
-            Toast.makeText(MainActivity.this, ((TextView)view).getText(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(Profile.this, ((TextView)view).getText(), Toast.LENGTH_SHORT).show();
         }
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) 
         {
@@ -517,7 +517,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	//Speichert einen Zustand am angegebene Speicherort
 	public static void saveSetting(Container c_save)
 	{
-		int checkuuid = MainActivity.checkUUID(c_save.getUUID());
+		int checkuuid = Profile.checkUUID(c_save.getUUID());
 		if(! (checkuuid==-1))
 		{
 				System.out.println("Profile: " + vector.get(checkuuid).getName() + " has a UUID of: " + vector.get(checkuuid).getUUID() + " and will be replaced by: \n" + "Profile: " + c_save.getName() + " has a UUID of: " + c_save.getUUID());

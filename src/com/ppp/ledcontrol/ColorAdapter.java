@@ -111,7 +111,7 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 //							color.setT(Integer.getInteger(time.getText().toString()));
 //							holder.T.setText(time.getText().toString());
 							System.out.println("time: " + time.getText().toString());
-							MainActivity.updateTime(index, Integer.getInteger(time.getText().toString()));
+							Profile.updateTime(index, Integer.getInteger(time.getText().toString()));
 						}
 					})
 					.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
@@ -140,7 +140,7 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 				cp.setTitle("Pick a Color!");
 				cp.setButton(DialogInterface.BUTTON_POSITIVE, "OK", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
-						MainActivity.updateColor(index, prevColor, cp.getColor());
+						Profile.updateColor(index, prevColor, cp.getColor());
 					}
 					
 				});
@@ -150,7 +150,7 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 			}
 		});
 	    
-	    MainActivity.setHeight(row, position, color.getT());
+	    Profile.setHeight(row, position, color.getT());
 		return row;		
 	}
 	
