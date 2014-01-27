@@ -142,9 +142,9 @@ public class MainActivity extends Activity implements OnClickListener {
         
         for (int i = 0; i < 5; i++)
 		{
-			colorArray.add(colorArray.size(), new SingleColor(Math.abs((int) (1000 * Math.sin(i))), i*25, i*50, 0, 255));
+			colorArray.add(colorArray.size(), new SingleColor(Math.abs((int) (1000 * Math.sin(i))), i*25, i*50, 127, 255));
 		}
-	}   
+	}
 	
 	@SuppressLint("CutPasteId")
 	public static void updateTime(int index, int time){
@@ -347,7 +347,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			return true;
        case R.id.send_now:
     	   
-           Container c1 = new Container(0, "tempkette1", null, false, null, false, null, false, null, false, null, false);
+           Container c1 = new Container(0, "tempkette2", null, false, null, false, null, false, null, false, null, false);
            c1.setUnid(UUID.randomUUID());
      	   c1 = saveToContainer(c1, colorArray, null, null, null, null);
      	   send(2, c1);
@@ -395,6 +395,8 @@ public class MainActivity extends Activity implements OnClickListener {
     	boolean s4 = false;
     	boolean s5 = false;
     	
+    	int totaltime = 0;
+    	
     	if (colorArray1 != null) {
     		kette1 = new int[colorArray1.size()][5];
     		s1 = true;
@@ -404,7 +406,8 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette1[i][1] = color1.getG();
         		kette1[i][2] = color1.getB();
         		kette1[i][3] = color1.getL();
-        		kette1[i][4] = color1.getT();
+        		totaltime += color1.getT();
+        		kette1[i][4] = totaltime;
         	}
         	
         	c1.setKette1(kette1);
@@ -421,7 +424,8 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette2[i][1] = color1.getG();
         		kette2[i][2] = color1.getB();
         		kette2[i][3] = color1.getL();
-        		kette2[i][4] = color1.getT();
+        		totaltime += color1.getT();
+        		kette2[i][4] = totaltime;
         	}
         	
         	c1.setKette2(kette2);
@@ -438,7 +442,8 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette3[i][1] = color1.getG();
         		kette3[i][2] = color1.getB();
         		kette3[i][3] = color1.getL();
-        		kette3[i][4] = color1.getT();
+        		totaltime += color1.getT();
+        		kette3[i][4] = totaltime;
         	}
         	
         	c1.setKette3(kette3);
@@ -455,7 +460,8 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette4[i][1] = color1.getG();
         		kette4[i][2] = color1.getB();
         		kette4[i][3] = color1.getL();
-        		kette4[i][4] = color1.getT();
+        		totaltime += color1.getT();
+        		kette4[i][4] = totaltime;
         	}
         	
         	c1.setKette4(kette4);
@@ -472,7 +478,8 @@ public class MainActivity extends Activity implements OnClickListener {
         		kette5[i][1] = color1.getG();
         		kette5[i][2] = color1.getB();
         		kette5[i][3] = color1.getL();
-        		kette5[i][4] = color1.getT();
+        		totaltime += color1.getT();
+        		kette5[i][4] = totaltime;
         	}
         	
         	c1.setKette5(kette5);

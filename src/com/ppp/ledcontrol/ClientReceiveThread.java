@@ -23,7 +23,7 @@ public class ClientReceiveThread extends Thread
 	    {
 	    		this.socket = s;
 	    		this.m = m;
-	    		data = new byte[512];
+	    		data = new byte[4096];
 	    }
 	    
 		public void run() 
