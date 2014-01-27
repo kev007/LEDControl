@@ -76,7 +76,7 @@
         android:layout_centerVertical="true"
         android:layout_alignTop="@+id/btnTime"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="1dp"
+        android:layout_marginLeft="0dp"
         android:text="T ms"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
