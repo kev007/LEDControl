@@ -9,7 +9,7 @@ package com.ppp.ledcontrol;
 
 public final class R {
     public static final class array {
-        public static final int drawer_array=0x7f090000;
+        public static final int ketten_array=0x7f090000;
     }
     public static final class attr {
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
@@ -70,37 +70,38 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int action_settings=0x7f050013;
         public static final int add=0x7f050012;
         public static final int broadcast=0x7f050015;
-        public static final int btnColor=0x7f05000c;
-        public static final int btnTime=0x7f05000b;
+        public static final int btnColor=0x7f05000e;
+        public static final int btnTime=0x7f05000d;
         public static final int color_panel_new=0x7f050002;
         public static final int color_panel_old=0x7f050001;
         public static final int color_picker_view=0x7f050000;
-        public static final int content_frame=0x7f050007;
+        public static final int content_frame=0x7f050006;
         public static final int dialog_color_picker_extra_layout_landscape=0x7f050004;
-        public static final int drawer_layout=0x7f050006;
+        public static final int drawer_layout=0x7f050005;
         public static final int getProfiles=0x7f050014;
-        public static final int layout1=0x7f050005;
+        public static final int layout1=0x7f05000c;
         public static final int left_drawer=0x7f050009;
-        public static final int listView=0x7f050008;
+        public static final int listView=0x7f05000b;
         public static final int menu_color_picker_dialog=0x7f050010;
         public static final int preference_preview_color_panel=0x7f050003;
-        public static final int progressBar1=0x7f05000f;
+        public static final int progressBar1=0x7f050008;
         public static final int right_drawer=0x7f05000a;
         public static final int send_now=0x7f050011;
-        public static final int textView1=0x7f05000e;
-        public static final int textViewT=0x7f05000d;
+        public static final int textView1=0x7f050007;
+        public static final int textViewT=0x7f05000f;
     }
     public static final class layout {
-        public static final int dialog_color_picker=0x7f030000;
-        public static final int drawer_item_list=0x7f030001;
-        public static final int fragment_item=0x7f030002;
-        public static final int preference_preview_layout=0x7f030003;
-        public static final int profile=0x7f030004;
-        public static final int row=0x7f030005;
-        public static final int start_screen=0x7f030006;
+        public static final int activity_main=0x7f030000;
+        public static final int activity_profile=0x7f030001;
+        public static final int dialog_color_picker=0x7f030002;
+        public static final int drawer_item_list=0x7f030003;
+        public static final int fragment_item=0x7f030004;
+        public static final int preference_preview_layout=0x7f030005;
+        public static final int row=0x7f030006;
     }
     public static final class menu {
-        public static final int main=0x7f0a0000;
+        public static final int colorgui=0x7f0a0000;
+        public static final int main=0x7f0a0001;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;

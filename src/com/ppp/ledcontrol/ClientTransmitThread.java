@@ -28,6 +28,7 @@ public class ClientTransmitThread extends Thread
 				try
 				{
 						//Senden des Packets
+
 						s.send(packet);				//BLOCKIEREND
 						System.out.println("Paket gesendet an " + address +  " : " +  port );
 				} catch (IOException e)

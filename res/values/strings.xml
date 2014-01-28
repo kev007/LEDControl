@@ -5,14 +5,12 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="home_screen">Home Screen</string>
-    <string-array name="drawer_array">
-        <item >DisplayFragment</item>
-        <item >display_fragment</item>
-        <item >start_fragment</item>
-        <item >Home Screen</item>
-        <item >Connection</item>
-        <item >Display</item>
-        <item >Settings</item>
+    <string-array name="ketten_array">
+        <item >LED 1</item>
+        <item >LED 2</item>
+        <item >LED 3</item>
+        <item >LED 4</item>
+        <item >LED 5</item>
     </string-array>
     <string name="settings_bg_color_dialog">Pick a Color</string>
     <string name="settings_bg_color_confirm">Color Settings</string>

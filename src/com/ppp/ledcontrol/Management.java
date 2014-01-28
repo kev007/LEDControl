@@ -13,14 +13,16 @@ import com.ppp.ledcontrol.Container;
 public class Management
 {
 		//Konstanten
-		private int [] portVector = {2797,8167,4603,11173,21121};	//Portvektor für Portauswahl
-		private int finalPort=0;
-		int quellport = 0;
-		InetAddress address = null;
-		InetAddress broad = null;
-		DatagramSocket socket = null;
-		ClientTransmitThread cTT =  null;
-		ClientReceiveThread cRT =  null;
+		private static int [] portVector = {2797,8167,4603,11173,21121};	//Portvektor für Portauswahl
+		private static int finalPort=0;
+		static int quellport = 0;
+		static InetAddress address = null;
+		static InetAddress broad = null;
+		static DatagramSocket socket = null;
+		static ClientTransmitThread cTT =  null;
+		static ClientReceiveThread cRT =  null;
+		static int PORT = 4501;
+		static String ADDRESS ="255.255.255.255" ;
 		
 		//Konstruktor
 		public Management(InetAddress broad_address, int quellport)
@@ -37,13 +39,13 @@ public class Management
 				}
 		}
 		//Containererzeugung Modus 0
-		public Container createZeroContainer()
+		public static Container createZeroContainer()
 		{
 				Container co_broad = new Container(0);
 				return co_broad;
 		}
 		//Senden eines Containers
-		public void sendPackage(Container co)
+		public static void sendPackage(Container co)
 		{
 				//Notwendig für die Rückgabe
 				try 
@@ -78,7 +80,7 @@ public class Management
 									//Warte auf Packet (ClienteceiveThread)
 									if(cRT == null)
 									{
-											cRT = new ClientReceiveThread(socket,this);
+											cRT = new ClientReceiveThread(socket);
 											cRT.start();
 									}
 							}
@@ -88,7 +90,7 @@ public class Management
 							//Warte auf Packet (ClienteceiveThread)
 							if(cRT == null)
 							{
-									cRT = new ClientReceiveThread(socket,this);
+									cRT = new ClientReceiveThread(socket);
 									cRT.start();
 							}
 						}
@@ -100,10 +102,10 @@ public class Management
 				}
 		}
 		//Getter & Setter
-		public void detectedServer(InetAddress address, int port)
+		public static void detectedServer(InetAddress address2, int port)
 		{
-				this.address = address;
-				this.finalPort = port;
+				address = address2;
+				finalPort = port;
 		}
 		public void changePort(int port)
 		{

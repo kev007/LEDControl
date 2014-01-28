@@ -15,14 +15,12 @@ public class ClientReceiveThread extends Thread
 		DatagramPacket packet = null;
 		ByteArrayInputStream baos = null;
 		ObjectInputStream oos = null;
-		Management m = null;
 		byte [] data = null;
 
 		//Konnstruktor
-	    public ClientReceiveThread(DatagramSocket s, Management m)
+	    public ClientReceiveThread(DatagramSocket s)
 	    {
 	    		this.socket = s;
-	    		this.m = m;
 	    		data = new byte[4096];
 	    }
 	    
@@ -46,7 +44,7 @@ public class ClientReceiveThread extends Thread
 						    			System.out.println("Empfangene IP: " + packet.getAddress());
 						    			System.out.println("Empfangener Port: " + packet.getPort());
 						    			//Aktulaisieren des Management
-						    			m.detectedServer(packet.getAddress(), packet.getPort());	
+						    			Management.detectedServer(packet.getAddress(), packet.getPort());	
 						    	}
 						    	
 						    	//Container Modus 2 (Get Modus)
