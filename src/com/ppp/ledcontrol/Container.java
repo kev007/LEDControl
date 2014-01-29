@@ -209,7 +209,7 @@ public class Container implements Serializable
 			return uuid;
 		}
 
-		public void setUnid(UUID unid) {
+		public void setUUID(UUID unid) {
 			this.uuid = unid;
 		}
 }

@@ -67,14 +67,8 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 		final int currentColor = color.getColor();
 		final int index = position;
 		
-		
-//		holder.R.setText(String.valueOf(color.getR()));
-//		holder.G.setText(String.valueOf(color.getG()));
-//		holder.B.setText(String.valueOf(color.getB()));
-//		holder.L.setText(String.valueOf(color.getL()));
 		holder.T.setText(String.valueOf(color.getT()) + " ms");
 
-	    //holder.btnColor.setBackgroundColor(newColor);
 	    GradientDrawable border = new GradientDrawable(
 	            GradientDrawable.Orientation.TOP_BOTTOM,
 	            new int[] {currentColor, currentColor});
@@ -96,8 +90,13 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 					final EditText time = new EditText(getContext());
 					time.setHint(String.valueOf(color.getT()) + " ms");
 					time.setInputType(InputType.TYPE_CLASS_NUMBER);
-//					InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//					imm.showSoftInput(time, InputMethodManager.SHOW_IMPLICIT);
+					
+					final InputMethodManager imm = (InputMethodManager)getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+	                if (imm != null)
+	                {
+	                    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
+	                }
+	                time.requestFocus();
 					
 					//Erstellen des Alertdialoges
 					AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
@@ -108,15 +107,20 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 					.setView(time)
 					.setPositiveButton("Set", new DialogInterface.OnClickListener(){
 						public void onClick(DialogInterface dialog,int id){
-//							color.setT(Integer.getInteger(time.getText().toString()));
-//							holder.T.setText(time.getText().toString());
-							System.out.println("time: " + time.getText().toString());
-							Profile.updateTime(index, Integer.getInteger(time.getText().toString()));
+							imm.toggleSoftInput(0, 0);
+							if (time.getText() == null) {
+								Toast.makeText(context, "'" + "' is an invalid entry!", Toast.LENGTH_LONG).show();
+							} else if (Integer.parseInt(time.getText().toString()) > 0){
+								Profile.updateTime(index, Integer.parseInt(time.getText().toString()));
+							} else {
+								Toast.makeText(context, "'" + Integer.parseInt(time.getText().toString()) + "' is an invalid entry!", Toast.LENGTH_LONG).show();
+							}
 						}
 					})
 					.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
 						public void onClick(DialogInterface dialog,int id){
 							dialog.cancel();
+							imm.toggleSoftInput(0, 0);
 						}
 					});
 					AlertDialog alertDialog = alertDialogBuilder.create();

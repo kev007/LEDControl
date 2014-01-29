@@ -1,42 +1,27 @@
 package com.ppp.ledcontrol;
 
 import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
-import android.R.drawable;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.content.res.Configuration;
-import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Paint.Style;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
-import android.graphics.drawable.shapes.Shape;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,33 +33,25 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.UUID;
-import java.lang.Math;
 import java.util.Vector;
-
-import com.ppp.ledcontrol.ColorAdapter.ColorHolder;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerKetten;
+//	private ListView mDrawerKetten;
 	static ListView mDrawerProfiles;
     private ActionBarDrawerToggle mDrawerToggle;
 
-    //private CharSequence mDrawerTitle = "Menu";
     private CharSequence mTitle;
-    private String[] navMenuKetten;
+//    private String[] navMenuKetten;
     public static String[] navMenuProfiles;
     
     public static ListView listView;
     public static ColorAdapter colorAdapter;
     public static ArrayList<SingleColor> colorArray;
     
-    int position_left = 0;
-    int position_right = 0;
+    static int profileIndex = 0;
 	
 	private static String speicherort;
 	public static Vector <Container> vector;
@@ -86,34 +63,77 @@ public class MainActivity extends Activity implements OnClickListener {
         speicherort = getFilesDir().getAbsolutePath() + File.separator ;
         vector = new Vector<Container>();
   
-//      Container c = new Container(2, "tempcont", null, false, null, false, null, false, null, false, null, false);
-//      saveSetting(c);
         findContainers();
         
 		if (vector.size() == 0) {
-		      Container c = new Container(2, "New Profile", null, false, null, false, null, false, null, false, null, false);
-		      saveSetting(c);
-		      vector = loadDir();
+			createProfile();
 		}
 		findContainers();
         
         initDrawer();
-        
-//      	initList();
     }
     
-	private void initDrawer() {
+	private void createProfile() {
 		findContainers();
 		
-        navMenuKetten = getResources().getStringArray(R.array.ketten_array);
+		final EditText name = new EditText(MainActivity.this);
+    	name.setText("New Profile");
+    	final InputMethodManager imm = (InputMethodManager)MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null)
+        {
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
+        }
+		name.requestFocus();
+		
+		//Erstellen des Alertdialoges
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
+		alertDialogBuilder
+		.setTitle("New Profile")
+		.setMessage("Please enter a name")
+		.setCancelable(false)
+		.setView(name)
+		.setPositiveButton("Set", new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dialog,int id){
+				imm.toggleSoftInput(0, 0);
+				Boolean unique = true;
+				for(int i=0; i < vector.size(); i++){
+					if (vector.get(i).getName().equals(name.getText().toString())) unique = false;
+				}
+				if (unique == true) {
+				    Container c = new Container(2, name.getText().toString(), null, true, null, false, null, false, null, false, null, false);
+				    saveSetting(c);
+				    vector = loadDir();
+				    
+				    profileIndex = vector.size() - 1;
+				    
+	            	Intent intent = new Intent (MainActivity.this, Profile.class);
+	            	startActivity(intent);
+				} else {
+					Toast.makeText(MainActivity.this, "A profile with this name already exists!", Toast.LENGTH_LONG).show();
+		        	mDrawerLayout.openDrawer(mDrawerProfiles);
+				}
+				
+			}
+		})
+		.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dialog,int id){
+				imm.toggleSoftInput(0, 0);
+				dialog.cancel();
+			}
+		});
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
+	}
+
+	private void initDrawer() {
+		findContainers();
+				
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerProfiles = (ListView) findViewById(R.id.left_drawer);
-        mDrawerKetten = (ListView) findViewById(R.id.right_drawer);
-        mDrawerKetten.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_item_list, navMenuKetten));
         mDrawerProfiles.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_item_list, navMenuProfiles));
         mDrawerProfiles.setOnItemClickListener(new DrawerItemClickListenerLeft());
-        mDrawerKetten.setOnItemClickListener(new DrawerItemClickListenerRight());
         mDrawerProfiles.setOnItemLongClickListener(new DrawerItemClickListenerLeft());
+        
         
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
@@ -140,23 +160,20 @@ public class MainActivity extends Activity implements OnClickListener {
 	private class DrawerItemClickListenerLeft implements ListView.OnItemClickListener, ListView.OnItemLongClickListener {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
         {
-        	position_left = position;
-        	String[] menuItems = getResources().getStringArray(R.array.ketten_array);
-        	mTitle = menuItems[position];
-        	Bundle data = new Bundle();
-        	data.putInt("position", position);
-        	
-        	Intent intent = new Intent (MainActivity.this, Profile.class);
-            Bundle extras = new Bundle();
-            extras.putInt("ProfilePosition", position_left);
-            extras.putInt("KettenPosition", position_right);
-        	startActivity(intent);
+        	mDrawerLayout.closeDrawer(mDrawerProfiles);
+        	if (position < vector.size()){
+            	profileIndex = position;
+            	
+            	Intent intent = new Intent (MainActivity.this, Profile.class);
+            	startActivity(intent);
 
-            mDrawerKetten.setItemChecked(position, true);
-            setTitle(navMenuProfiles[position_left] + ": " + navMenuKetten[position_right]);
-            mDrawerLayout.closeDrawer(mDrawerKetten);
-            getActionBar().setTitle(mTitle);
-            Toast.makeText(MainActivity.this, ((TextView)view).getText(), Toast.LENGTH_SHORT).show();
+            	mDrawerProfiles.setItemChecked(position, true);
+                setTitle(navMenuProfiles[profileIndex]);
+                mDrawerLayout.closeDrawer(mDrawerProfiles);
+                getActionBar().setTitle(mTitle);
+        	} else if (position == vector.size()) {
+        		createProfile();
+        	}
         }
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) 
         {
@@ -168,7 +185,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			return true;
         }
     }
-	
+	/*
 	private class DrawerItemClickListenerRight implements ListView.OnItemClickListener, ListView.OnItemLongClickListener {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
         {
@@ -179,7 +196,7 @@ public class MainActivity extends Activity implements OnClickListener {
         	data.putInt("position", position);
         	
             mDrawerKetten.setItemChecked(position, true);
-            setTitle(navMenuProfiles[position_left] + ": " + navMenuKetten[position_right]);
+            setTitle(navMenuProfiles[profileIndex] + ": " + navMenuKetten[position_right]);
             mDrawerLayout.closeDrawer(mDrawerKetten);
             getActionBar().setTitle(mTitle);
             Toast.makeText(MainActivity.this, ((TextView)view).getText(), Toast.LENGTH_SHORT).show();
@@ -194,7 +211,7 @@ public class MainActivity extends Activity implements OnClickListener {
 			return true;
         }
     }
-    
+    */
     public boolean onCreateOptionsMenu(Menu menu) {
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.main, menu);
@@ -205,7 +222,7 @@ public class MainActivity extends Activity implements OnClickListener {
     
     public boolean onPrepareOptionsMenu(Menu menu) {
     	// If the nav drawer is open, hide action items related to the content view
-        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerKetten);
+        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerProfiles);
 //        menu.findItem(R.id.add).setVisible(!drawerOpen);
         return super.onPrepareOptionsMenu(menu);
     }
@@ -234,125 +251,6 @@ public class MainActivity extends Activity implements OnClickListener {
            return super.onOptionsItemSelected(item);
        }
    }
-
-	private void send(int modus, Container c1) {
-		c1.setModus(modus);
-        System.out.println("Container Modus: " + c1.getModus());
-        System.out.println("Container Name: " + c1.getName());
-        System.out.println("Container UUID: " + c1.getUUID());
-		Management.sendPackage(c1);
-	}
-	
-	public static void loadKette() {
-		
-	} 
-
-	private Container saveToContainer(Container c1, ArrayList<SingleColor> colorArray1, ArrayList<SingleColor> colorArray2, ArrayList<SingleColor> colorArray3, ArrayList<SingleColor> colorArray4, ArrayList<SingleColor> colorArray5) {
-//    	System.out.println("colorArray1.size() = " + colorArray1.size());
-    	int[][] kette1 = null;
-    	int[][] kette2 = null;
-    	int[][] kette3 = null;
-    	int[][] kette4 = null;
-    	int[][] kette5 = null;
-    	boolean s1 = false;
-    	boolean s2 = false;
-    	boolean s3 = false;
-    	boolean s4 = false;
-    	boolean s5 = false;
-    	
-    	if (colorArray1 != null) {
-    		kette1 = new int[colorArray1.size()][5];
-    		s1 = true;
-        	for (int i = 0; i < colorArray1.size(); i++) {
-        		SingleColor color1 = colorArray1.get(i);
-        		kette1[i][0] = color1.getR();
-        		kette1[i][1] = color1.getG();
-        		kette1[i][2] = color1.getB();
-        		kette1[i][3] = color1.getL();
-        		kette1[i][4] = color1.getT();
-        	}
-        	
-        	c1.setKette1(kette1);
-        	c1.setStatus1(s1);
-    	} else {
-    		s1 = false;
-    	}
-    	if (colorArray2 != null) {
-    		kette2 = new int[colorArray1.size()][5];
-    		s2 = true;
-        	for (int i = 0; i < colorArray1.size(); i++) {
-        		SingleColor color1 = colorArray1.get(i);
-        		kette2[i][0] = color1.getR();
-        		kette2[i][1] = color1.getG();
-        		kette2[i][2] = color1.getB();
-        		kette2[i][3] = color1.getL();
-        		kette2[i][4] = color1.getT();
-        	}
-        	
-        	c1.setKette2(kette2);
-        	c1.setStatus2(s2);
-    	} else {
-    		s2 = false;
-    	}
-    	if (colorArray3 != null) {
-    		kette3 = new int[colorArray1.size()][5];
-    		s3 = true;
-        	for (int i = 0; i < colorArray1.size(); i++) {
-        		SingleColor color1 = colorArray1.get(i);
-        		kette3[i][0] = color1.getR();
-        		kette3[i][1] = color1.getG();
-        		kette3[i][2] = color1.getB();
-        		kette3[i][3] = color1.getL();
-        		kette3[i][4] = color1.getT();
-        	}
-        	
-        	c1.setKette3(kette3);
-        	c1.setStatus3(s3);
-    	} else {
-    		s3 = false;
-    	}
-    	if (colorArray4 != null) {
-    		kette4 = new int[colorArray1.size()][5];
-    		s4 = true;
-        	for (int i = 0; i < colorArray1.size(); i++) {
-        		SingleColor color1 = colorArray1.get(i);
-        		kette4[i][0] = color1.getR();
-        		kette4[i][1] = color1.getG();
-        		kette4[i][2] = color1.getB();
-        		kette4[i][3] = color1.getL();
-        		kette4[i][4] = color1.getT();
-        	}
-        	
-        	c1.setKette4(kette4);
-        	c1.setStatus4(s4);
-    	} else {
-    		s4 = false;
-    	}
-    	if (colorArray5 != null) {
-    		kette5 = new int[colorArray1.size()][5];
-    		s5 = true;
-        	for (int i = 0; i < colorArray1.size(); i++) {
-        		SingleColor color1 = colorArray1.get(i);
-        		kette5[i][0] = color1.getR();
-        		kette5[i][1] = color1.getG();
-        		kette5[i][2] = color1.getB();
-        		kette5[i][3] = color1.getL();
-        		kette5[i][4] = color1.getT();
-        	}
-        	
-        	c1.setKette5(kette5);
-        	c1.setStatus5(s5);
-    	} else {
-    		s5 = false;
-    	}
-
-
-
-
-//    	c1 = new Container(2, "tempcont", kette1, s1, kette2, s2, kette3, s3, kette4, s4, kette5, s5);
-    	saveSetting(c1);
-    	return c1;
-	}
 
 
 	public void onClickColorPickerDialog(MenuItem item) {
@@ -508,16 +406,18 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	public static void findContainers() {
 		vector = loadDir();
-		navMenuProfiles = new String[vector.size()];
+		navMenuProfiles = new String[vector.size() + 1];
 		if (vector.size() > 0) {
 			for (int i=0; i < vector.size(); i++)
 			{
-				System.out.println("Profile found: " + vector.get(i).getName());
+//				System.out.println("Profile found: " + vector.get(i).getName());
 				navMenuProfiles[i] = vector.get(i).getName();	
 			}
 		} else {
 			System.out.println("No profiles found!");
 		}
+
+		navMenuProfiles[vector.size()] = "\n\n\t\t\t\t\t\t\t Add Profile \n\n";
 	} 
 	
 	

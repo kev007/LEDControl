@@ -6,6 +6,7 @@
     <string name="hello_world">Hello world!</string>
     <string name="home_screen">Home Screen</string>
     <string-array name="ketten_array">
+        <item >Profile Name</item>
         <item >LED 1</item>
         <item >LED 2</item>
         <item >LED 3</item>

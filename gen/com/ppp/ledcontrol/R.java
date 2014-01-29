@@ -68,7 +68,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class id {
         public static final int action_settings=0x7f050013;
-        public static final int add=0x7f050012;
+        public static final int addRandom=0x7f050012;
         public static final int broadcast=0x7f050015;
         public static final int btnColor=0x7f05000e;
         public static final int btnTime=0x7f05000d;
