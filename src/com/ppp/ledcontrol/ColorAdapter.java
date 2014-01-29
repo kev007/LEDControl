@@ -150,7 +150,7 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 				});
 				cp.show();
 				
-				Toast.makeText(context, "Color: " + cp.getColor(), Toast.LENGTH_SHORT).show();
+//				Toast.makeText(context, "Color: " + cp.getColor(), Toast.LENGTH_SHORT).show();
 			}
 		});
 	    

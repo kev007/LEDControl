@@ -19,6 +19,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -297,8 +298,6 @@ public class Profile extends Activity implements OnClickListener {
 		}
 	}
 	
-	
-
 	private void initList() {
 		colorArray = new ArrayList<SingleColor>();
 
@@ -308,48 +307,27 @@ public class Profile extends Activity implements OnClickListener {
 		listView = (ListView) findViewById(R.id.listView);
 		listView.setItemsCanFocus(false);
 		listView.setAdapter(colorAdapter);
-		listView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-//				int index = position;
-//				ColorHolder holder = (ColorHolder) view.getTag();
-//				holder.T = (TextView) view.findViewById(R.id.textViewT);
-//				final SingleColor color = colorArray.get(index);
-//
-//				final EditText time = new EditText(getBaseContext());
-//				time.setHint(String.valueOf(color.getT()) + " ms");
-//
-//				// Erstellen des Alertdialoges
-//				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-//						getBaseContext());
-//				alertDialogBuilder
-//						.setTitle("Duration")
-//						.setMessage(
-//								"Set the duration, in milliseconds, for this transition.")
-//						.setCancelable(false)
-//						.setView(time)
-//						.setPositiveButton("Set",
-//								new DialogInterface.OnClickListener() {
-//									public void onClick(DialogInterface dialog,
-//											int id) {
-//										color.setT(Integer.getInteger(time
-//												.getText().toString()));
-//										// holder.T.setText(time.getText().toString());
-//									}
-//								})
-//						.setNegativeButton("Cancel",
-//								new DialogInterface.OnClickListener() {
-//									public void onClick(DialogInterface dialog,
-//											int id) {
-//										dialog.cancel();
-//									}
-//								});
-//				AlertDialog alertDialog = alertDialogBuilder.create();
-//				alertDialog.show();
-
-			}
-		});
+		listView.setOnItemClickListener(new ListViewItemClickListener());
+		listView.setOnItemLongClickListener(new ListViewItemClickListener());
 	}
+	
+	private class ListViewItemClickListener implements ListView.OnItemClickListener, ListView.OnItemLongClickListener {
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
+        {
+        	SingleColor temp = new SingleColor(colorAdapter.getItem(position).getT(), colorAdapter.getItem(position).getR(), colorAdapter.getItem(position).getG(), colorAdapter.getItem(position).getB(), colorAdapter.getItem(position).getL());
+        	if (position == 0) temp.setT(500);
+        	colorAdapter.insert(temp, position + 1);
+        	colorAdapter.notifyDataSetChanged();
+        	saveKette(null, ketteIndex);
+        }
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) 
+        {
+        	if (position > 0) colorAdapter.remove(colorAdapter.getItem(position));
+        	colorAdapter.notifyDataSetChanged();
+        	saveKette(null, ketteIndex);
+        	return true;
+        }
+    }
 
 	@SuppressLint("CutPasteId")
 	public static void updateTime(int index, int time) {
@@ -371,6 +349,7 @@ public class Profile extends Activity implements OnClickListener {
 		// listView.invalidate();
 		colorAdapter.notifyDataSetChanged();
 		// setHeight(row, index, time);
+		saveKette(null, ketteIndex);
 	}
 
 	@SuppressLint("CutPasteId")
@@ -494,31 +473,32 @@ public class Profile extends Activity implements OnClickListener {
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 	}
 
-
 	private class DrawerItemClickListenerLeft implements ListView.OnItemClickListener, ListView.OnItemLongClickListener {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) 
         {
-        	profileIndex = position;
-        	
-        	//Action bar will display only the name of the profile to prevent the title from being too long to display
-//        	String title = (navMenuProfiles[profileIndex] + ": " + navMenuKetten[ketteIndex]);
-        	String title = (navMenuProfiles[profileIndex]);
-            setTitle(title);
-            getActionBar().setTitle(title);
-            
-            //the profile selected in the left drawer menu and the first led chain will be loaded
-            //additionally, the led chain selection is automatically set to the first one
-            //this combination was chosen so that the user may swipe close the right drawer menu and have something to see right away
-        	ketteIndex = 0;
-    		loadKette(profileIndex, ketteIndex);    		
-    		mDrawerLayout.openDrawer(mDrawerKetten);
+        	mDrawerLayout.closeDrawer(mDrawerProfiles);
+        	if (position < vector.size()){
+            	profileIndex = position;
+            	
+                //the profile selected in the left drawer menu and the first led chain will be loaded
+                //additionally, the led chain selection is automatically set to the first one
+                //this combination was chosen so that the user may swipe close the right drawer menu and have something to see right away
+            	ketteIndex = 0;
+        		loadKette(profileIndex, ketteIndex);    		
+        		mDrawerLayout.openDrawer(mDrawerKetten);
 
-        	
-//        	Intent intent = new Intent (MainActivity.this, Profile.class);
-//            Bundle extras = new Bundle();
-//            extras.putInt("ProfilePosition", profileIndex);
-//            extras.putInt("KettenPosition", ketteIndex);
-//        	startActivity(intent);
+            	mDrawerProfiles.setItemChecked(position, true);
+                setTitle(navMenuProfiles[profileIndex]);
+                mDrawerLayout.closeDrawer(mDrawerProfiles);
+                
+            	//Action bar will display only the name of the profile to prevent the title from being too long to display
+//            	String title = (navMenuProfiles[profileIndex] + ": " + navMenuKetten[ketteIndex]);
+            	String title = (navMenuProfiles[profileIndex]);
+                setTitle(title);
+                getActionBar().setTitle(title);
+        	} else if (position == vector.size()) {
+        		createProfile();
+        	}
 
         	mDrawerProfiles.setItemChecked(position, true);
             setTitle(navMenuProfiles[profileIndex]);
@@ -755,8 +735,7 @@ public class Profile extends Activity implements OnClickListener {
 					public void onClick(DialogInterface dialog, int which) {
 						// MainActivity.updateColor(index, prevColor,
 						// cp.getColor());
-						SingleColor temp = new SingleColor(255, 255, 255, 255,
-								255);
+						SingleColor temp = new SingleColor(500, 255, 255, 255, 255);
 						temp.colorFill(cp.getColor());
 						colorArray.add(colorArray.size(), temp);
 						// colorArray.add(colorArray.size(), temp);
@@ -888,18 +867,78 @@ public class Profile extends Activity implements OnClickListener {
 
 	public static void findContainers() {
 		vector = loadDir();
-		navMenuProfiles = new String[vector.size()];
-		for (int i = 0; i < vector.size(); i++) {
-			navMenuProfiles[i] = vector.get(i).getName();
+		navMenuProfiles = new String[vector.size() + 1];
+		if (vector.size() > 0) {
+			for (int i=0; i < vector.size(); i++)
+			{
+//				System.out.println("Profile found: " + vector.get(i).getName());
+				navMenuProfiles[i] = vector.get(i).getName();	
+			}
+		} else {
+			System.out.println("No profiles found!");
 		}
-	}
+
+		navMenuProfiles[vector.size()] = "\n\n\t\t\t\t\t\t\t Add Profile \n\n";
+	} 
 
 	public static int checkUUID(UUID id) {
-		findContainers();
+		MainActivity.findContainers();
 		for (int i = 0; i < vector.size(); i++) {
 			if (0 == id.compareTo(vector.get(i).getUUID()))
 				return i;
 		}
 		return -1;
+	}
+	
+	private void createProfile() {
+		findContainers();
+		
+		final EditText name = new EditText(Profile.this);
+    	name.setText("New Profile");
+    	final InputMethodManager imm = (InputMethodManager)Profile.this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (imm != null)
+        {
+            imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
+        }
+		name.requestFocus();
+		
+		//Erstellen des Alertdialoges
+		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Profile.this);
+		alertDialogBuilder
+		.setTitle("New Profile")
+		.setMessage("Please enter a name")
+		.setCancelable(false)
+		.setView(name)
+		.setPositiveButton("Set", new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dialog,int id){
+				imm.toggleSoftInput(0, 0);
+				Boolean unique = true;
+				for(int i=0; i < vector.size(); i++){
+					if (vector.get(i).getName().equals(name.getText().toString())) unique = false;
+				}
+				if (unique == true) {
+				    Container c = new Container(2, name.getText().toString(), null, true, null, false, null, false, null, false, null, false);
+				    saveSetting(c);
+				    vector = loadDir();
+				    
+				    profileIndex = vector.size() - 1;
+				    
+				    loadKette(profileIndex, ketteIndex);
+	                mDrawerLayout.openDrawer(mDrawerKetten);
+				} else {
+					Toast.makeText(Profile.this, "A profile with this name already exists!", Toast.LENGTH_LONG).show();
+		        	mDrawerLayout.openDrawer(mDrawerProfiles);
+				}
+				
+			}
+		})
+		.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dialog,int id){
+				imm.toggleSoftInput(0, 0);
+				dialog.cancel();
+			}
+		});
+		AlertDialog alertDialog = alertDialogBuilder.create();
+		alertDialog.show();
 	}
 }

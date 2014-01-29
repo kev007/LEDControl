@@ -170,7 +170,6 @@ public class MainActivity extends Activity implements OnClickListener {
             	mDrawerProfiles.setItemChecked(position, true);
                 setTitle(navMenuProfiles[profileIndex]);
                 mDrawerLayout.closeDrawer(mDrawerProfiles);
-                getActionBar().setTitle(mTitle);
         	} else if (position == vector.size()) {
         		createProfile();
         	}
