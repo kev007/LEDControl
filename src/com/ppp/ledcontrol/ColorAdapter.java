@@ -1,6 +1,5 @@
 package com.ppp.ledcontrol;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import afzkl.development.colorpickerview.dialog.ColorPickerDialog;
@@ -9,10 +8,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.graphics.Paint.Style;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,8 +18,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -154,8 +148,8 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 			}
 		});
 	    
-	    Profile.setHeight(row, position, color.getT());
-		return row;		
+	    Profile.updateHeight(row, position, color.getT());
+		return row;
 	}
 	
 	public String timePicker() {

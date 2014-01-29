@@ -6,6 +6,9 @@ import java.io.ObjectInputStream;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
 
 
 public class ClientReceiveThread extends Thread
@@ -50,11 +53,12 @@ public class ClientReceiveThread extends Thread
 						    	//Container Modus 2 (Get Modus)
 						    	if(c1.getModus() == 2)
 						    	{							    		
-							    		Profile.saveSetting(c1);
+							    		MainActivity.saveSetting(c1);
 						    			System.out.println("Container: " + c1.getName());
-						    			Profile.findContainers();
+						    			
+						    			MainActivity.loadDir();
+//						    			Profile.loadDir();
 						    	}
-						    	
 				    	} 
 				    	catch (IOException e)
 				    	{

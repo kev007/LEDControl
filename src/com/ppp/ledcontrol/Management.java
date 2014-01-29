@@ -6,9 +6,9 @@ import java.io.ObjectOutputStream;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
+import java.net.UnknownHostException;
 
 import com.ppp.ledcontrol.Container;
-
 
 public class Management
 {
@@ -21,21 +21,21 @@ public class Management
 		static DatagramSocket socket = null;
 		static ClientTransmitThread cTT =  null;
 		static ClientReceiveThread cRT =  null;
-		static int PORT = 4501;
-		static String ADDRESS ="255.255.255.255" ;
 		
 		//Konstruktor
-		public Management(InetAddress broad_address, int quellport)
+		public Management()
 		{
-				this.quellport = quellport;
-				this.broad = broad_address;
 				try 
 				{
-					 	socket = new DatagramSocket(quellport);
+					address = InetAddress.getByName("255.255.255.255");
+					broad = InetAddress.getByName("255.255.255.255");
+					socket = new DatagramSocket(quellport);
 				}
 				catch (SocketException e)
 				{
 						e.printStackTrace();
+				} catch (UnknownHostException e) {
+					e.printStackTrace();
 				}
 		}
 		//Containererzeugung Modus 0
@@ -106,20 +106,5 @@ public class Management
 		{
 				address = address2;
 				finalPort = port;
-		}
-		public void changePort(int port)
-		{
-				this.quellport = port;
-				if(socket != null)
-				{
-						if(cRT != null)cRT.stop();
-						socket.close();
-				}
-				try {
-					socket = new DatagramSocket(quellport);
-				} catch (SocketException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 		}
 }

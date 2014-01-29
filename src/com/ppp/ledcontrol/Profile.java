@@ -6,23 +6,19 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.text.InputType;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,8 +44,8 @@ import java.util.Vector;
 import com.ppp.ledcontrol.ColorAdapter.ColorHolder;
 
 public class Profile extends Activity implements OnClickListener {
-	private DrawerLayout mDrawerLayout;
-	private ListView mDrawerKetten;
+	private static DrawerLayout mDrawerLayout;
+	private static ListView mDrawerKetten;
 	static ListView mDrawerProfiles;
 	private ActionBarDrawerToggle mDrawerToggle;
 	
@@ -75,7 +71,6 @@ public class Profile extends Activity implements OnClickListener {
 		vector = MainActivity.vector;
 		profileIndex = MainActivity.profileIndex;
 		
-		findContainers();
 		initDrawer();
 
 		initList();
@@ -178,117 +173,6 @@ public class Profile extends Activity implements OnClickListener {
 		
 		saveSetting(c);
 	}
-/*
-	public static Container saveToContainer(Container c1,
-			ArrayList<SingleColor> colorArray1,
-			ArrayList<SingleColor> colorArray2,
-			ArrayList<SingleColor> colorArray3,
-			ArrayList<SingleColor> colorArray4,
-			ArrayList<SingleColor> colorArray5) {
-		// System.out.println("colorArray1.size() = " + colorArray1.size());
-		int[][] kette1 = null;
-		int[][] kette2 = null;
-		int[][] kette3 = null;
-		int[][] kette4 = null;
-		int[][] kette5 = null;
-		boolean s1 = false;
-		boolean s2 = false;
-		boolean s3 = false;
-		boolean s4 = false;
-		boolean s5 = false;
-
-		if (colorArray1 != null) {
-			kette1 = new int[colorArray1.size()][5];
-			s1 = true;
-			for (int i = 0; i < colorArray1.size(); i++) {
-				SingleColor color1 = colorArray1.get(i);
-				kette1[i][0] = color1.getR();
-				kette1[i][1] = color1.getG();
-				kette1[i][2] = color1.getB();
-				kette1[i][3] = color1.getL();
-				kette1[i][4] = color1.getT();
-			}
-
-			c1.setKette1(kette1);
-			c1.setStatus1(s1);
-		} else {
-			s1 = false;
-		}
-		if (colorArray2 != null) {
-			kette2 = new int[colorArray1.size()][5];
-			s2 = true;
-			for (int i = 0; i < colorArray1.size(); i++) {
-				SingleColor color1 = colorArray1.get(i);
-				kette2[i][0] = color1.getR();
-				kette2[i][1] = color1.getG();
-				kette2[i][2] = color1.getB();
-				kette2[i][3] = color1.getL();
-				kette2[i][4] = color1.getT();
-			}
-
-			c1.setKette2(kette2);
-			c1.setStatus2(s2);
-		} else {
-			s2 = false;
-		}
-		if (colorArray3 != null) {
-			kette3 = new int[colorArray1.size()][5];
-			s3 = true;
-			for (int i = 0; i < colorArray1.size(); i++) {
-				SingleColor color1 = colorArray1.get(i);
-				kette3[i][0] = color1.getR();
-				kette3[i][1] = color1.getG();
-				kette3[i][2] = color1.getB();
-				kette3[i][3] = color1.getL();
-				kette3[i][4] = color1.getT();
-			}
-
-			c1.setKette3(kette3);
-			c1.setStatus3(s3);
-		} else {
-			s3 = false;
-		}
-		if (colorArray4 != null) {
-			kette4 = new int[colorArray1.size()][5];
-			s4 = true;
-			for (int i = 0; i < colorArray1.size(); i++) {
-				SingleColor color1 = colorArray1.get(i);
-				kette4[i][0] = color1.getR();
-				kette4[i][1] = color1.getG();
-				kette4[i][2] = color1.getB();
-				kette4[i][3] = color1.getL();
-				kette4[i][4] = color1.getT();
-			}
-
-			c1.setKette4(kette4);
-			c1.setStatus4(s4);
-		} else {
-			s4 = false;
-		}
-		if (colorArray5 != null) {
-			kette5 = new int[colorArray1.size()][5];
-			s5 = true;
-			for (int i = 0; i < colorArray1.size(); i++) {
-				SingleColor color1 = colorArray1.get(i);
-				kette5[i][0] = color1.getR();
-				kette5[i][1] = color1.getG();
-				kette5[i][2] = color1.getB();
-				kette5[i][3] = color1.getL();
-				kette5[i][4] = color1.getT();
-			}
-
-			c1.setKette5(kette5);
-			c1.setStatus5(s5);
-		} else {
-			s5 = false;
-		}
-
-		// c1 = new Container(2, "tempcont", kette1, s1, kette2, s2, kette3, s3,
-		// kette4, s4, kette5, s5);
-		saveSetting(c1);
-		return c1;
-	}
-*/
 
 	public static void loadRandom() {
 		for (int i = 0; i < 5; i++) {
@@ -348,7 +232,7 @@ public class Profile extends Activity implements OnClickListener {
 		// listView.invalidateViews();
 		// listView.invalidate();
 		colorAdapter.notifyDataSetChanged();
-		// setHeight(row, index, time);
+		// updateHeight(row, index, time);
 		saveKette(null, ketteIndex);
 	}
 
@@ -362,7 +246,6 @@ public class Profile extends Activity implements OnClickListener {
 		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
 		holder.T = (TextView) row.findViewById(R.id.textViewT);
 		colorArray.get(index).colorFill(newColor);
-		SingleColor color = colorArray.get(index);
 
 		// holder.btnColor.setBackgroundColor(newColor);
 		GradientDrawable border = new GradientDrawable(
@@ -403,11 +286,11 @@ public class Profile extends Activity implements OnClickListener {
 		// listView.invalidateViews();
 		// listView.invalidate();
 		colorAdapter.notifyDataSetChanged();
-		// setHeight(row, index, color.getT());
+		// updateHeight(row, index, color.getT());
 		saveKette(null, ketteIndex);
 	}
 
-	public static void setHeight(View row, int index, int height) {
+	public static void updateHeight(View row, int index, int height) {
 		ColorHolder holder = (ColorHolder) row.getTag();
 		holder.btnTime = (Button) row.findViewById(R.id.btnTime);
 
@@ -437,7 +320,7 @@ public class Profile extends Activity implements OnClickListener {
 	}
 
 	private void initDrawer() {
-		findContainers();
+		updateProfileList();
 		
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		
@@ -507,10 +390,9 @@ public class Profile extends Activity implements OnClickListener {
         }
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) 
         {
-            final int index = position;
             //the profile which was long-click selected will be deleted and the profile list is the refreshed
-            deleteContainer(navMenuProfiles[index]);
-        	findContainers();
+        	if (position < vector.size()) deleteContainer(vector.get(position));
+        	updateProfileList();
 //        	((ArrayAdapter<String>) mDrawerProfiles.getAdapter()).notifyDataSetChanged();
 			return true;
         }
@@ -543,7 +425,11 @@ public class Profile extends Activity implements OnClickListener {
 						imm.toggleSoftInput(0, 0);
 						navMenuKetten[0] = "\n\n" + name.getText().toString() + "\n\n";
 						vector.get(profileIndex).setName(name.getText().toString());
+						System.out.println("New name: " + vector.get(profileIndex).getName());
 						saveSetting(vector.get(profileIndex));
+						updateProfileList();
+						initDrawer();
+//						loadKette(profileIndex, ketteIndex);
 						mDrawerLayout.openDrawer(mDrawerKetten);
 					}
 				})
@@ -573,8 +459,7 @@ public class Profile extends Activity implements OnClickListener {
         }
         public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) 
         {	
-    		Container c = vector.get(profileIndex);
-    		final Container c2 = c;
+    		final Container c = vector.get(profileIndex);
         	//the boolean status of the selected LED chain will be toggled
     		//in the case of the first entry, the name 
         	switch(position){
@@ -588,9 +473,11 @@ public class Profile extends Activity implements OnClickListener {
         						new DialogInterface.OnClickListener() {
         							// Funktion bei "Ja"
         							public void onClick(DialogInterface dialog, int id) {
+        								Container c2 = new Container(c.getModus(), c.getName()+ " (Copy)", c.getKette1(), c.status1, c.getKette2(), c.status2, c.getKette3(), c.status3, c.getKette4(), c.status4, c.getKette5(), c.status5);
         								c2.setUUID(UUID.randomUUID());
-        								c2.setName(c2.getName() + " (Copy)");
         								System.out.println("New profile: " + c2.getName() + " UUID: " + c2.getUUID());
+        								vector.add(c2);
+        								updateProfileList();
         					        	saveSetting(c2);
         							}
         						})
@@ -668,7 +555,7 @@ public class Profile extends Activity implements OnClickListener {
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// If the nav drawer is open, hide action items related to the content
 		// view
-		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerKetten);
+//		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerKetten);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -688,14 +575,10 @@ public class Profile extends Activity implements OnClickListener {
 			onClickColorPickerDialog(item);
 			return true;
 		case R.id.send_now:
-
-//			Container c1 = new Container(0, "test2", null, false, null, false,
-//					null, false, null, false, null, false);
-//			c1.setUUID(UUID.randomUUID());
-//			c1 = saveToContainer(c1, colorArray, null, null, null, null);
-//			send(2, c1);
-//
-//			Toast.makeText(this, "Sent", Toast.LENGTH_SHORT).show();
+			saveKette(null, ketteIndex);
+			send(2, vector.get(profileIndex));
+			
+			Toast.makeText(this, "Sent", Toast.LENGTH_SHORT).show();
 			return true;
 		case R.id.action_settings:
 			Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
@@ -704,9 +587,10 @@ public class Profile extends Activity implements OnClickListener {
 			MainActivity.sendBroadcast();
 			return true;
 		case R.id.getProfiles:
+			mDrawerLayout.closeDrawer(mDrawerKetten);
+			mDrawerLayout.closeDrawer(mDrawerProfiles);
 			Management.sendPackage(new Container(3));
-
-			findContainers();
+			colorAdapter.clear();
 			initDrawer();
 			return true;
 		case R.id.addRandom:
@@ -758,67 +642,73 @@ public class Profile extends Activity implements OnClickListener {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	// Speichert einen Zustand am angegebene Speicherort
-	public static void saveSetting(Container c_save) {
-		int checkuuid = Profile.checkUUID(c_save.getUUID());
-		if (!(checkuuid == -1)) {
-//			System.out.println("Profile: " + vector.get(checkuuid).getName()
-//					+ " has a UUID of: " + vector.get(checkuuid).getUUID()
-//					+ " and will be replaced by: \n" + "Profile: "
-//					+ c_save.getName() + " has a UUID of: " + c_save.getUUID());
-			String name = vector.get(checkuuid).getName();
-			// UUID exisitert bereits --> überschreiben des alten Containers
-			File file = new File(speicherort + name + ".ser");
-			if (file.exists()) {
-				System.gc();
-				file.delete();
-			}
+	//Speichert einen Zustand am angegebene Speicherort
+	public static void saveSetting(Container c)
+	{
+		int checkuuid = MainActivity.checkUUID(c.getUUID());
+		if(! (checkuuid==-1))
+		{
+				System.out.println("Profile: " + vector.get(checkuuid).getName() + " has a UUID of: " + vector.get(checkuuid).getUUID() + " and will be replaced by: \n" + "Profile: " + c.getName() + " has a UUID of: " + c.getUUID());
+				String name = vector.get(checkuuid).getName();
+				//UUID exisitert bereits --> überschreiben des alten Containers
+				File file = new File(speicherort + name + ".ser");
+				if(file.exists())
+				{
+					 	System.gc();
+					 	file.delete();
+				}
 		} else {
-			System.out.println("Profile: " + c_save.getName()
-					+ " has a UUID of: " + c_save.getUUID()
-					+ " and will be saved for the first time");
+			System.out.println("Profile: " + c.getName() + " has a UUID of: " + c.getUUID() + " and will be saved for the first time");
 		}
-		File file = new File(speicherort + c_save.getName() + ".ser");
+		File file = new File(speicherort + c.getName() + ".ser");
 		try {
 			file.createNewFile();
 			FileOutputStream fos = new FileOutputStream(file);
 			ObjectOutputStream os = new ObjectOutputStream(fos);
-			os.writeObject(c_save);
+			os.writeObject(c);
 			os.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void deleteContainer(final String name) {
-		// Erstellen des Alertdialoges
+	public void deleteContainer(final Container container)
+	{
+//        mDrawerLayout.closeDrawer(mDrawerProfiles);
+		final String name = container.getName();
+      //Erstellen des Alertdialoges
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 		alertDialogBuilder
-				.setTitle("Delete")
-				.setMessage("Do you really want to delete " + name + "?")
-				.setCancelable(false)
-				.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-							// Funktion bei "Ja"
-							public void onClick(DialogInterface dialog, int id) {
-								File file = new File(speicherort + name
-										+ ".ser");
-								if (file.exists()) {
-									System.out.println(name + " deleted");
-									System.gc();
-									file.delete();
-
-									initDrawer();
-								}
-							}
-						})
-				.setNegativeButton("No", new DialogInterface.OnClickListener() {
-					// Funktion bei "Nein"
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
+		.setTitle("Delete")
+		.setMessage("Do you really want to delete " + name + "?")
+		.setCancelable(false)
+		.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+		{
+				//Funktion bei "Ja"
+				public void onClick(DialogInterface dialog,int id)
+				{
+					vector.remove(container);
+					updateProfileList();
+					File file = new File(speicherort + name + ".ser");
+					if(file.exists())
+					{
+						 	System.out.println(name + " deleted");
+						 	System.gc();
+						 	file.delete();
+						 	
+					    	initDrawer();
 					}
-				});
-
+				}
+		  })
+		.setNegativeButton("No", new DialogInterface.OnClickListener()
+		{
+				//Funktion bei "Nein"
+				public void onClick(DialogInterface dialog,int id)
+				{
+						dialog.cancel();
+				}
+		});
+		
 		AlertDialog alertDialog = alertDialogBuilder.create();
 		alertDialog.show();
 	}
@@ -834,39 +724,38 @@ public class Profile extends Activity implements OnClickListener {
 	}
 
 	// Dateien einlesen und ContainerVektor zurückgeben
-	public static Vector<Container> loadDir() {
-		Vector<Container> vector = new Vector<Container>();
-		FileInputStream fis;
-		File[] liste = new File(speicherort).listFiles();
-		for (File temp : liste) {
-			try {
-				fis = new FileInputStream(temp);
+		public static void loadDir() {
+			vector.clear();
+			FileInputStream fis;
+			File[] liste = new File(speicherort).listFiles();
+			for (File temp : liste) {
+				try {
+					fis = new FileInputStream(temp);
 
-				ObjectInputStream is = new ObjectInputStream(fis);
-				Container c = (Container) is.readObject();
-				vector.add(c);
-				is.close();
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (StreamCorruptedException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
+					ObjectInputStream is = new ObjectInputStream(fis);
+					Container c = (Container) is.readObject();
+					vector.add(c);
+					is.close();
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (StreamCorruptedException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
 			}
+		 System.out.println("Vector size: " + vector.size());
+		 updateProfileList();
 		}
-		// System.out.println("Vector size: " + vector.size());
-		return vector;
-	}
 
 	@Override
 	public void onClick(View v) {
 
 	}
 
-	public static void findContainers() {
-		vector = loadDir();
+	public static void updateProfileList() {
 		navMenuProfiles = new String[vector.size() + 1];
 		if (vector.size() > 0) {
 			for (int i=0; i < vector.size(); i++)
@@ -882,7 +771,7 @@ public class Profile extends Activity implements OnClickListener {
 	} 
 
 	public static int checkUUID(UUID id) {
-		MainActivity.findContainers();
+		updateProfileList();
 		for (int i = 0; i < vector.size(); i++) {
 			if (0 == id.compareTo(vector.get(i).getUUID()))
 				return i;
@@ -891,7 +780,7 @@ public class Profile extends Activity implements OnClickListener {
 	}
 	
 	private void createProfile() {
-		findContainers();
+		updateProfileList();
 		
 		final EditText name = new EditText(Profile.this);
     	name.setText("New Profile");
@@ -919,9 +808,10 @@ public class Profile extends Activity implements OnClickListener {
 				if (unique == true) {
 				    Container c = new Container(2, name.getText().toString(), null, true, null, false, null, false, null, false, null, false);
 				    saveSetting(c);
-				    vector = loadDir();
-				    
-				    profileIndex = vector.size() - 1;
+				    vector.add(c);
+				    updateProfileList();
+				    profileIndex = vector.indexOf(c);
+//				    profileIndex = vector.size() - 1;
 				    
 				    loadKette(profileIndex, ketteIndex);
 	                mDrawerLayout.openDrawer(mDrawerKetten);
