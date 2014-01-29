@@ -3,7 +3,6 @@
 
     <string name="app_name">LED Control</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
     <string name="home_screen">Home Screen</string>
     <string-array name="ketten_array">
         <item >Profile Name</item>
@@ -17,11 +16,9 @@
     <string name="settings_bg_color_confirm">Color Settings</string>
     <string name="settings_default_color_confirm">Color Settings</string>
     <string name="press_color_to_apply">Press Color to Apply</string>
-    
-	<!-- App -->
-    <string name="hello">Hello World, Main!</string>
-  
-    <string name="add">Add</string>
+    <string name="ip">IP:Port</string>
+    <string name="b_auto">Automatic Server Search</string>
+    <string name="b_manu">Manually Define Server IP</string>   
     <string name="getProfiles">Get Profiles</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>

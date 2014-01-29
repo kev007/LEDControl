@@ -24,15 +24,36 @@
             android:layout_centerHorizontal="true"
             android:text="Start Screen (temporary)"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <Button
+	        android:id="@+id/b_auto"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/b_manu"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignRight="@+id/b_manu"
+	        android:layout_marginBottom="39dp"
+	        android:onClick="onClick"
+	        android:text="@string/b_auto" />
+	
+	    <Button
+	        android:id="@+id/b_manu"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/b_auto"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginBottom="16dp"
+	        android:onClick="onClick"
+	        android:text="@string/b_manu" />
 
-        <ProgressBar
-            android:id="@+id/progressBar1"
-            style="?android:attr/progressBarStyleLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/textView1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="70dp" />
+	    <TextView
+	        android:id="@+id/ip"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/textView1"
+	        android:layout_centerHorizontal="true"
+	        android:layout_marginTop="60dp"
+	        android:text="@string/ip" />
 
     </RelativeLayout>
     

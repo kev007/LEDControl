@@ -18,8 +18,10 @@ import android.view.View.OnClickListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -38,6 +40,9 @@ public class MainActivity extends Activity implements OnClickListener {
 	static ListView mDrawerProfiles;
 	private static ListView mDrawerKetten;
 	private ActionBarDrawerToggle mDrawerToggle;
+	private Button b_auto, b_manu;
+	private TextView ip;
+	
 
 	public static String[] navMenuProfiles;
 
@@ -52,6 +57,10 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		m = new Management();
 		vector = new Vector<Container>();
+		
+		b_auto = (Button) findViewById(R.id.b_auto);
+		b_manu = (Button) findViewById(R.id.b_manu);
+		ip = (TextView) findViewById(R.id.ip);
 
 		speicherort = getFilesDir().getAbsolutePath() + File.separator;
 		loadDir();
@@ -380,7 +389,47 @@ public class MainActivity extends Activity implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
+		if(v == b_manu)
+		{
+			final EditText serverIP = new EditText(MainActivity.this);
+			serverIP.setText("New Profile");
+			final InputMethodManager imm = (InputMethodManager) MainActivity.this
+					.getSystemService(Context.INPUT_METHOD_SERVICE);
+			if (imm != null) {
+				imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
+			}
+			serverIP.requestFocus();
 
+			// Erstellen des Alertdialoges
+			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+					MainActivity.this);
+			alertDialogBuilder
+					.setTitle("Manual Server Connection")
+					.setMessage("Please enter the IP-Address and Port of your Server")
+					.setCancelable(false)
+					.setView(serverIP)
+					.setPositiveButton("Set",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									imm.toggleSoftInput(0, 0);
+									String value = serverIP.getText().toString();
+									Toast.makeText(MainActivity.this, "Chosen Server IP and Port. " + serverIP, Toast.LENGTH_LONG).show();
+								}
+							})
+					.setNegativeButton("Cancel",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int id) {
+									imm.toggleSoftInput(0, 0);
+									dialog.cancel();
+								}
+							});
+			AlertDialog alertDialog = alertDialogBuilder.create();
+			alertDialog.show();
+		}
+		else if(v==b_auto)
+		{
+			
+		}
 	}
 
 	public static void updateProfileList() {

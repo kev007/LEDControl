@@ -68,26 +68,28 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int led=0x7f020007;
     }
     public static final class id {
-        public static final int broadcast=0x7f050013;
-        public static final int btnColor=0x7f05000e;
-        public static final int btnTime=0x7f05000d;
+        public static final int b_auto=0x7f050008;
+        public static final int b_manu=0x7f050009;
+        public static final int broadcast=0x7f050015;
+        public static final int btnColor=0x7f050010;
+        public static final int btnTime=0x7f05000f;
         public static final int color_panel_new=0x7f050002;
         public static final int color_panel_old=0x7f050001;
         public static final int color_picker_view=0x7f050000;
         public static final int content_frame=0x7f050006;
         public static final int dialog_color_picker_extra_layout_landscape=0x7f050004;
         public static final int drawer_layout=0x7f050005;
-        public static final int getProfiles=0x7f050012;
-        public static final int layout1=0x7f05000c;
-        public static final int left_drawer=0x7f050009;
-        public static final int listView=0x7f05000b;
-        public static final int menu_color_picker_dialog=0x7f050010;
+        public static final int getProfiles=0x7f050014;
+        public static final int ip=0x7f05000a;
+        public static final int layout1=0x7f05000e;
+        public static final int left_drawer=0x7f05000b;
+        public static final int listView=0x7f05000d;
+        public static final int menu_color_picker_dialog=0x7f050012;
         public static final int preference_preview_color_panel=0x7f050003;
-        public static final int progressBar1=0x7f050008;
-        public static final int right_drawer=0x7f05000a;
-        public static final int send_now=0x7f050011;
+        public static final int right_drawer=0x7f05000c;
+        public static final int send_now=0x7f050013;
         public static final int textView1=0x7f050007;
-        public static final int textViewT=0x7f05000f;
+        public static final int textViewT=0x7f050011;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -104,20 +106,18 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
-        public static final int add=0x7f060009;
         public static final int app_name=0x7f060000;
+        public static final int b_auto=0x7f060008;
+        public static final int b_manu=0x7f060009;
         public static final int drawer_close=0x7f06000c;
         public static final int drawer_open=0x7f06000b;
         public static final int getProfiles=0x7f06000a;
-        /**  App 
-         */
-        public static final int hello=0x7f060008;
-        public static final int hello_world=0x7f060002;
-        public static final int home_screen=0x7f060003;
-        public static final int press_color_to_apply=0x7f060007;
-        public static final int settings_bg_color_confirm=0x7f060005;
-        public static final int settings_bg_color_dialog=0x7f060004;
-        public static final int settings_default_color_confirm=0x7f060006;
+        public static final int home_screen=0x7f060002;
+        public static final int ip=0x7f060007;
+        public static final int press_color_to_apply=0x7f060006;
+        public static final int settings_bg_color_confirm=0x7f060004;
+        public static final int settings_bg_color_dialog=0x7f060003;
+        public static final int settings_default_color_confirm=0x7f060005;
     }
     public static final class style {
         /** 
