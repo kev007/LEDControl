@@ -12,18 +12,6 @@
 	    android:showAsAction="always"
 	    android:title="Send Profile"/>
     
-	<item
-        android:id="@+id/addRandom"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/add"/>
-	
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings"/>
-    
     <item
         android:id="@+id/getProfiles"
         android:orderInCategory="100"

@@ -81,7 +81,7 @@ public class Container implements Serializable
 				this.status4 = false;
 				this.status5 = false;
 				
-				int [][]temp = {{0,0,0,0,0}};
+				int [][]temp = {{255,255,255,255,0}};
 				kette1 = temp;
 		}
 		

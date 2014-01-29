@@ -225,10 +225,11 @@ public class MainActivity extends Activity implements OnClickListener {
 		return super.onCreateOptionsMenu(menu);
 	}
 
+	@SuppressWarnings("unused")
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// If the nav drawer is open, hide action items related to the content
 		// view
-//		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerProfiles);
+		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerProfiles);
 		// menu.findItem(R.id.add).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
@@ -241,9 +242,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 		// Handle action buttons
 		switch (item.getItemId()) {
-		case R.id.action_settings:
-			Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-			return true;
 		case R.id.broadcast:
 			MainActivity.sendBroadcast();
 			return true;

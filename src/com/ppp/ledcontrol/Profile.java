@@ -38,7 +38,6 @@ import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.UUID;
-import java.lang.Math;
 import java.util.Vector;
 
 import com.ppp.ledcontrol.ColorAdapter.ColorHolder;
@@ -84,57 +83,61 @@ public class Profile extends Activity implements OnClickListener {
     	colorArray.clear();
 		colorAdapter.notifyDataSetChanged();
     	
-		Container c = vector.get(profile);
-		int[][] selectedKette = null;
-		
-		navMenuKetten[0] = "\n\n" + c.getName() + "\n\n";
-		if(c.status1 == false) navMenuKetten[1] = "LED 1 (Disabled)";
-		else navMenuKetten[1] = "LED 1";
-		if(c.status2 == false) navMenuKetten[2] = "LED 2 (Disabled)";
-		else navMenuKetten[2] = "LED 2";
-		if(c.status3 == false) navMenuKetten[3] = "LED 3 (Disabled)";
-		else navMenuKetten[3] = "LED 3";
-		if(c.status4 == false) navMenuKetten[4] = "LED 4 (Disabled)";
-		else navMenuKetten[4] = "LED 4";
-		if(c.status5 == false) navMenuKetten[5] = "LED 5 (Disabled)";
-		else navMenuKetten[5] = "LED 5";
-		
-    	if (! (kette >= 0 && kette <= 4)) {
-    		System.out.println("Incorrect kette selection: " + kette);
-//    		loadRandom();
-    	} else {
-        	switch(kette){
-	        	case 0:
-	        		selectedKette = c.getKette1();
-	            break;
-	        	case 1:
-	        		selectedKette = c.getKette2();
-	            break;
-	        	case 2:
-	        		selectedKette = c.getKette3();
-	            break;
-	        	case 3:
-	        		selectedKette = c.getKette4();
-	            break;
-	        	case 4:
-	        		selectedKette = c.getKette5();
-	            break;
-        	}
-//        	System.out.println("selectedKette = " + selectedKette);
-        	if (selectedKette == null){
-        		//This kette is empty and will be filled with default values
-        		selectedKette = new int[][]{{0,0,0,255,0}};
-        	}
-        	if (selectedKette.length == 0){
-        		//This kette is empty and will be filled with default values
-        		selectedKette = new int[][]{{0,0,0,255,0}};
-        	}
-        	for (int i = 0; i < selectedKette.length; i++) {
-    			colorArray.add(new SingleColor(selectedKette[i][4], selectedKette[i][0], selectedKette[i][1], selectedKette[i][2], selectedKette[i][3]));
-    		}
-    		System.out.println("Profile '" + c.getName() + "' has loaded LED " + (kette+1) + " which contained " + colorArray.size() + " entries");
-
-    		saveKette(c, kette);
+		if (profile < 0) {
+			System.out.println("Invalid!");
+			finish();
+		} else {
+			Container c = vector.get(profile);
+			int[][] selectedKette = null;
+			
+			navMenuKetten[0] = "\n\n" + c.getName() + "\n\n";
+			if(c.status1 == false) navMenuKetten[1] = "LED 1 (Disabled)";
+			else navMenuKetten[1] = "LED 1";
+			if(c.status2 == false) navMenuKetten[2] = "LED 2 (Disabled)";
+			else navMenuKetten[2] = "LED 2";
+			if(c.status3 == false) navMenuKetten[3] = "LED 3 (Disabled)";
+			else navMenuKetten[3] = "LED 3";
+			if(c.status4 == false) navMenuKetten[4] = "LED 4 (Disabled)";
+			else navMenuKetten[4] = "LED 4";
+			if(c.status5 == false) navMenuKetten[5] = "LED 5 (Disabled)";
+			else navMenuKetten[5] = "LED 5";
+					
+	    	if (! (kette >= 0 && kette <= 4)) {
+	    		System.out.println("Incorrect kette selection: " + kette);
+	    	} else {
+	        	switch(kette){
+		        	case 0:
+		        		selectedKette = c.getKette1();
+		            break;
+		        	case 1:
+		        		selectedKette = c.getKette2();
+		            break;
+		        	case 2:
+		        		selectedKette = c.getKette3();
+		            break;
+		        	case 3:
+		        		selectedKette = c.getKette4();
+		            break;
+		        	case 4:
+		        		selectedKette = c.getKette5();
+		            break;
+	        	}
+//	        	System.out.println("selectedKette = " + selectedKette);
+	        	if (selectedKette == null){
+	        		//This kette is empty and will be filled with default values
+	        		selectedKette = new int[][]{{0,0,0,255,0}};
+	        	}
+	        	if (selectedKette.length == 0){
+	        		//This kette is empty and will be filled with default values
+	        		selectedKette = new int[][]{{0,0,0,255,0}};
+	        	}
+	        	for (int i = 0; i < selectedKette.length; i++) {
+	    			colorArray.add(new SingleColor(selectedKette[i][4], selectedKette[i][0], selectedKette[i][1], selectedKette[i][2], selectedKette[i][3]));
+	    		}
+	    		System.out.println("Profile '" + c.getName() + "' has loaded LED " + (kette+1) + " which contained " + colorArray.size() + " entries");
+	    		
+	    		saveKette(c, kette);
+	    	}
     	}
 	}
 	
@@ -174,14 +177,6 @@ public class Profile extends Activity implements OnClickListener {
 		saveSetting(c);
 	}
 
-	public static void loadRandom() {
-		for (int i = 0; i < 5; i++) {
-			colorArray.add(colorArray.size(),
-					new SingleColor(Math.abs((int) (1000 * Math.sin(i))),
-							i * 25, i * 50, 127, 255));
-		}
-	}
-	
 	private void initList() {
 		colorArray = new ArrayList<SingleColor>();
 
@@ -377,7 +372,6 @@ public class Profile extends Activity implements OnClickListener {
             	//Action bar will display only the name of the profile to prevent the title from being too long to display
 //            	String title = (navMenuProfiles[profileIndex] + ": " + navMenuKetten[ketteIndex]);
             	String title = (navMenuProfiles[profileIndex]);
-                setTitle(title);
                 getActionBar().setTitle(title);
         	} else if (position == vector.size()) {
         		createProfile();
@@ -392,6 +386,7 @@ public class Profile extends Activity implements OnClickListener {
         {
             //the profile which was long-click selected will be deleted and the profile list is the refreshed
         	if (position < vector.size()) deleteContainer(vector.get(position));
+
         	updateProfileList();
 //        	((ArrayAdapter<String>) mDrawerProfiles.getAdapter()).notifyDataSetChanged();
 			return true;
@@ -422,13 +417,14 @@ public class Profile extends Activity implements OnClickListener {
 				.setView(name)
 				.setPositiveButton("Set", new DialogInterface.OnClickListener(){
 					public void onClick(DialogInterface dialog,int id){
-						imm.toggleSoftInput(0, 0);
+						imm.toggleSoftInput(0, 0);						
 						navMenuKetten[0] = "\n\n" + name.getText().toString() + "\n\n";
 						vector.get(profileIndex).setName(name.getText().toString());
 						System.out.println("New name: " + vector.get(profileIndex).getName());
 						saveSetting(vector.get(profileIndex));
 						updateProfileList();
 						initDrawer();
+
 //						loadKette(profileIndex, ketteIndex);
 						mDrawerLayout.openDrawer(mDrawerKetten);
 					}
@@ -445,12 +441,11 @@ public class Profile extends Activity implements OnClickListener {
             	ketteIndex = position - 1;
             	//Action bar will display only the number of the LED which is being controlled to prevent the title from being too long to display
 //            	String title = (navMenuProfiles[profileIndex] + ": " + navMenuKetten[ketteIndex]);
-            	String title = (navMenuKetten[position]);
-                setTitle(title);
-                getActionBar().setTitle(title);
-                
                 
             	loadKette(profileIndex, ketteIndex);
+
+            	String title = ("LED " + position);
+                getActionBar().setTitle(title);
             }
         	
             
@@ -552,10 +547,11 @@ public class Profile extends Activity implements OnClickListener {
 		return super.onCreateOptionsMenu(menu);
 	}
 
+	@SuppressWarnings("unused")
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// If the nav drawer is open, hide action items related to the content
 		// view
-//		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerKetten);
+		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerKetten);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
@@ -580,9 +576,6 @@ public class Profile extends Activity implements OnClickListener {
 			
 			Toast.makeText(this, "Sent", Toast.LENGTH_SHORT).show();
 			return true;
-		case R.id.action_settings:
-			Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
-			return true;
 		case R.id.broadcast:
 			MainActivity.sendBroadcast();
 			return true;
@@ -591,10 +584,9 @@ public class Profile extends Activity implements OnClickListener {
 			mDrawerLayout.closeDrawer(mDrawerProfiles);
 			Management.sendPackage(new Container(3));
 			colorAdapter.clear();
+            getActionBar().setTitle("");
 			initDrawer();
 			return true;
-		case R.id.addRandom:
-			loadRandom();
 		default:
 			return super.onOptionsItemSelected(item);
 		}
@@ -686,7 +678,12 @@ public class Profile extends Activity implements OnClickListener {
 		{
 				//Funktion bei "Ja"
 				public void onClick(DialogInterface dialog,int id)
-				{
+				{	
+		        	if (vector.indexOf(container) == profileIndex) {
+		            	System.out.println("Deleting currently displayed LED Chain at position: " + profileIndex) ;
+		            	if (profileIndex == 0) loadKette(-1, 1);
+		            	else loadKette(0, 1);
+		        	}
 					vector.remove(container);
 					updateProfileList();
 					File file = new File(speicherort + name + ".ser");
