@@ -14,7 +14,7 @@ public class Management
 {
 		//Konstanten
 		private static int [] portVector = {2797,8167,4603,11173,21121};	//Portvektor für Portauswahl
-		private static int finalPort=0;
+		public static int finalPort=0;
 		static int quellport = 0;
 		static InetAddress address = null;
 		static InetAddress broad = null;

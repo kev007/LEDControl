@@ -102,12 +102,13 @@ public class ColorAdapter extends ArrayAdapter<SingleColor>{
 					.setPositiveButton("Set", new DialogInterface.OnClickListener(){
 						public void onClick(DialogInterface dialog,int id){
 							imm.toggleSoftInput(0, 0);
-							if (time.getText() == null) {
-								Toast.makeText(context, "'" + "' is an invalid entry!", Toast.LENGTH_LONG).show();
+							System.out.println("contents of time:" + time.getText());
+							if (time.getText().toString().matches("")) {
+								Toast.makeText(context, "'" + time.getText() + "' is an invalid entry!\nPlease enter an Integer larger than zero: x > 0", Toast.LENGTH_LONG).show();
 							} else if (Integer.parseInt(time.getText().toString()) > 0){
 								Profile.updateTime(index, Integer.parseInt(time.getText().toString()));
 							} else {
-								Toast.makeText(context, "'" + Integer.parseInt(time.getText().toString()) + "' is an invalid entry!", Toast.LENGTH_LONG).show();
+								Toast.makeText(context, "'" + time.getText() + "' is an invalid entry!\nPlease enter an Integer larger than zero: x > 0", Toast.LENGTH_LONG).show();
 							}
 						}
 					})

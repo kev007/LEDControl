@@ -2,13 +2,19 @@ package com.ppp.ledcontrol;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.Spanned;
+import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -20,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,8 +39,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.UUID;
 import java.util.Vector;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MainActivity extends Activity implements OnClickListener {
 	private static DrawerLayout mDrawerLayout;
@@ -41,7 +52,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	private static ListView mDrawerKetten;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private Button b_auto, b_manu;
-	private TextView ip;
+	private static TextView ip;
 	
 
 	public static String[] navMenuProfiles;
@@ -51,12 +62,14 @@ public class MainActivity extends Activity implements OnClickListener {
 	Management m;
 	private static String speicherort;
 	public static Vector<Container> vector;
+	public static boolean serverFound = false;
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		m = new Management();
 		vector = new Vector<Container>();
+		sendBroadcast();
 		
 		b_auto = (Button) findViewById(R.id.b_auto);
 		b_manu = (Button) findViewById(R.id.b_manu);
@@ -70,9 +83,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 
 		initDrawer();
-		sendBroadcast();
+		if (serverFound) displayIP();
 	}
-
+	
 	private void createProfile() {
 		updateProfileList();
 
@@ -194,38 +207,12 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		public boolean onItemLongClick(AdapterView<?> parent, View view,
 				int position, long id) {
-//			final int index = position;
 			deleteContainer(vector.get(position));
-			// deleteContainer(navMenuProfiles[index]);
-			// Toast.makeText(MainActivity.this, "Delete?:  " +
-			// navMenuProfiles[index], Toast.LENGTH_SHORT).show();
 			updateProfileList();
-			// ((ArrayAdapter<String>)
-			// mDrawerProfiles.getAdapter()).notifyDataSetChanged();
 			return true;
 		}
 	}
-
-	/*
-	 * private class DrawerItemClickListenerRight implements
-	 * ListView.OnItemClickListener, ListView.OnItemLongClickListener { public
-	 * void onItemClick(AdapterView<?> parent, View view, int position, long id)
-	 * { position_right = position; String[] menuItems =
-	 * getResources().getStringArray(R.array.ketten_array); mTitle =
-	 * menuItems[position]; Bundle data = new Bundle(); data.putInt("position",
-	 * position);
-	 * 
-	 * mDrawerKetten.setItemChecked(position, true);
-	 * setTitle(navMenuProfiles[profileIndex] + ": " +
-	 * navMenuKetten[position_right]); mDrawerLayout.closeDrawer(mDrawerKetten);
-	 * getActionBar().setTitle(mTitle); Toast.makeText(MainActivity.this,
-	 * ((TextView)view).getText(), Toast.LENGTH_SHORT).show(); } public boolean
-	 * onItemLongClick(AdapterView<?> parent, View view, int position, long id)
-	 * { final int index = position; deleteContainer(navMenuProfiles[index]); //
-	 * Toast.makeText(MainActivity.this, "Delete?:  " + navMenuProfiles[index],
-	 * Toast.LENGTH_SHORT).show(); findContainers(); // ((ArrayAdapter<String>)
-	 * mDrawerProfiles.getAdapter()).notifyDataSetChanged(); return true; } }
-	 */
+	
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.main, menu);
@@ -252,7 +239,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		// Handle action buttons
 		switch (item.getItemId()) {
 		case R.id.broadcast:
-			MainActivity.sendBroadcast();
+			serverFound = false;
+			sendBroadcast();
+			if (serverFound) displayIP();
 			return true;
 		case R.id.getProfiles:
 			mDrawerLayout.closeDrawer(mDrawerKetten);
@@ -387,19 +376,54 @@ public class MainActivity extends Activity implements OnClickListener {
 		Log.d("management", "send broadcast");
 	}
 
-	@Override
+	public static void displayIP() {
+		ip.setText(Management.address.toString() + ":" + Management.finalPort);
+	}
+
 	public void onClick(View v) {
 		if(v == b_manu)
 		{
 			final EditText serverIP = new EditText(MainActivity.this);
-			serverIP.setText("New Profile");
+			final EditText serverPort = new EditText(MainActivity.this);
+			
+			InputFilter[] filters = new InputFilter[1];
+		    filters[0] = new InputFilter() {
+		        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+		            if (end > start) {
+		                String destTxt = dest.toString();
+		                String resultingTxt = destTxt.substring(0, dstart) + source.subSequence(start, end) + destTxt.substring(dend);
+		                if (!resultingTxt.matches ("^\\d{1,3}(\\.(\\d{1,3}(\\.(\\d{1,3}(\\.(\\d{1,3})?)?)?)?)?)?")) { 
+		                    return "";
+		                } else {
+		                    String[] splits = resultingTxt.split("\\.");
+		                    for (int i=0; i<splits.length; i++) {
+		                        if (Integer.valueOf(splits[i]) > 255) {
+		                            return "";
+		                        }
+		                    }
+		                }
+		            }
+		        return null;
+		        }
+		    };
+		    
+            serverIP.setFilters(filters);
+			serverIP.setHint("255.255.255.255");
+			serverPort.setHint("2797");
+			serverIP.setInputType(InputType.TYPE_CLASS_PHONE);
+			serverPort.setInputType(InputType.TYPE_CLASS_NUMBER);
+			
 			final InputMethodManager imm = (InputMethodManager) MainActivity.this
 					.getSystemService(Context.INPUT_METHOD_SERVICE);
 			if (imm != null) {
 				imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
 			}
 			serverIP.requestFocus();
-
+			
+			LinearLayout layout = new LinearLayout(MainActivity.this);
+			layout.addView(serverIP);
+			layout.addView(serverPort);
+			
 			// Erstellen des Alertdialoges
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 					MainActivity.this);
@@ -407,13 +431,34 @@ public class MainActivity extends Activity implements OnClickListener {
 					.setTitle("Manual Server Connection")
 					.setMessage("Please enter the IP-Address and Port of your Server")
 					.setCancelable(false)
-					.setView(serverIP)
+					.setView(layout)
 					.setPositiveButton("Set",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int id) {
 									imm.toggleSoftInput(0, 0);
-									String value = serverIP.getText().toString();
-									Toast.makeText(MainActivity.this, "Chosen Server IP and Port. " + serverIP, Toast.LENGTH_LONG).show();
+									String PATTERN = 
+									        "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+									        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+									        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." +
+									        "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$";
+								    Pattern pattern = Pattern.compile(PATTERN);
+								    Matcher matcher = pattern.matcher(serverIP.getText().toString());     
+									if (matcher.matches()){
+										InetAddress address = null;
+										int port = 0;
+										try {
+											address = InetAddress.getByName(serverIP.getText().toString());
+											if (serverPort.getText().toString().matches("")) port = 2797;
+											else port = Integer.parseInt(serverPort.getText().toString());
+											Management.detectedServer(address, port);
+											displayIP();
+										} catch (UnknownHostException e) {
+											e.printStackTrace();
+										}
+										System.out.println("Chosen Server IP and Port. " + address.toString() + ":" + port);
+									} else {
+						            	Toast.makeText(MainActivity.this, "Please enter a valid IP", Toast.LENGTH_LONG).show();
+									}
 								}
 							})
 					.setNegativeButton("Cancel",
@@ -428,7 +473,27 @@ public class MainActivity extends Activity implements OnClickListener {
 		}
 		else if(v==b_auto)
 		{
-			
+			serverFound = false;
+			ip.setText("Searching. Please wait...");
+			final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "", 
+                    "Searching. Please wait...", true);
+			sendBroadcast();
+			new CountDownTimer(7500,750){
+				int i = 0;
+	            public void onTick(long miliseconds){
+	            	i++;
+	            	if (serverFound && i > 2) {
+	            		dialog.dismiss();
+	            		displayIP();
+	            	}
+	            }
+	            public void onFinish(){
+	               //after 5 seconds, execute:
+	            	dialog.dismiss();
+	            	if (serverFound) displayIP();
+	            	else Toast.makeText(MainActivity.this, "No Server found!\nCheck your server status and ask your Network Admin about UDP broadcasts", Toast.LENGTH_LONG).show();
+	            }
+	        }.start();
 		}
 	}
 

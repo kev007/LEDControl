@@ -14,7 +14,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent" 
+    	android:background="@drawable/led"  >
 
         <TextView
             android:id="@+id/textView1"
@@ -22,7 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="Start Screen (temporary)"
+	        android:layout_marginTop="40dp"
+            android:text="Server IP:"
+            android:textColor="#0099CC"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 	
 	    <Button
@@ -32,7 +35,7 @@
 	        android:layout_alignLeft="@+id/b_manu"
 	        android:layout_alignParentBottom="true"
 	        android:layout_alignRight="@+id/b_manu"
-	        android:layout_marginBottom="39dp"
+	        android:layout_marginBottom="40dp"
 	        android:onClick="onClick"
 	        android:text="@string/b_auto" />
 	
@@ -42,7 +45,7 @@
 	        android:layout_height="wrap_content"
 	        android:layout_above="@+id/b_auto"
 	        android:layout_centerHorizontal="true"
-	        android:layout_marginBottom="16dp"
+	        android:layout_marginBottom="20dp"
 	        android:onClick="onClick"
 	        android:text="@string/b_manu" />
 
@@ -52,8 +55,9 @@
 	        android:layout_height="wrap_content"
 	        android:layout_below="@+id/textView1"
 	        android:layout_centerHorizontal="true"
-	        android:layout_marginTop="60dp"
-	        android:text="@string/ip" />
+	        android:layout_marginTop="10dp"
+	        android:text="@string/ip"
+	        android:textColor="#0099CC" />
 
     </RelativeLayout>
     

@@ -47,6 +47,7 @@ public class ClientReceiveThread extends Thread
 						    			System.out.println("Empfangene IP: " + packet.getAddress());
 						    			System.out.println("Empfangener Port: " + packet.getPort());
 						    			//Aktulaisieren des Management
+						    			MainActivity.serverFound = true;
 						    			Management.detectedServer(packet.getAddress(), packet.getPort());	
 						    	}
 						    	
