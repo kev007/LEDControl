@@ -477,18 +477,17 @@ public class MainActivity extends Activity implements OnClickListener {
 			ip.setText("Searching. Please wait...");
 			final ProgressDialog dialog = ProgressDialog.show(MainActivity.this, "", 
                     "Searching. Please wait...", true);
-			sendBroadcast();
 			new CountDownTimer(7500,750){
-				int i = 0;
 	            public void onTick(long miliseconds){
-	            	i++;
-	            	if (serverFound && i > 2) {
+	            	if (serverFound) {
 	            		dialog.dismiss();
 	            		displayIP();
+	            	} else {
+		    			sendBroadcast();
 	            	}
 	            }
 	            public void onFinish(){
-	               //after 5 seconds, execute:
+	               //after 7.5 seconds, execute:
 	            	dialog.dismiss();
 	            	if (serverFound) displayIP();
 	            	else Toast.makeText(MainActivity.this, "No Server found!\nCheck your server status and ask your Network Admin about UDP broadcasts", Toast.LENGTH_LONG).show();
