@@ -14,7 +14,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Spanned;
-import android.text.format.Time;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -54,7 +53,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	private Button b_auto, b_manu;
 	private static TextView ip;
 	
-
 	public static String[] navMenuProfiles;
 
 	static int profileIndex = 0;
@@ -64,41 +62,41 @@ public class MainActivity extends Activity implements OnClickListener {
 	public static Vector<Container> vector;
 	public static boolean serverFound = false;
 
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {		//the following functions will be run when the MainActivity is created
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		m = new Management();
-		vector = new Vector<Container>();
-		sendBroadcast();
+		m = new Management();										//initialize Management		
+		vector = new Vector<Container>();						//initialize Container Vector
+		sendBroadcast();														//Send a broadcast on the local network as soon as the app starts, before any user input
 		
-		b_auto = (Button) findViewById(R.id.b_auto);
+		b_auto = (Button) findViewById(R.id.b_auto);			
 		b_manu = (Button) findViewById(R.id.b_manu);
-		ip = (TextView) findViewById(R.id.ip);
+		ip = (TextView) findViewById(R.id.ip);						 
 
-		speicherort = getFilesDir().getAbsolutePath() + File.separator;
-		loadDir();
+		speicherort = getFilesDir().getAbsolutePath() + File.separator;		//Define the save location for the Container files
+		loadDir();																							//Search for and load Containers in the aforementioned folder into the Container vector
 
-		if (vector.size() == 0) {
+		if (vector.size() == 0) {																	//If no Containers exist in local storage, the createProfile() dialog will be called to create one
 			createProfile();
 		}
 
-		initDrawer();
-		if (serverFound) displayIP();
+		initDrawer();																						//call the drawer initialization method
+		if (serverFound) displayIP();																//if the ip of the server is known, display it 
 	}
 	
-	private void createProfile() {
-		updateProfileList();
+	private void createProfile() {																	//profile creation method
+		updateProfileList();																			//the Container vector is read and the Profiles String array is re-filled
 
-		final EditText name = new EditText(MainActivity.this);
+		//create profile dialog preparation
+		final EditText name = new EditText(MainActivity.this);					//EditText; for the input of the profile name
 		name.setText("New Profile");
-		final InputMethodManager imm = (InputMethodManager) MainActivity.this
-				.getSystemService(Context.INPUT_METHOD_SERVICE);
+		final InputMethodManager imm = (InputMethodManager) MainActivity.this.getSystemService(Context.INPUT_METHOD_SERVICE); 	//InputMethodManager; for the control of the input method i.e. virtual keyboard 
 		if (imm != null) {
-			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1);
+			imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 1); 		//force the display of the virtual keyboard
 		}
-		name.requestFocus();
+		name.requestFocus();																		//focus the input to the EditText field
 
-		// Erstellen des Alertdialoges
+		//create the profile dialog
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
 				MainActivity.this);
 		alertDialogBuilder
@@ -106,61 +104,47 @@ public class MainActivity extends Activity implements OnClickListener {
 				.setMessage("Please enter a name")
 				.setCancelable(false)
 				.setView(name)
-				.setPositiveButton("Set",
+				.setPositiveButton("Set",																	//on "Set" Button
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
-								imm.toggleSoftInput(0, 0);
-								Boolean unique = true;
+								imm.toggleSoftInput(0, 0);												//open the virtual keyboard
+								Boolean unique = true;											
 								for (int i = 0; i < vector.size(); i++) {
-									if (vector.get(i).getName()
-											.equals(name.getText().toString()))
-										unique = false;
+									if (vector.get(i).getName().equals(name.getText().toString())) unique = false; 		//Check if the profile name already exists locally
 								}
 								if (unique == true) {
-									Container c = new Container(2, name
-											.getText().toString(), null, true,
-											null, false, null, false, null,
-											false, null, false);
-									saveSetting(c);
-									vector.add(c);
-									profileIndex = vector.indexOf(c);
+									Container c = new Container(2, name.getText().toString(), null, true, null, false, null, false, null, false, null, false);		//new empty container
+									saveSetting(c);																//save the container locally
+									vector.add(c);																//add the container to the Container Vector
+									profileIndex = vector.indexOf(c);									//find the position of the newly made container in the Container Vector
 
-									initDrawer();
-									Intent intent = new Intent(
-											MainActivity.this, Profile.class);
-									startActivity(intent);
+									initDrawer();																	//reload the drawers
+									Intent intent = new Intent(MainActivity.this, Profile.class); 		
+									startActivity(intent);														//start the profile activity
 								} else {
-									Toast.makeText(
-											MainActivity.this,
-											"A profile with this name already exists!",
-											Toast.LENGTH_LONG).show();
-									mDrawerLayout.openDrawer(mDrawerProfiles);
+									Toast.makeText(MainActivity.this,"A profile with this name already exists!",Toast.LENGTH_LONG).show();		//Toast warning if the name is not unique
+									mDrawerLayout.openDrawer(mDrawerProfiles);			//reopen the drawer for convenience
 								}
-
 							}
 						})
-				.setNegativeButton("Cancel",
-						new DialogInterface.OnClickListener() {
+				.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {			//on cancel, close the dialog and close the virtual keyboard
 							public void onClick(DialogInterface dialog, int id) {
 								imm.toggleSoftInput(0, 0);
 								dialog.cancel();
 							}
 						});
 		AlertDialog alertDialog = alertDialogBuilder.create();
-		alertDialog.show();
+		alertDialog.show();																					//show dialog
 	}
 
-	public void initDrawer() {
-		updateProfileList();
+	public void initDrawer() {																				//Drawer loading
+		updateProfileList();																					//the Container vector is read and the Profiles String array is re-filled
 
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);		
 		mDrawerProfiles = (ListView) findViewById(R.id.left_drawer);
-		mDrawerProfiles.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.drawer_item_list, navMenuProfiles));
-		mDrawerProfiles
-				.setOnItemClickListener(new DrawerItemClickListenerLeft());
-		mDrawerProfiles
-				.setOnItemLongClickListener(new DrawerItemClickListenerLeft());
+		mDrawerProfiles.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_item_list, navMenuProfiles)); //add an adapter to the profiles drawer
+		mDrawerProfiles.setOnItemClickListener(new DrawerItemClickListenerLeft());													//add click listeners to the left drawer
+		mDrawerProfiles.setOnItemLongClickListener(new DrawerItemClickListenerLeft());
 
 		mDrawerKetten = (ListView) findViewById(R.id.right_drawer);
 
@@ -174,41 +158,38 @@ public class MainActivity extends Activity implements OnClickListener {
 		R.string.drawer_close /* "close drawer" description for accessibility */
 		) {
 			public void onDrawerClosed(View view) {
-				// getActionBar().setTitle(mTitle);
 				invalidateOptionsMenu();
 			}
 
 			public void onDrawerOpened(View drawerView) {
-				// getActionBar().setTitle(mDrawerTitle);
 				invalidateOptionsMenu();
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
 	}
 
-	private class DrawerItemClickListenerLeft implements
-			ListView.OnItemClickListener, ListView.OnItemLongClickListener {
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			mDrawerLayout.closeDrawer(mDrawerProfiles);
+	private class DrawerItemClickListenerLeft implements ListView.OnItemClickListener, ListView.OnItemLongClickListener {
+		public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+			mDrawerLayout.closeDrawer(mDrawerProfiles);								//close the drawer
 			if (position < vector.size()) {
-				profileIndex = position;
+				profileIndex = position;																//update the position index of the selected profile within the Container vector 
 
-				Intent intent = new Intent(MainActivity.this, Profile.class);
+				Intent intent = new Intent(MainActivity.this, Profile.class);			//on click, start the Profile Activity
 				startActivity(intent);
 
 				mDrawerProfiles.setItemChecked(position, true);
 				setTitle(navMenuProfiles[profileIndex]);
-				mDrawerLayout.closeDrawer(mDrawerProfiles);
-			} else if (position == vector.size()) {
+				mDrawerLayout.closeDrawer(mDrawerProfiles);							
+			} else if (position == vector.size()) {												//if the last entry is selected (new profile) the createProfile() dialog will be called
 				createProfile();
 			}
 		}
 
-		public boolean onItemLongClick(AdapterView<?> parent, View view,
-				int position, long id) {
-			deleteContainer(vector.get(position));
-			updateProfileList();
+		public boolean onItemLongClick(AdapterView<?> parent, View view,int position, long id) {
+			if (position < vector.size()) {
+				deleteContainer(vector.get(position));												//on long click of the profile, call the delete dialog on it
+				updateProfileList();																			//update profile name string array
+			}
 			return true;
 		}
 	}
@@ -224,14 +205,13 @@ public class MainActivity extends Activity implements OnClickListener {
 	@SuppressWarnings("unused")
 	public boolean onPrepareOptionsMenu(Menu menu) {
 		// If the nav drawer is open, hide action items related to the content
-		// view
 		boolean drawerOpen = mDrawerLayout.isDrawerOpen(mDrawerProfiles);
 		// menu.findItem(R.id.add).setVisible(!drawerOpen);
 		return super.onPrepareOptionsMenu(menu);
 	}
 
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// The action bar home/up action should open or close the drawer.
+		// The action bar home/up action should open or close the drawer
 		// ActionBarDrawerToggle will take care of this.
 		if (mDrawerToggle.onOptionsItemSelected(item)) {
 			return true;
@@ -239,7 +219,7 @@ public class MainActivity extends Activity implements OnClickListener {
 		// Handle action buttons
 		switch (item.getItemId()) {
 		case R.id.broadcast:
-			serverFound = false;
+			serverFound = false;													//
 			sendBroadcast();
 			if (serverFound) displayIP();
 			return true;

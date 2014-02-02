@@ -246,7 +246,7 @@ public class Profile extends Activity implements OnClickListener {
 		GradientDrawable border = new GradientDrawable(
 				GradientDrawable.Orientation.TOP_BOTTOM, new int[] { newColor,
 						newColor });
-		// border.setCornerRadius(0f);
+		border.setCornerRadius(0f);
 		border.setStroke(2, 0x000000);
 		holder.btnColor.setBackground(border);
 
